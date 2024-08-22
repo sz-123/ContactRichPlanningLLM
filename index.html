@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>Generating Robot Policy Code for High-Precision and Contact-Rich Manipulation Tasks</title>
+
+    <meta name="description" content="Dextrous Code as Policies: Generating Robot Policy Code for High-Precision and Contact-Rich Manipulation Tasks">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <base href="/"> -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/default.min.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+    
+    <script src="js/app_anon.js"></script>
+	
+    <style>
+        .nav-pills {
+          position: relative;
+          display: inline;
+        }
+        .imtip {
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="main">
+        <div class="row mt-4">
+            <h2 class="col-md-12 text-center">
+                <b><font size="+6">Dextrous Code Generation</font></b>: </br> Generating Robot Policy Code for High-Precision and Contact-Rich Manipulation Tasks </br> 
+            </h2>
+        </div>
+        
+
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <video id="v0" width="100%" preload="metadata" playsinline muted loop autoplay>
+                    <source src="examples/genchip_verycompressed.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+
+        <div class="row justify-content-md-center">
+            <div class="col-md-10 col-lg-8">
+                <h3 class="mt-4 mb-2">
+                    Abstract
+                </h3>
+                <p class="text-justify">
+Large Language Models (LLMs) have been successful at generating robot policy code, but so far these results have been limited to high-level tasks that do not require accurate movement. It is an open question how well such approaches work for tasks that require reasoning over contacts forces and working within tight success tolerances. We find that, with the right action space, LLMs are capable of successfully generating policies for a variety of contact-rich and high-precision manipulation tasks. Specifically, we reparameterize the action space to include compliance with constraints on the interaction forces and stiffnesses involved in reaching a target pose. We validate this approach on subtasks derived from the Functional Manipulation Benchmark (FMB) and NIST Task Board Benchmarks, where policy generation with an LLM in this action space improves success rates over generation in non-compliant action spaces by greater than 3x and 4x, respectively.
+                </p>
+                <p style="text-align:center;">
+                    <image src="imgs/concept.svg" width="100%">
+                </p>
+            </div>
+        </div>
+
+        <div class="row justify-content-md-center mt-4">
+            <div class="col-md-10 col-lg-8">
+                <h3>Experiments</h3>
+                <p>Here is a showcase of the experiments we ran.</p>
+
+                <!--
+                <p>explanation 2</p>
+                -->
+
+                <div class="card mb-4 mt-4 text-dark bg-light">
+                    <h5 class="card-header">Functional Manipulation Benchmark Prompt</h5>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12" id="example"
+                                 data-path="examples/fmb_prompt.py">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-4 mt-4 text-dark bg-light">
+                    <h5 class="card-header">Circle</h5>
+                    <div class="card-body">
+                        <p>
+				"Explain how to insert a circle-shaped peg into a circle-shaped hole with a grid pattern search. Then, generate the code to insert a circle-shaped peg."
+                        </p>
+                        <div class="col-md-12 mb-2">
+                            <video id="vid_blocks" width="100%" preload="metadata" playsinline controls>
+                                <source src="examples/circle/conditional_compliant_zero_shot_success.mp4" type="video/mp4">
+                            </video>
+                        </div>
+			<p>Generated code</p>
+                        <div class="row">
+                            <div class="col-md-12" id="example"
+                                 data-path="examples/circle/output.py">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-4 mt-4 text-dark bg-light">
+                    <h5 class="card-header">Star</h5>
+                    <div class="card-body">
+			<p>"Explain how to insert a star-shaped peg into a star-shaped hole is different than a circle-shaped peg with a grid pattern search. Then, generate the code to insert a star-shaped peg."</p>
+                        <div class="col-md-12 mb-2">
+                            <video id="vid_blocks" width="100%" preload="metadata" playsinline controls>
+                                <source src="examples/star/conditional_compliant_zero_shot_success.mp4" type="video/mp4">
+                            </video>
+                        </div>
+			<p>Generated code</p>
+                        <div class="row">
+                            <div class="col-md-12" id="example"
+                                 data-path="examples/star/output.py">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-4 mt-4 text-dark bg-light">
+                    <h5 class="card-header">Half-Pipe</h5>
+                    <div class="card-body">
+			<p>"Explain how to insert a half-pipe-shaped peg into a half-pipe-shaped hole is different than a circle-shaped peg with a grid pattern search. Then, generate the code to insert a half-pipe-shaped peg."</p>
+                        <div class="col-md-12 mb-2">
+                            <video id="vid_blocks" width="100%" preload="metadata" playsinline controls>
+                                <source src="examples/halfpipe/conditional_compliant_few_shot_success.mp4" type="video/mp4">
+                            </video>
+                        </div>
+			<p>Generated code</p>
+                        <div class="row">
+                            <div class="col-md-12" id="example"
+                                 data-path="examples/halfpipe/output.py">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card mb-4 mt-4 text-dark bg-light">
+                    <h5 class="card-header">Assembly Prompt</h5>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12" id="example"
+                                 data-path="examples/assembly_prompt.py">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="card mb-4 mt-4 text-dark bg-light">
+                    <h5 class="card-header">Cable routing</h5>
+	    <div class="card-body">
+		<p>Currently the robot is holding the cable at pose(1), but the cable is above a tunnel with a small opening at the top. Describe a strategy to search for an opening and insert the cable using force information and then write a program using the APIs above to route the cable into the tunnel.</p>
+                        <div class="col-md-12 mb-2">
+                            <video id="vid_blocks" width="100%" preload="metadata" playsinline controls>
+                                <source src="examples/cableroute/conditional_compliant_few_shot_success.mp4" type="video/mp4">
+                            </video>
+                        </div>
+			<p>Generated code</p>
+                        <div class="row">
+                            <div class="col-md-12" id="example"
+                                 data-path="examples/cableroute/output.py">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-4 mt-4 text-dark bg-light">
+                    <h5 class="card-header">Cable un-routing</h5>
+                    <div class="card-body">
+                        <p>"Currently the robot is holding the cable at pose(1), but the cable is stuck in a tunnel with a small opening at the top. Describe a strategy for unrouting the cable using force information to search for the opening and then write a program using the APIs above to unroute the cable and lift it out of the tunnel."</p>
+                        <div class="col-md-12 mb-2">
+                            <video id="vid_blocks" width="100%" preload="metadata" playsinline controls>
+                                <source src="examples/cableunroute/conditional_compliant_few_shot_success.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <p>Generated code</p>
+                        <div class="row">
+                            <div class="col-md-12" id="example"
+                                 data-path="examples/cableunroute/output.py">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+		<div class="card mb-4 mt-4 text-dark bg-light">
+                    <h5 class="card-header">Connector insertion</h5>
+                    <div class="card-body">
+                        <p>"Now assume the robot is holding a waterproof connector above a port. Use the above methods to perform a grid pattern search insertion. Then rewrite it to remove any ifs or while loops."</p>
+                        <div class="row">
+                            <div class="col-md-12" id="example"
+                                 data-path="examples/connector/prompt.py">
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb-2">
+                            <video id="vid_blocks" width="100%" preload="metadata" playsinline controls>
+                                <source src="examples/connector/connector_conditional_compliant.mov" type="video/mp4">
+                            </video>
+                        </div>
+                        <p>Generated code</p>
+                        <div class="row">
+                            <div class="col-md-12" id="example"
+                                 data-path="examples/connector/output.py">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+		<div class="card mb-4 mt-4 text-dark bg-light">
+                    <h5 class="card-header">Cable unravel</h5>
+                    <div class="card-body">
+                        <p>Prompt</p>
+                        <div class="row">
+                            <div class="col-md-12" id="example"
+                                 data-path="examples/unravel/prompt.py">
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb-2">
+                            <video id="vid_blocks" width="100%" preload="metadata" playsinline controls>
+                                <source src="examples/unravel/conditional_compliant_unravel.mov" type="video/mp4">
+                            </video>
+                        </div>
+                        <p>Generated code</p>
+                        <div class="row">
+                            <div class="col-md-12" id="example"
+                                 data-path="examples/unravel/output.py">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>
