@@ -40,12 +40,12 @@
     <div class="container" id="main">
         <div class="row mt-4">
             <h2 class="col-md-12 text-center">
-                <b><font size="+6">Dextrous Code Generation</font></b>: </br> Generating Robot Policy Code for High-Precision and Contact-Rich Manipulation Tasks </br> 
+                <b><font size="+4">Dextrous Code Generation</font></b>: </br> Generating Robot Policy Code for High-Precision and Contact-Rich Manipulation Tasks </br> 
             </h2>
         </div>
         
         <div class="row justify-content-md-center">
-            <div class="col-md-112 col-lg-10">
+            <div class="col-md-12 col-lg-10">
                 <h3 class="mt-4 mb-2 text-center">
                     Abstract
                 </h3>
@@ -58,24 +58,77 @@ Large Language Models (LLMs) have been successful at generating robot policy cod
             </div>
         </div>
 
-        <div class="row mt-4">
-            <div class="col-md-6" style="position: relative; overflow: hidden; height: 250px;">
-                <video id="v1" width="125%" height="100%" preload="metadata" playsinline muted loop autoplay style="object-fit: cover; object-position: left;">
+        <div class="row justify-content-md-center mt-4">
+            <div class="col-md-6 col-lg-4" style="position: relative; overflow: hidden;">
+                <h6 style="text-align: center;">Camera View</h6>
+                <video id="v1" width="125%" height="100%" preload="metadata" playsinline muted loop autoplay disablePictureInPicture style="object-fit: cover; object-position: left;">
                     <source src="examples/opening_example/ICRA25_web_example_CAMERA.mp4" type="video/mp4">
                 </video>
             </div>
-            <div class="col-md-6" style="position: relative; overflow: hidden; height: 250px;">
-                <video id="v1" width="140%" height="100%" preload="metadata" playsinline muted loop autoplay style="object-fit: cover; object-position: left;">
+            <div class="col-md-6 col-lg-4" style="position: relative; overflow: hidden; ">
+                <h6 style="text-align: center;">Image-based Tactile Sensor</h6>
+                <video id="v1" width="140%" height="100%" preload="metadata" playsinline muted loop autoplay disablePictureInPicture style="object-fit: cover; object-position: left;">
                     <source src="examples/opening_example/ICRA25_web_example_tactile.mp4" type="video/mp4">
                 </video>
             </div>
         </div>
 
         
+        <div class="row justify-content-md-center mt-4">
+            <div class="col-md-10 col-lg-8">
+                <h3>Method</h3>
+                <h4>Multi-Modal Demonstration Segmentation</h4>
+                <p>We use tactile-sensor ... todo .. fine-tuned from the <i>TimeSformer</i>.</p>
+                <!-- insert four videos of tactile signal pattern 1 x 4 -->
+                <div class="row">
+                    <div class="col-md-3">
+                        <h6 style="text-align: center;">Compression</h6>
+                        <video id="v3" width="100%" preload="metadata" playsinline muted loop autoplay disablePictureInPicture >
+                            <source src="examples/method/compression_21_2024_05_21_26_force_tactile_post.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 style="text-align: center;">Decompression</h6>
+                        <video id="v4" width="100%" preload="metadata" playsinline muted loop autoplay disablePictureInPicture >
+                            <source src="examples/method/decompression_19_2024_05_21_12_force_tactile_post.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 style="text-align: center;">Linear Force</h6>
+                        <video id="v1" width="100%" preload="metadata" playsinline muted loop autoplay disablePictureInPicture>
+                            <source src="examples/method/linear_force_0_2024_05_21_14_force_tactile_post.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 style="text-align: center;">Rotational Force</h6>
+                        <video id="v1" width="100%" preload="metadata" playsinline muted loop autoplay disablePictureInPicture>
+                            <source src="examples/method/rotational_force_11_2024_08_06_1_force_tactile_post.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                <p></p>
+                </div>
+                <!-- TODO: titles -->
+                <h4>? Object-Centric Planning</h4>
+                <h4>Demonstration-Guided LLM Planning</h4>
+            </div>
+        </div>
 
         <div class="row justify-content-md-center mt-4">
             <div class="col-md-10 col-lg-8">
                 <h3>Experiments</h3>
+                <div class="card mb-4 mt-4 text-dark bg-light">
+                    <h5 class="card-header">Example Result of Tactile Segmentation</h5>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12" id="example"
+                                 data-path="examples/example_result_tactile_segmentation.py">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Below is the original code of DexGen -->
+
                 <p>Here is a showcase of the experiments we ran.</p>
 
                 <!--
@@ -87,7 +140,7 @@ Large Language Models (LLMs) have been successful at generating robot policy cod
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12" id="example"
-                                 data-path="examples/fmb_prompt.py">
+                                 data-path="examples/fmb_prompt.">
                             </div>
                         </div>
                     </div>
