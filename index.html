@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/default.min.css">
     <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/prompt.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
@@ -111,6 +112,59 @@ Large Language Models (LLMs) have been successful at generating robot policy cod
                 <!-- TODO: titles -->
                 <h4>? Object-Centric Planning</h4>
                 <h4>Demonstration-Guided LLM Planning</h4>
+            </div>
+        </div>
+
+        <div class="row justify-content-md-center mt-4">
+            <div class="col-md-10 col-lg-8">
+                <h3>Text Prompt</h3>
+                <h4>translate the skill library code scripts into a PDDL domain</h4>
+
+                <!-- Button Container -->
+                <div class="d-flex justify-content-between">
+                    <!-- Cable Button -->
+                    <button class="btn cable-btn " id="cable-skilllib-button">Cable Skill Library</button>
+
+                    <!-- Cap Button -->
+                    <button class="btn cap-btn" id="cap-skilllib-button">Cap Skill Library</button>
+                </div>
+
+                <!-- Prompt display area -->
+                <div class="prompt-container" id="skilllib-prompt-container"></div>
+ 
+                <!-- Translate Button with ChatGPT-4 Icon -->
+                <button class="btn translate-btn" id="skilllib-translate-button">
+                    <img src="imgs/openai-2.svg" alt="ChatGPT-4 Icon" style="width: 75px; height: 75px; vertical-align: middle;">
+                </button>
+
+                <h5 class="card-header">test1111</h5>
+
+                <!-- Prompt display area -->
+                <div class="prompt-container" id="skilllib-translate-prompt-container"></div>
+               
+                <div class="card mb-4 mt-4 text-dark bg-light">
+                    <h5 class="card-header">Task Description</h5>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12" id="example"
+                                 data-path="examples/example_result_tactile_segmentation.py">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-4 mt-4 text-dark bg-light">
+                    <h5 class="card-header">Task Description</h5>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12" id="example"
+                                 data-path="examples/example_result_tactile_segmentation.py">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
         </div>
 
@@ -304,5 +358,10 @@ Large Language Models (LLMs) have been successful at generating robot policy cod
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script>hljs.highlightAll();</script>
+    <script src="examples/prompt_skilllibTOPDDL/skilllib_prompt.js"></script>
+    <script src="examples/prompt_skilllibTOPDDL/skilllib_translate_prompt.js"></script>
+
+
+
 </body>
 </html>

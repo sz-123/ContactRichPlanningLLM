@@ -1,0 +1,45 @@
+/* Button Container */
+.d-flex {
+    display: flex;
+    justify-content: start;  /* Align items starting from the left */
+    gap: 10px; /* Reduce the gap between the buttons */
+}
+
+
+/* Common Circular Button Styles */
+.btn {
+    width: 100px;      /* Equal width and height for a perfect circle */
+    height: 100px;
+    font-size: 20px;
+    border-radius: 50%; /* Makes the button circular */
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Centers the text inside the circle */
+    padding: 0; /* Remove padding to maintain the circle shape */
+}
+
+/* Cable Button Style */
+.cable-btn {
+    background-color: #754292; /* Blue color */
+    color: white;
+    margin-right: 600px; /* Adjust the value for the desired spacing */
+}
+
+/* Cap Button Style */
+.cap-btn {
+    background-color: #e9b5ee; /* Green color */
+    color: white;
+}
+
+/* Translate Button Style */
+.translate-btn {
+    background-color: #ffffff; /* Grey color */
+    color: black;
+}
+
+/* Hover Effects for Both Buttons */
+.btn:hover {
+    opacity: 0.8;
+}
