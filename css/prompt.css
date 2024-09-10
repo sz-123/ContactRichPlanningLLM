@@ -20,26 +20,45 @@
     padding: 0; /* Remove padding to maintain the circle shape */
 }
 
-/* Cable Button Style */
+/* Cable Button Style (Rectangle) */
 .cable-btn {
     background-color: #754292; /* Blue color */
     color: white;
-    margin-right: 600px; /* Adjust the value for the desired spacing */
+    margin-top: 20px;
+    margin-left: 20px; /* Adjust the value for the desired spacing */
+    margin-right: 20px; /* Adjust the value for the desired spacing */
+    margin-bottom: 40px; /* Adjust the value for the desired spacing */
+    width: 180px;  /* Define rectangular width */
+    height: 70px;  /* Define rectangular height */
+    border-radius: 5px; /* Optional: Small corner rounding */
+
 }
 
-/* Cap Button Style */
+/* Cap Button Style (Rectangle) */
 .cap-btn {
     background-color: #e9b5ee; /* Green color */
     color: white;
+    margin-left: 20px; /* Adjust the value for the desired spacing */
+    margin-right: 20px; /* Adjust the value for the desired spacing */
+    margin-bottom: 20px; /* Adjust the value for the desired spacing */
+    width: 180px;  /* Define rectangular width */
+    height: 70px;  /* Define rectangular height */
+    border-radius: 5px; /* Optional: Small corner rounding */
 }
 
 /* Translate Button Style */
 .translate-btn {
     background-color: #ffffff; /* Grey color */
     color: black;
+    margin-bottom: 10px;
+    margin-top: 25px;
+    margin-left: 65px;
+    margin-right: 75px;
 }
 
 /* Hover Effects for Both Buttons */
 .btn:hover {
     opacity: 0.8;
 }
+
+

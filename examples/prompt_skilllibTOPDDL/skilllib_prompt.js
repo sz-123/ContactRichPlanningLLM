@@ -1,5 +1,5 @@
 // Prompts
-const promptCableSkillLib = `
+const promptCommonSkillLib = `
 <pre><code>from robot_controller import Controller
 from perception import Perception
 
@@ -21,8 +21,11 @@ class ObjectSkillLibrary:
     def open_hand(self):
         print(f"Opening the robot's hand")
         robot_controller.open_gripper()
+</code></pre>
+`;
 
-class CableSkillLibrary(ObjectSkillLibrary):
+const promptCableSkillLib = `
+<pre><code style="color: #754292; font-weight: bold">class CableSkillLibrary(ObjectSkillLibrary):
     def __init__(self):
         super().__init__("cable")
 
@@ -37,29 +40,7 @@ class CableSkillLibrary(ObjectSkillLibrary):
 `;
 
 const promptCapSkillLib = `
-<pre><code>from robot_controller import Controller
-from perception import Perception
-
-robot_controller = Controller()
-perception = Perception()
-
-class ObjectSkillLibrary:
-    def __init__(self, target_object):
-        self.target_object = target_object
-
-    def move_object(self, pose):
-        print(f"Moving to {pose} with {self.target_object} grasped in hand")
-        robot_controller.move_cart_pose(pose)
-
-    def grasp(self):
-        print(f"Grasping the {self.target_object}")
-        robot_controller.grasp()
-
-    def open_hand(self):
-        print(f"Opening the robot's hand")
-        robot_controller.open_gripper()
-
-class CapSkillLibrary(ObjectSkillLibrary):
+<pre><code style="color: #754292; font-weight: bold">class CapSkillLibrary(ObjectSkillLibrary):
     def __init__(self):
         super().__init__("cap")
 
@@ -81,7 +62,7 @@ let lockedContent = null;
 function showPrompt(content) {
     if (!lockedContent) {  // Only show content if nothing is "locked"
         promptSkillLibContainer.style.display = 'block';
-        promptSkillLibContainer.innerHTML = content;
+        promptSkillLibContainer.innerHTML = promptCommonSkillLib + content;
     }
 }
 
@@ -89,13 +70,12 @@ function showPrompt(content) {
 function lockPrompt(content) {
     lockedContent = content;  // Lock the content
     promptSkillLibContainer.style.display = 'block';
-    promptSkillLibContainer.innerHTML = content;
+    promptSkillLibContainer.innerHTML = promptCommonSkillLib + content;
 }
 
-// Function to reset the locked content when clicking another button
-function resetLockedContent() {
-    lockedContent = null;
-}
+
+// Show common content by default
+showPrompt("");
 
 // Show corresponding content on hover, only if not locked
 CableSkillLibButton.addEventListener('mouseenter', function() {
@@ -109,13 +89,15 @@ CapSkillLibButton.addEventListener('mouseenter', function() {
 // Hide prompt when not hovering, unless content is locked
 CableSkillLibButton.addEventListener('mouseleave', function() {
     if (!lockedContent) {
-        promptSkillLibContainer.style.display = 'none';
+        promptSkillLibContainer.style.display = 'block';
+        promptSkillLibContainer.innerHTML = promptCommonSkillLib;
     }
 });
 
 CapSkillLibButton.addEventListener('mouseleave', function() {
     if (!lockedContent) {
-        promptSkillLibContainer.style.display = 'none';
+        promptSkillLibContainer.style.display = 'block';
+        promptSkillLibContainer.innerHTML = promptCommonSkillLib;
     }
 });
 

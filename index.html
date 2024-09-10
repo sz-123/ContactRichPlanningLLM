@@ -120,28 +120,89 @@ Large Language Models (LLMs) have been successful at generating robot policy cod
                 <h3>Text Prompt</h3>
                 <h4>translate the skill library code scripts into a PDDL domain</h4>
 
-                <!-- Button Container -->
-                <div class="d-flex justify-content-between">
-                    <!-- Cable Button -->
-                    <button class="btn cable-btn " id="cable-skilllib-button">Cable Skill Library</button>
+                <!-- Main Container for Buttons and Prompt -->
+                <div class="container d-flex">
+                    <!-- Left Column: Button Container -->
+                    <div class="buttons-container">
+                        <div class="d-flex flex-column">
+                            <div class="d-flex flex-column" style="border: 5px solid rgba(100, 100, 100, 0.500);border-radius: 10px;">
+                                <!-- Cable Button -->
+                                <button class="btn cable-btn" id="cable-skilllib-button">Cable Skill Library</button>
 
-                    <!-- Cap Button -->
-                    <button class="btn cap-btn" id="cap-skilllib-button">Cap Skill Library</button>
+                                <!-- Cap Button -->
+                                <button class="btn cap-btn" id="cap-skilllib-button">Cap Skill Library</button>
+                            </div>
+
+                            <!-- Arrow under the buttons -->
+                            <div class="arrow-down-container" style="margin-top: 20px; display: flex; justify-content: center;">
+                                <div class="arrow" style="display: flex; flex-direction: column; align-items: center;">
+                                    <!-- Arrow Long Tail -->
+                                    <div class="arrow-long-tail" style="margin-top: 40px; width: 12px; height: 40px; background-color: rgba(100, 100, 100, 0.500);"></div>
+                                    <!-- Arrow Head -->
+                                    <div class="arrow-head" style="width: 0; height: 0; border-left: 30px solid transparent; border-right: 30px solid transparent; border-top: 30px solid rgba(100, 100, 100, 0.500);"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Prompt display area -->
+                    <div class="prompt-container flex-grow-1" id="skilllib-prompt-container" style="border: 5px solid rgba(100, 100, 100, 0.500);border-radius: 10px;">
+                        <!-- Prompt content will be shown here -->
+                    </div>
                 </div>
 
-                <!-- Prompt display area -->
-                <div class="prompt-container" id="skilllib-prompt-container"></div>
- 
-                <!-- Translate Button with ChatGPT-4 Icon -->
-                <button class="btn translate-btn" id="skilllib-translate-button">
-                    <img src="imgs/openai-2.svg" alt="ChatGPT-4 Icon" style="width: 75px; height: 75px; vertical-align: middle;">
-                </button>
 
-                <h5 class="card-header">test1111</h5>
+                <!-- Main Container for Buttons and Prompt -->
+                <div class="container d-flex">
+                    <div class = "d-flex flex-column">
+                        <!-- Left Column: Button Container -->
+                        <div class="buttons-container">
+                            <div class="d-flex flex-row">
+                                <!-- Translate Button with ChatGPT-4 Icon -->
+                                <button class="btn translate-btn" id="skilllib-translate-button">
+                                    <img src="imgs/openai-2.svg" alt="ChatGPT-4 Icon" style="width: 75px; height: 75px; vertical-align: middle;">
+                                </button>
+                            </div>
+                        </div>
 
-                <!-- Prompt display area -->
-                <div class="prompt-container" id="skilllib-translate-prompt-container"></div>
-               
+                        <!-- Arrow under the buttons -->
+                        <div class="arrow-down-container" style="margin-top: 20px; display: flex; justify-content: center;">
+                            <div class="arrow" style="display: flex; flex-direction: column; align-items: center;">
+                                <!-- Arrow Long Tail -->
+                                <div class="arrow-long-tail" style="width: 12px; height: 40px; background-color: rgba(100, 100, 100, 0.500);"></div>
+                                <!-- Arrow Head -->
+                                <div class="arrow-head" style="margin-bottom:20px ; width: 0; height: 0; border-left: 30px solid transparent; border-right: 30px solid transparent; border-top: 30px solid rgba(100, 100, 100, 0.500);"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Prompt display area -->
+                    <!-- Prompt display area -->
+                    <div class="prompt-container" id="skilllib-translate-prompt-container" style="margin-top: 20px;"></div>
+                </div>
+
+                <!-- Main Container for Buttons and Prompt -->
+                <div class="container d-flex">
+                    <div class="d-flex flex-column">
+                        <!-- Left Column: Button Container -->
+                        <div class="buttons-container" style="border: 5px solid rgba(100, 100, 100, 0.500);border-radius: 10px;">
+                            <div class="d-flex flex-column">
+                                <!-- Cable Button -->
+                                <button class="btn cable-btn" id="cable-PDDL-button">Cable PDDL Domain</button>
+
+                                <!-- Cap Button -->
+                                <button class="btn cap-btn" id="cap-PDDL-button">Cap PDDL Domain</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Right Column: Prompt display area -->
+                    <div class="prompt-container flex-grow-1" id="result-PDDL-container" style="border: 5px solid rgba(100, 100, 100, 0.500);border-radius: 10px;"  >
+                        <!-- Prompt content will be shown here -->
+                    </div>
+                </div>
+             
                 <div class="card mb-4 mt-4 text-dark bg-light">
                     <h5 class="card-header">Task Description</h5>
                     <div class="card-body">
@@ -152,19 +213,6 @@ Large Language Models (LLMs) have been successful at generating robot policy cod
                         </div>
                     </div>
                 </div>
-
-                <div class="card mb-4 mt-4 text-dark bg-light">
-                    <h5 class="card-header">Task Description</h5>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-12" id="example"
-                                 data-path="examples/example_result_tactile_segmentation.py">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
             </div>
         </div>
 
@@ -360,6 +408,7 @@ Large Language Models (LLMs) have been successful at generating robot policy cod
     <script>hljs.highlightAll();</script>
     <script src="examples/prompt_skilllibTOPDDL/skilllib_prompt.js"></script>
     <script src="examples/prompt_skilllibTOPDDL/skilllib_translate_prompt.js"></script>
+    <script src="examples/prompt_skilllibTOPDDL/PDDL_prompt.js"></script>
 
 
 
