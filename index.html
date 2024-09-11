@@ -234,20 +234,20 @@ Large Language Models (LLMs) have been successful at generating robot policy cod
                                 Keyframes and Reasoning
                             </h4>
                             <div class="col-md-12" id="skill-sequence-full-demo">
-                                <div id="full-demo-text-container">
+                                <div class="SkillSequenceTextContainer" id="full-demo-text-container">
                                     <h5 id="full-demo-skill">Skill: move_object clip8</h5>
                                     <h5 id="full-demo-reasoning">Because the robot is moving with the cable towards the position of clip 8.</h5>
                                     
                                     <!-- Image and buttons container -->
-                                    <div id="full-demo-image-container">
-                                        <button id="full-demo-prevButton">Previous</button>
-                                        <img id="full-demo-frame" src="examples/experiments/skill_sequence/full_demo/frame_0.png" alt="Frame 0">
-                                        <button id="full-demo-nextButton">Next</button>
+                                    <div class="SkillSequenceImageContainer" id="full-demo-image-container">
+                                        <button class="btn prevButton" id="full-demo-prevButton">Previous</button>
+                                        <img class="SkillSequenceFrame" id="full-demo-frame" src="examples/experiments/skill_sequence/without_object/" alt="Frame 0">
+                                        <button class="btn nextButton" id="full-demo-nextButton">Next</button>
                                     </div>
 
-                                    <div id ="full-demo-reset-container" >
+                                    <div class="SkillSequenceResetContainer" id ="full-demo-reset-container" >
                                         <!-- Reset button -->
-                                        <button id="full-demo-resetButton">Reset</button>
+                                        <button class="btn resetButton" id="full-demo-resetButton">Reset</button>
                                     </div>
                                 </div>
                             </div>
@@ -255,8 +255,8 @@ Large Language Models (LLMs) have been successful at generating robot policy cod
                                 Demo Plan
                             </h4>
 
-                            <div id="full-demo-plan-text-container">
-                                <pre><code id="full-demo-plan" class="cpp"></code></pre>
+                            <div class="DemoPlanTextContainer" id="full-demo-plan-text-container">
+                                <pre><code class="DemoPlanCode" id="full-demo-plan" class="cpp"></code></pre>
                             </div>
 
                         </div>
@@ -270,29 +270,30 @@ Large Language Models (LLMs) have been successful at generating robot policy cod
                                 Keyframes and Reasoning
                             </h4>
                             <div class="col-md-12" id="skill-sequence-without-object">
-                                <div id="without-object-text-container">
+                                <div class="SkillSequenceTextContainer" id="without-object-text-container">
                                     <h5 id="without-object-skill">Skill: move_object clip8</h5>
                                     <h5 id="without-object-reasoning">Because the robot on the right is moving the cable towards the position of clip8.</h5>
                                     
                                     <!-- Image and buttons container -->
-                                    <div id="without-object-image-container">
-                                        <button id="without-object-prevButton">Previous</button>
-                                        <img id="without-object-frame" src="examples/experiments/skill_sequence/without_object" alt="Frame 0">
-                                        <button id="without-object-nextButton">Next</button>
+                                    <div class="SkillSequenceImageContainer" id="without-object-image-container">
+                                        <button class="btn prevButton" id="without-object-prevButton">Previous</button>
+                                        <img class="SkillSequenceFrame" id="without-object-frame" src="examples/experiments/skill_sequence/without_object/frame_0.png" alt="Frame 0">
+                                        <button class="btn nextButton" id="without-object-nextButton">Next</button>
                                     </div>
 
-                                    <div id ="without-object-reset-container" >
+                                    <div class="SkillSequenceResetContainer" id ="without-object-reset-container" >
                                         <!-- Reset button -->
-                                        <button id="without-object-resetButton">Reset</button>
+                                        <button class="btn resetButton" id="without-object-resetButton">Reset</button>
                                     </div>
                                 </div>
                             </div>
+                            
                             <h4 class="mt-4 mb-2 text-center">
                                 Demo Plan
                             </h4>
 
-                            <div id="without-object-plan-text-container">
-                                <pre><code id="without-object-plan" class="cpp"></code></pre>
+                            <div class="DemoPlanTextContainer" id="without-object-plan-text-container">
+                                <pre><code class="DemoPlanCode" id="without-object-plan" class="cpp"></code></pre>
                             </div>
 
                         </div>

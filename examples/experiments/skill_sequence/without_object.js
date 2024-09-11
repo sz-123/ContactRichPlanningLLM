@@ -62,12 +62,12 @@ cable_skill_library.open_hand()
 
 let currentFrame = 0;
 
-const frameElement = document.getElementById('full-demo-frame');
-const skillElement = document.getElementById('full-demo-skill');
-const reasoningElement = document.getElementById('full-demo-reasoning');
-const prevButton = document.getElementById('full-demo-prevButton');
-const nextButton = document.getElementById('full-demo-nextButton');
-const resetButton = document.getElementById('full-demo-resetButton');
+const frameElement = document.getElementById('without-object-frame');
+const skillElement = document.getElementById('without-object-skill');
+const reasoningElement = document.getElementById('without-object-reasoning');
+const prevButton = document.getElementById('without-object-prevButton');
+const nextButton = document.getElementById('without-object-nextButton');
+const resetButton = document.getElementById('without-object-resetButton');
 
 function updateFrame() {
     // Update the image frame
@@ -104,6 +104,6 @@ resetButton.addEventListener('click', () => {
 // Initial state
 updateFrame();
 
-const planElement = document.getElementById('full-demo-plan');
+const planElement = document.getElementById('without-object-plan');
 planElement.innerHTML = without_object_plan;
 

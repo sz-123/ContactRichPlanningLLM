@@ -1,23 +1,23 @@
-#full-demo-image-container {
+.SkillSequenceImageContainer {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-#full-demo-reset-container {
+.SkillSequenceResetContainer {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 20px;
 }
 
-#full-demo-frame {
-    width: 600; /* 图片宽度 */
-    height: 450px; /* 图片高度 */
+.SkillSequenceFrame {
+    width: 600; /* picture */
+    height: 450px; /* picture */
 }
-#full-demo-prevButton,
-#full-demo-nextButton
- {
+
+.prevButton,
+.nextButton {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -29,21 +29,23 @@
     font-size: 16px;
     text-align: center;
     box-sizing: border-box;
+    border: 2px solid #000; /* 添加黑色边框 */
+    border-radius: 5px; /* 圆角效果，可选 */
 }
 
-
-#full-demo-resetButton
-{
-display: flex;
-justify-content: center;
-align-items: center;
-width: 100px;
-height: 40px;
-font-size: 16px;
-margin: 0;
-padding: 10px;
-text-align: center;
-box-sizing: border-box;
+.resetButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 40px;
+    font-size: 16px;
+    margin: 0;
+    padding: 10px;
+    text-align: center;
+    box-sizing: border-box;
+    border: 2px solid #000; /* 添加黑色边框 */
+    border-radius: 5px; /* 圆角效果，可选 */
 }
 
 
