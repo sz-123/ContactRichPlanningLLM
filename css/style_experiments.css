@@ -1,0 +1,49 @@
+#full-demo-image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#full-demo-reset-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#full-demo-frame {
+    width: 600; /* 图片宽度 */
+    height: 450px; /* 图片高度 */
+}
+#full-demo-prevButton,
+#full-demo-nextButton
+ {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 10px;
+    width: 100px;
+    height: 40px;
+    font-size: 16px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+
+#full-demo-resetButton
+{
+display: flex;
+justify-content: center;
+align-items: center;
+width: 100px;
+height: 40px;
+font-size: 16px;
+margin: 0;
+padding: 10px;
+text-align: center;
+box-sizing: border-box;
+}
+
+
