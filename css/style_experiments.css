@@ -4,6 +4,19 @@
     justify-content: center;
 }
 
+.shaded-title {
+    background-color: #f0f0f0; /* Light grey background for shading */
+    padding: 10px 20px;        /* Padding inside the box */
+    border: none;              /* No border */
+    text-align: center;        /* Center the text */
+    font-size: 18px;           /* Adjust font size for h5 */
+    font-weight: bold;         /* Make the title bold */
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1); /* Optional shadow effect */
+    border-radius: 4px;        /* Rounded corners */
+    width: 50%;                /* Make the box half the width of the container */
+    margin: 0 auto;            /* Center the box within the column */
+}
+
 .SkillSequenceResetContainer {
     display: flex;
     align-items: center;
