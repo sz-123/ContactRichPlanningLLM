@@ -79,3 +79,34 @@
 .DemoPlanCode.python .string { color: #ff851b; }
 .DemoPlanCode.python .comment { color: #aaaaaa; font-style: italic; }
 
+/* CSS for the toggleable div */
+#myDiv {
+    display: none; /* Initially hide the div */
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+/* Style the toggle title */
+.toggle-title {
+    cursor: pointer; /* Make it clickable */
+    font-weight: bold;
+    position: relative;
+    display: inline-block;
+    padding-left: 20px; /* Space for the triangle */
+}
+
+/* Add the triangle before the title */
+.toggle-title::before {
+    content: "\25B6"; /* Right-pointing triangle (closed state) */
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 16px;
+    line-height: 1.5; /* Adjust based on title size */
+}
+
+/* When the div is open, change the triangle to down-pointing */
+.toggle-title.open::before {
+    content: "\25BC"; /* Down-pointing triangle (open state) */
+}
