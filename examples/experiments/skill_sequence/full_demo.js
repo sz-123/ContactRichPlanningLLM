@@ -105,5 +105,6 @@ resetButton.addEventListener('click', () => {
 updateFrame();
 
 const planElement = document.getElementById('full-demo-plan');
-planElement.innerHTML = full_demo_plan;
+planElement.textContent = full_demo_plan; // Use textContent to preserve formatting
+Prism.highlightElement(planElement); // Apply Prism.js highlighting
 
