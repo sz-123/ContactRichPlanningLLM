@@ -11,99 +11,90 @@ const without_object_frames = [
     "examples/experiments/skill_sequence/without_object/frame_9.png"
 ];
 
-const common_skill_text = "Skill: ";
-
 const without_object_skills = ["move_object clip8",
-"grasp cable",
-"stretch cable",
-"insert cable clip8",
-"open_hand",
+"move_object clip8",
+"insert down clip8",
+"insert down clip8",
+"insert down clip8",
 "move_object clip5",
-"grasp cable",
-"stretch cable",
-"insert cable clip5",
-"open_hand"
+"move_object clip5",
+"insert down clip5",
+"insert down clip5",
+"insert down clip5"
 ];
 
-const common_reasoning_text = "Reasoning: ";
 
-const without_object_reasonings = ["Because the robot is moving with the cable towards the position of clip 8.",
-"Because the tactile status indicates the cable is grasped.",
-"Because the tactile status indicates the cable is under linear force, suggesting a stretching action.",
-"Because the tactile status indicates the cable is under torque, suggesting an insertion action into clip 8.",
-"Because the tactile status indicates the cable is released, suggesting the robot has opened its hand.",
-"Because the robot is moving with the cable towards the position of clip 5.",
-"Because the tactile status indicates the cable is grasped.",
-"Because the tactile status indicates the cable is under linear force, suggesting a stretching action.",
-"Because the tactile status indicates the cable is under torque, suggesting an insertion action into clip 5.",
-"Because the tactile status indicates the cable is released, suggesting the robot has opened its hand."
+const without_object_reasonings = ["Because the robot on the right is moving the cable towards the position of clip8.",
+"Because the robot on the right continues to move the cable towards the position of clip8.",
+"Because the robot on the right is inserting the cable into clip8 in the downward direction.",
+"Because the robot on the right continues to insert the cable into clip8 in the downward direction.",
+"Because the robot on the right is still inserting the cable into clip8 in the downward direction.",
+"Because the robot on the left is moving the cable towards the position of clip5.",
+"Because the robot on the left continues to move the cable towards the position of clip5.",
+"Because the robot on the left is inserting the cable into clip5 in the downward direction.",
+"Because the robot on the left continues to insert the cable into clip5 in the downward direction.",
+"Because the robot on the left continues to insert the cable into clip5 in the downward direction."
 ];
 
-const without_object_plan =`
-# Initialize the CableSkillLibrary
+const without_object_demo_plan =`
+# Initialize the skill library
 cable_skill_library = CableSkillLibrary()
 
-# Executable plan
+# Execute the plan
 cable_skill_library.move_object(database['clip8']['position'])
-cable_skill_library.grasp()
-cable_skill_library.stretch()
 cable_skill_library.insert(database['clip8']['insertion_direction'], 'clip8')
-cable_skill_library.open_hand()
 cable_skill_library.move_object(database['clip5']['position'])
-cable_skill_library.grasp()
-cable_skill_library.stretch()
 cable_skill_library.insert(database['clip5']['insertion_direction'], 'clip5')
-cable_skill_library.open_hand()
 `;
 
 
 
 
 
-let currentFrame = 0;
+let currentFrame_without_object = 0;
 
-const frameElement = document.getElementById('without-object-frame');
-const skillElement = document.getElementById('without-object-skill');
-const reasoningElement = document.getElementById('without-object-reasoning');
-const prevButton = document.getElementById('without-object-prevButton');
-const nextButton = document.getElementById('without-object-nextButton');
-const resetButton = document.getElementById('without-object-resetButton');
+const frameElement_withoutOb = document.getElementById('without-object-frame');
+const skillElement_withoutOb = document.getElementById('without-object-skill');
+const reasoningElement_withoutOb = document.getElementById('without-object-reasoning');
+const prevButton_withoutOb = document.getElementById('without-object-prevButton');
+const nextButton_withoutOb = document.getElementById('without-object-nextButton');
+const resetButton_withoutOb = document.getElementById('without-object-resetButton');
 
-function updateFrame() {
+function updateFrame_withoutOb() {
     // Update the image frame
-    frameElement.src = without_object_frames[currentFrame];
+    frameElement_withoutOb.src = without_object_frames[currentFrame_without_object];
     
     // Update the skill and reasoning text
-    skillElement.innerText = common_skill_text + without_object_skills[currentFrame];
-    reasoningElement.innerText =without_object_reasonings[currentFrame];
+    skillElement_withoutOb.innerText = common_skill_text + without_object_skills[currentFrame_without_object];
+    reasoningElement_withoutOb.innerText =without_object_reasonings[currentFrame_without_object];
     
     // Disable buttons if necessary
-    prevButton.disabled = currentFrame === 0;
-    nextButton.disabled = currentFrame === without_object_frames.length - 1;
+    prevButton_withoutOb.disabled = currentFrame_without_object === 0;
+    nextButton_withoutOb.disabled = currentFrame_without_object === without_object_frames.length - 1;
 }
 
-prevButton.addEventListener('click', () => {
-    if (currentFrame > 0) {
-        currentFrame--;
-        updateFrame();
+prevButton_withoutOb.addEventListener('click', () => {
+    if (currentFrame_without_object > 0) {
+        currentFrame_without_object--;
+        updateFrame_withoutOb();
     }
 });
 
-nextButton.addEventListener('click', () => {
-    if (currentFrame < without_object_frames.length - 1) {
-        currentFrame++;
-        updateFrame();
+nextButton_withoutOb.addEventListener('click', () => {
+    if (currentFrame_without_object < without_object_frames.length - 1) {
+        currentFrame_without_object++;
+        updateFrame_withoutOb();
     }
 });
 
-resetButton.addEventListener('click', () => {
-    currentFrame = 0; // Reset to the first frame
-    updateFrame();
+resetButton_withoutOb.addEventListener('click', () => {
+    currentFrame_without_object = 0; // Reset to the first frame
+    updateFrame_withoutOb();
 });
 
 // Initial state
-updateFrame();
+updateFrame_withoutOb();
 
-const planElement = document.getElementById('without-object-plan');
-planElement.textContent = full_demo_plan; // Use textContent to preserve formatting
-Prism.highlightElement(planElement); // Apply Prism.js highlighting
+const planElement_withoutOb = document.getElementById('without-object-plan');
+planElement_withoutOb.textContent = without_object_demo_plan; // Use textContent to preserve formatting
+Prism.highlightElement(planElement_withoutOb); // Apply Prism.js highlighting

@@ -61,24 +61,6 @@
     border-radius: 5px; /* 圆角效果，可选 */
 }
 
-
-.DemoPlanCode.python {
-    background-color: #f7f7f7;
-    color: #333;
-    font-family: "Courier New", monospace;
-    padding: 10px;
-    border-radius: 5px;
-    display: block;
-    white-space: pre-wrap;
-    margin-left:20px;
-    margin-right:20px;
-}
-
-.DemoPlanCode.python .keyword { color: #0074d9; }
-.DemoPlanCode.python .function { color: #2ecc40; }
-.DemoPlanCode.python .string { color: #ff851b; }
-.DemoPlanCode.python .comment { color: #aaaaaa; font-style: italic; }
-
 /* CSS for the toggleable div */
 #myDiv {
     display: none; /* Initially hide the div */
