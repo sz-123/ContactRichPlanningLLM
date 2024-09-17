@@ -71,6 +71,9 @@
                 <p style="text-align:center;">
                     <image src="imgs/overview_simplified.jpg" width="100%">
                 </p>
+                <!-- <p style="text-align:center;">
+                    <image src="imgs/prompt_overview.jpg" width="100%">
+                </p> -->
             </div>
         </div>
 
@@ -239,113 +242,93 @@
                 </h3>
                 <h4>Skill Sequence</h4>
                 <div class="container d-flex flex-column">
+
+                    <!-- Navigation Buttons -->
+                    <div class="btn-group mb-4" role="group" aria-label="Skill Sequence Navigation">
+                        <button class="btn btn-secondary rounded-pill" id="full-demo-button" onclick="showSection('full-demo')">Full Demo</button>
+                        <button class="btn btn-secondary rounded-pill" id="without-object-button" onclick="showSection('without-object')">Without Object</button>
+                        <button class="btn btn-secondary rounded-pill" id="raw-video-button" onclick="showSection('raw-video')">Raw Video</button>
+                    </div>
+
+
                     <!-- Skill Sequence Full Demo -->
-                    <div class="card mb-4 mt-4 text-dark bg-light">
+                    <div class="card mb-4 mt-4 text-dark bg-light skill-section" id="full-demo-section">
                         <h5 class="card-header">Full Demo</h5>
                         <div class="card-body">
-                            <h4 class="mt-4 mb-2 text-center">
-                                Keyframes and Reasoning
-                            </h4>
+                            <!-- Content of Full Demo Section -->
+                            <h4 class="mt-4 mb-2 text-center">Keyframes and Reasoning</h4>
                             <div class="col-md-12" id="skill-sequence-full-demo">
                                 <div class="SkillSequenceTextContainer" id="full-demo-text-container">
                                     <h5 id="full-demo-skill">Skill: move_object clip8</h5>
                                     <h5 id="full-demo-reasoning">Because the robot is moving with the cable towards the position of clip 8.</h5>
-                                    
-                                    <!-- Image and buttons container -->
                                     <div class="SkillSequenceImageContainer" id="full-demo-image-container">
                                         <button class="btn prevButton" id="full-demo-prevButton">Previous</button>
                                         <img class="SkillSequenceFrame" id="full-demo-frame" src="examples/experiments/skill_sequence/without_object/" alt="Frame 0">
                                         <button class="btn nextButton" id="full-demo-nextButton">Next</button>
                                     </div>
-
-                                    <div class="SkillSequenceResetContainer" id ="full-demo-reset-container" >
-                                        <!-- Reset button -->
+                                    <div class="SkillSequenceResetContainer" id="full-demo-reset-container">
                                         <button class="btn resetButton" id="full-demo-resetButton">Reset</button>
                                     </div>
                                 </div>
                             </div>
-                            <h4 class="mt-4 mb-2 text-center">
-                                Demo Plan
-                            </h4>
-
+                            <h4 class="mt-4 mb-2 text-center">Demo Plan</h4>
                             <div class="DemoPlanTextContainer" id="full-demo-plan-text-container">
                                 <pre><code class="language-python" id="full-demo-plan"></code></pre>
                             </div>
-
                         </div>
                     </div>
 
-                    <!-- Skill Sequence without Object -->
-                    <div class="card mb-4 mt-4 text-dark bg-light">
+                    <!-- Skill Sequence Without Object -->
+                    <div class="card mb-4 mt-4 text-dark bg-light skill-section" id="without-object-section" style="display: none;">
                         <h5 class="card-header">Without Object</h5>
                         <div class="card-body">
-                            <h4 class="mt-4 mb-2 text-center">
-                                Keyframes and Reasoning
-                            </h4>
+                            <!-- Content of Without Object Section -->
+                            <h4 class="mt-4 mb-2 text-center">Keyframes and Reasoning</h4>
                             <div class="col-md-12" id="skill-sequence-without-object">
                                 <div class="SkillSequenceTextContainer" id="without-object-text-container">
                                     <h5 id="without-object-skill">Skill: move_object clip8</h5>
                                     <h5 id="without-object-reasoning">Because the robot on the right is moving the cable towards the position of clip8.</h5>
-                                    
-                                    <!-- Image and buttons container -->
                                     <div class="SkillSequenceImageContainer" id="without-object-image-container">
                                         <button class="btn prevButton" id="without-object-prevButton">Previous</button>
                                         <img class="SkillSequenceFrame" id="without-object-frame" src="examples/experiments/skill_sequence/without_object/frame_0.png" alt="Frame 0">
                                         <button class="btn nextButton" id="without-object-nextButton">Next</button>
                                     </div>
-
-                                    <div class="SkillSequenceResetContainer" id ="without-object-reset-container" >
-                                        <!-- Reset button -->
+                                    <div class="SkillSequenceResetContainer" id="without-object-reset-container">
                                         <button class="btn resetButton" id="without-object-resetButton">Reset</button>
                                     </div>
                                 </div>
                             </div>
-
-                            <h4 class="mt-4 mb-2 text-center">
-                                Demo Plan
-                            </h4>
-
+                            <h4 class="mt-4 mb-2 text-center">Demo Plan</h4>
                             <div class="DemoPlanTextContainer" id="without-object-plan-text-container">
                                 <pre><code class="language-python" id="without-object-plan"></code></pre>
                             </div>
-
                         </div>
                     </div>
 
                     <!-- Skill Sequence Raw Video -->
-                    <div class="card mb-4 mt-4 text-dark bg-light">
+                    <div class="card mb-4 mt-4 text-dark bg-light skill-section" id="raw-video-section" style="display: none;">
                         <h5 class="card-header">Raw Video</h5>
                         <div class="card-body">
-                            <h4 class="mt-4 mb-2 text-center">
-                                Keyframes and Reasoning
-                            </h4>
+                            <!-- Content of Raw Video Section -->
+                            <h4 class="mt-4 mb-2 text-center">Keyframes and Reasoning</h4>
                             <div class="col-md-12" id="skill-sequence-raw-video">
                                 <div class="SkillSequenceTextContainer" id="raw-video-text-container">
                                     <h5 id="raw-video-skill">Skill: move_object cable</h5>
                                     <h5 id="raw-video-reasoning">Because the cable is being moved towards the position of clip8.</h5>
-                                    
-                                    <!-- Image and buttons container -->
                                     <div class="SkillSequenceImageContainer" id="raw-video-image-container">
                                         <button class="btn prevButton" id="raw-video-prevButton">Previous</button>
                                         <img class="SkillSequenceFrame" id="raw-video-frame" src="examples/experiments/skill_sequence/raw_video/frame_0.png" alt="Frame 0">
                                         <button class="btn nextButton" id="raw-video-nextButton">Next</button>
                                     </div>
-
-                                    <div class="SkillSequenceResetContainer" id ="raw-video-reset-container" >
-                                        <!-- Reset button -->
+                                    <div class="SkillSequenceResetContainer" id="raw-video-reset-container">
                                         <button class="btn resetButton" id="raw-video-resetButton">Reset</button>
                                     </div>
                                 </div>
                             </div>
-
-                            <h4 class="mt-4 mb-2 text-center">
-                                Demo Plan
-                            </h4>
-
+                            <h4 class="mt-4 mb-2 text-center">Demo Plan</h4>
                             <div class="DemoPlanTextContainer" id="raw-video-plan-text-container">
                                 <pre><code class="language-python" id="raw-video-plan"></code></pre>
                             </div>
-
                         </div>
                     </div>
 
@@ -468,6 +451,7 @@
     <script src="examples/experiments/skill_sequence/full_demo.js"></script>
     <script src="examples/experiments/skill_sequence/without_object.js"></script>
     <script src="examples/experiments/skill_sequence/raw_video.js"></script>
+    <script src="examples/experiments/skill_sequence/skill_sequence_button.js"></script>
     
 
     <script>

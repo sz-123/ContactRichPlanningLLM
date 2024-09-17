@@ -29,6 +29,12 @@
     height: 450px; /* picture */
 }
 
+.rounded-pill
+{
+    border-radius: 100px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
 .prevButton,
 .nextButton {
     display: flex;
