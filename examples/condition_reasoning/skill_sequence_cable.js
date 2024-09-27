@@ -11,4 +11,4 @@ var skill_sequence_cable = `
     Frame 10 (12:10:21.726): (open_hand) ; Because the tactile status indicates the cable is released, suggesting the robot has opened its hand.
 `;
 
-document.getElementById('skill-sequence-cable-container').innerHTML = '<p>' + skill_sequence_cable.trim().replace(/\n/g, '<br>') + '</p>';
+document.getElementById('skill-sequence-cable-2-container').innerHTML = '<p>' + skill_sequence_cable.trim().replace(/\n/g, '<br>') + '</p>';

@@ -237,60 +237,122 @@
                     <source src="imgs/skill_reasoning(videocut).mp4" type="video/mp4">
                 </video>
             </div>
+            
 
-            <!-- Key Camera Frames Cable -->
-            <div class="card mb-4 mt-4 text-dark bg-light Keyframes-section" id="keyframes-cable-section">
-                <h3 class="card-header">Key Camera Frames</h3>
-                <div class="card-body">
-                    <div class="col-md-12" id="keyframes-cable">
-                        <div class="SkillSequenceTextContainer" id="keyframes-cable-container">
-                            <div class="SkillSequenceImageContainer" id="keyframes-cable-container">
-                                <button class="btn prevButton" id="keyframes-cable-prevButton">Previous</button>
-                                <img class="SkillSequenceFrame" id="keyframes-cable-frame" src="examples/experiments/skill_sequence/without_object/" alt="Frame 0">
-                                <button class="btn nextButton" id="keyframes-cable-nextButton">Next</button>
-                            </div>
-                            <div class="SkillSequenceResetContainer" id="keyframes-cable-container">
-                                <button class="btn resetButton" id="keyframes-cable-resetButton">Reset</button>
+            <!-- Skill Reasoning Cable -->
+            <div class="justify-content-center" id="skill-reasoning-cable">
+                <!-- Key Camera Frames Cable -->
+                <div class="card mb-4 mt-4 text-dark bg-light Keyframes-section" id="keyframes-cable-section">
+                    <h3 class="card-header">Key Camera Frames</h3>
+                    <div class="card-body">
+                        <div class="col-md-12" id="keyframes-cable">
+                            <div class="SkillSequenceTextContainer" id="keyframes-cable-container">
+                                <div class="SkillSequenceImageContainer" id="keyframes-cable-container">
+                                    <button class="btn prevButton" id="keyframes-cable-prevButton">Previous</button>
+                                    <img class="SkillSequenceFrame" id="keyframes-cable-frame" src="examples/experiments/skill_sequence/without_object/" alt="Frame 0">
+                                    <button class="btn nextButton" id="keyframes-cable-nextButton">Next</button>
+                                </div>
+                                <div class="SkillSequenceResetContainer" id="keyframes-cable-container">
+                                    <button class="btn resetButton" id="keyframes-cable-resetButton">Reset</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- PDDL Domain -->
-            <div class="card mb-4 mt-4 text-dark bg-light" id="pddl-cable-section" style="background-color: white; ">
-                <h3 class="card-header">PDDL Domain</h3>
-                <div class="card-body" id="pddl-cable-container" style="background-color: white; font-size: 16px; text-align: left;">
-                    <!-- The PDDL code will be inserted here by JavaScript -->
+                <!-- PDDL Domain -->
+                <div class="card mb-4 mt-4 text-dark bg-light" id="pddl-cable-section">
+                    <h3 class="card-header">PDDL Domain</h3>
+                    <div class="card-body" id="pddl-cable-container" style="font-size: 20px; text-align: left;">
+                        <!-- The PDDL code will be inserted here by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Task Description -->
+                <div class="card mb-4 mt-4 text-dark bg-light" id="task-description-section">
+                    <h3 class="card-header">Demo Task Description</h3>
+                    <div class="card-body" id="task-cable-container" style="font-size: 20px;">
+                        <!-- The Task Description will be inserted here by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- User Request -->
+                <div class="card mb-4 mt-4 text-dark bg-light" id="user-request-section">
+                    <h3 class="card-header">User Request</h3>
+                    <div class="card-body" id="user-request-cable-container" style="font-size: 20px;">
+                        <!-- The User Request will be inserted here by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Demo Skill Sequence -->
+                <div class="card mb-4 mt-4 text-dark bg-light" id="skill-sequence-section">
+                    <h3 class="card-header">Demo Skill Sequence</h3>
+                    <div class="card-body" id="skill-sequence-cable-container" style="font-size: 20px;">
+                        <!-- The Demo Skill Sequence will be inserted here by JavaScript -->
+                    </div>
                 </div>
             </div>
 
-            <!-- Task Description -->
-            <div class="card mb-4 mt-4 text-dark bg-light" id="task-description-section" style="background-color: white; ">
-                <h3 class="card-header">Demo Task Description</h3>
-                <div class="card-body" id="task-cable-container" style="background-color: white; font-size: 20px;">
-                    <!-- The Task Description will be inserted here by JavaScript -->
+
+            <!-- Skill Reasoning Cap -->
+            <div class="justify-content-center" id="skill-reasoning-cap">
+                <!-- Key Camera Frames cap -->
+                <div class="card mb-4 mt-4 text-dark bg-light Keyframes-section" id="keyframes-cap-section">
+                    <h3 class="card-header">Key Camera Frames</h3>
+                    <div class="card-body">
+                        <div class="col-md-12" id="keyframes-cap">
+                            <div class="SkillSequenceTextContainer" id="keyframes-cap-container">
+                                <div class="SkillSequenceImageContainer" id="keyframes-cap-container">
+                                    <button class="btn prevButton" id="keyframes-cap-prevButton">Previous</button>
+                                    <img class="SkillSequenceFrame" id="keyframes-cap-frame" src="examples/experiments/skill_sequence/without_object/" alt="Frame 0">
+                                    <button class="btn nextButton" id="keyframes-cap-nextButton">Next</button>
+                                </div>
+                                <div class="SkillSequenceResetContainer" id="keyframes-cap-container">
+                                    <button class="btn resetButton" id="keyframes-cap-resetButton">Reset</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PDDL Domain -->
+                <div class="card mb-4 mt-4 text-dark bg-light" id="pddl-cap-section">
+                    <h3 class="card-header">PDDL Domain</h3>
+                    <div class="card-body" id="pddl-cap-container" style="font-size: 20px; text-align: left;">
+                        <!-- The PDDL code will be inserted here by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Task Description -->
+                <div class="card mb-4 mt-4 text-dark bg-light" id="task-description-section">
+                    <h3 class="card-header">Demo Task Description</h3>
+                    <div class="card-body" id="task-cap-container" style="font-size: 20px;">
+                        <!-- The Task Description will be inserted here by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- User Request -->
+                <div class="card mb-4 mt-4 text-dark bg-light" id="user-request-section">
+                    <h3 class="card-header">User Request</h3>
+                    <div class="card-body" id="user-request-cap-container" style="font-size: 20px;">
+                        <!-- The User Request will be inserted here by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Demo Skill Sequence -->
+                <div class="card mb-4 mt-4 text-dark bg-light" id="skill-sequence-section">
+                    <h3 class="card-header">Demo Skill Sequence</h3>
+                    <div class="card-body" id="skill-sequence-cap-container" style="font-size: 20px;">
+                        <!-- The Demo Skill Sequence will be inserted here by JavaScript -->
+                    </div>
                 </div>
             </div>
 
-            <!-- User Request -->
-            <div class="card mb-4 mt-4 text-dark bg-light" id="user-request-section" style="background-color: white; ">
-                <h3 class="card-header">User Request</h3>
-                <div class="card-body" id="user-request-container" style="background-color: white; font-size: 20px;">
-                    <!-- The Task Description will be inserted here by JavaScript -->
-                </div>
-            </div>
-
-            <!-- Demo Skill Sequence -->
-            <div class="card mb-4 mt-4 text-dark bg-light" id="skill-sequence-section" style="background-color: white; ">
-                <h3 class="card-header">Demo Skill Sequence</h3>
-                <div class="card-body" id="skill-sequence-cable-container" style="background-color: white; font-size: 20px;">
-                    <!-- The Task Description will be inserted here by JavaScript -->
-                </div>
-            </div>
 
         </div>
 
+
+        <!-- Condition Reasoning -->
         <div class="row justify-content-md-center">
             <h3 class="mt-4 mb-2 text-center"> Condition Reasoning</h3>
             <div class="d-flex justify-content-center">
@@ -300,6 +362,14 @@
             </div>
 
             <!-- Demo Skill Sequence -->
+            <div class="card mb-4 mt-4 text-dark bg-light" id="skill-sequence-cable-2-section">
+                <h3 class="card-header">Demo Skill Sequence</h3>
+                <div class="card-body" id="skill-sequence-cable-2-container" style="font-size: 20px;">
+                    <!-- The Demo Skill Sequence will be inserted here by JavaScript -->
+                </div>
+            </div>
+
+
         </div>
 
             
@@ -522,9 +592,17 @@
     <script src="examples/experiments/skill_sequence/raw_video.js"></script>
     <script src="examples/experiments/skill_sequence/skill_sequence_button.js"></script>
     <script src="examples/skill_reasoning/pddl_cable.js"></script>
+    <script src="examples/skill_reasoning/pddl_cap.js"></script>
     <script src="examples/skill_reasoning/keyframes_cable.js"></script>
+    <script src="examples/skill_reasoning/keyframes_cap.js"></script>
     <script src="examples/skill_reasoning/task_cable.js"></script>
+    <script src="examples/skill_reasoning/task_cap.js"></script>
     <script src="examples/skill_reasoning/skill_sequence_cable.js"></script>
+    <script src="examples/skill_reasoning/skill_sequence_cap.js"></script>
+    <script src="examples/skill_reasoning/user_request_cable.js"></script>
+    <script src="examples/skill_reasoning/user_request_cap.js"></script>
+    <script src="examples/condition_reasoning/skill_sequence_cable.js"></script>
+    <script src="examples/condition_reasoning/skill_sequence_cap.js"></script>
     
 
     <script>
