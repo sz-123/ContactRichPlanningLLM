@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="css/style_experiments.css">
     <link rel="stylesheet" href="css/style_skill_reasoning.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
@@ -69,168 +71,259 @@
                 This task plan is then used as a reference for planning in new task configurations.
                 Real-world experiments on two different sequential manipulation tasks demonstrate the effectiveness of our framework in improving LLMs' understanding of multi-modal demonstrations and enhancing the overall planning performance.
             </p>
+
+            <p style="text-align:center;">
+                <iframe width="1120" height="730" src="https://www.youtube.com/embed/FFRWuQ1hNHY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </p>
+
             <p style="text-align:center;">
                 <image src="imgs/overview_simplified.jpg" width="100%">
             </p>
-            <!-- <p style="text-align:center;">
-                <image src="imgs/prompt_overview.jpg" width="100%">
-            </p> -->
         </div>
 
-        <div class="row justify-content-md-center mt-4">
-            <div class="col-md-6 col-lg-4" style="position: relative; overflow: hidden;">
-                <h6 style="text-align: center;">Camera View</h6>
-                <video id="v1" width="125%" height="100%" preload="metadata" playsinline muted loop autoplay disablePictureInPicture style="object-fit: cover; object-position: left;">
-                    <source src="examples/opening_example/ICRA25_web_example_CAMERA.mp4" type="video/mp4">
-                </video>
+        <h3 class="mt-4 mb-2 text-center">
+            Experiment
+        </h3>
+
+        <!-- Container Toggle Button Cable/Cap -->
+        <div class="button-container text-center">
+            <div class="btn toggle-btn" id="show-cable-btn">
+                <img src="imgs/button/skill_reasoning_cable.jpg" alt="Skill Reasoning Cable">
             </div>
-            <div class="col-md-6 col-lg-4" style="position: relative; overflow: hidden; ">
-                <h6 style="text-align: center;">Image-based Tactile Sensor</h6>
-                <video id="v1" width="140%" height="100%" preload="metadata" playsinline muted loop autoplay disablePictureInPicture style="object-fit: cover; object-position: left;">
-                    <source src="examples/opening_example/ICRA25_web_example_tactile.mp4" type="video/mp4">
-                </video>
+            <div class="btn toggle-btn" id="show-cap-btn">
+                <img src="imgs/button/skill_reasoning_cap.png" alt="Skill Reasoning Cap">
             </div>
         </div>
 
-        <h3>Methodology</h3>
-
-        <div class="row justify-content-md-center mt-4">
-            <div class="d-flex justify-content-center">
-                <video id="v1" width="100%" preload="metadata" playsinline muted loop autoplay disablePictureInPicture>
-                    <source src="imgs/segmentation(videocut).mp4" type="video/mp4">
-                </video>
-            </div>
-            <h4>Multi-Modal Demonstration Segmentation</h4>
-            <p>We use tactile-sensor ... todo .. fine-tuned from the <i>TimeSformer</i>.</p>
-            <!-- insert four videos of tactile signal pattern 1 x 4 -->
-            <div class="row">
-                <div class="col-md-3">
-                    <h6 style="text-align: center;">Compression</h6>
-                    <video id="v3" width="100%" preload="metadata" playsinline muted loop autoplay disablePictureInPicture >
-                        <source src="examples/method/compression_21_2024_05_21_26_force_tactile_post.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <div class="col-md-3">
-                    <h6 style="text-align: center;">Decompression</h6>
-                    <video id="v4" width="100%" preload="metadata" playsinline muted loop autoplay disablePictureInPicture >
-                        <source src="examples/method/decompression_19_2024_05_21_12_force_tactile_post.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <div class="col-md-3">
-                    <h6 style="text-align: center;">Linear Force</h6>
-                    <video id="v1" width="100%" preload="metadata" playsinline muted loop autoplay disablePictureInPicture>
-                        <source src="examples/method/linear_force_0_2024_05_21_14_force_tactile_post.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <div class="col-md-3">
-                    <h6 style="text-align: center;">Rotational Force</h6>
-                    <video id="v1" width="100%" preload="metadata" playsinline muted loop autoplay disablePictureInPicture>
-                        <source src="examples/method/rotational_force_11_2024_08_06_1_force_tactile_post.mp4" type="video/mp4">
-                    </video>
-                </div>
-            <p></p>
-            </div>
-            <!-- TODO: titles -->
-            <h4>? Object-Centric Planning</h4>
-            <h4>Demonstration-Guided LLM Planning</h4>
-        </div>
-
-        <div class="row justify-content-md-center mt-4">
+        <!-- Container Cable -->
+        <div class="container" id="cable-experiment-container">
             <h3 class="mt-4 mb-2 text-center">
-                Text Prompt
+                1. Pre-processing
             </h3>
-            <div class="d-flex justify-content-center">
-                <video id="v1" width="100%" preload="metadata" playsinline muted loop autoplay disablePictureInPicture>
-                    <source src="imgs/SkillLabtoPDDL(videocut).mp4" type="video/mp4">
-                </video>
-            </div>
-            <h4>translate the skill library code scripts into a PDDL domain</h4>
+            <div class="row" id="cable-preprocessing-container">
+                <!-- First Container: segmentation-cable-container -->
+                <div class="col-md-6" id="segmentation-cable-container">
+                    <h4 class="mt-4 mb-2 text-center">
+                        Segmentation with Object Status
+                    </h4>
+                    <div class="col-md-12">
+                        <video id="v1-segment-cable" width="100%" preload="metadata" playsinline muted loop autoplay disablePictureInPicture>
+                            <source src="imgs/segmentation(videocut).mp4" type="video/mp4">
+                        </video>
+                    </div>
 
-            <!-- Main Container for Buttons and Prompt -->
-            <div class="container d-flex">
-                <!-- Left Column: Button Container -->
-                <div class="buttons-container">
-                    <div class="d-flex flex-column">
-                        <div class="d-flex flex-column" style="border: 5px solid rgba(100, 100, 100, 0.500);border-radius: 10px;">
-                            <!-- Cable Button -->
-                            <button class="btn cable-btn" id="cable-skilllib-button">Cable Skill Library</button>
-
-                            <!-- Cap Button -->
-                            <button class="btn cap-btn" id="cap-skilllib-button">Cap Skill Library</button>
+                    <!-- Four videos of tactile signal pattern -->
+                    <div class="row mt-4">
+                        <div class="col-md-3">
+                            <h6 style="text-align: center;">Compression</h6>
+                            <video id="v3" width="100%" preload="metadata" playsinline muted loop autoplay disablePictureInPicture>
+                                <source src="examples/method/compression_21_2024_05_21_26_force_tactile_post.mp4" type="video/mp4">
+                            </video>
+                            <h6 style="text-align: center;"> Object status: grasped</h6>
                         </div>
+                        <div class="col-md-3">
+                            <h6 style="text-align: center;">Decompression</h6>
+                            <video id="v4" width="100%" preload="metadata" playsinline muted loop autoplay disablePictureInPicture>
+                                <source src="examples/method/decompression_19_2024_05_21_12_force_tactile_post.mp4" type="video/mp4">
+                            </video>
+                            <h6 style="text-align: center;"> Object status: released</h6>
+                        </div>
+                        <div class="col-md-3">
+                            <h6 style="text-align: center;">Linear Force</h6>
+                            <video id="v5" width="100%" preload="metadata" playsinline muted loop autoplay disablePictureInPicture>
+                                <source src="examples/method/linear_force_0_2024_05_21_14_force_tactile_post.mp4" type="video/mp4">
+                            </video>
+                            <h6 style="text-align: center;"> Object status: under a linear force</h6>
+                        </div>
+                        <div class="col-md-3">
+                            <h6 style="text-align: center;">Rotational Force</h6>
+                            <video id="v6" width="100%" preload="metadata" playsinline muted loop autoplay disablePictureInPicture>
+                                <source src="examples/method/rotational_force_11_2024_08_06_1_force_tactile_post.mp4" type="video/mp4">
+                            </video>
+                            <h6 style="text-align: center;"> Object status: under torque</h6>
+                        </div>
+                    </div>
 
-                        <!-- Arrow under the buttons -->
-                        <div class="arrow-down-container" style="margin-top: 20px; display: flex; justify-content: center;">
-                            <div class="arrow" style="display: flex; flex-direction: column; align-items: center;">
-                                <!-- Arrow Long Tail -->
-                                <div class="arrow-long-tail" style="margin-top: 40px; width: 12px; height: 40px; background-color: rgba(100, 100, 100, 0.500);"></div>
-                                <!-- Arrow Head -->
-                                <div class="arrow-head" style="width: 0; height: 0; border-left: 30px solid transparent; border-right: 30px solid transparent; border-top: 30px solid rgba(100, 100, 100, 0.500);"></div>
+                    <p>We fine-tune the video classifier <i>TimeSformer</i> with a dataset of labeled tactile videos. Applying this classifier to
+                        the complete demonstration then segments it into events
+                        when new interaction happens.</p>
+
+                    <div class="card mb-4 mt-4 text-dark bg-light Keyframes-section" id="keyframes-cable-section">
+                        <h5 class="card-header">Key Camera Frames</h5>
+                        <div class="card-body">
+                            <div class="col-md-12" id="keyframes-cable">
+                                <div class="SkillSequenceTextContainer" id="keyframes-cable-container">
+                                    <div class="SkillSequenceImageContainer" id="keyframes-cable-container">
+                                        <button class="btn prevButton" id="keyframes-cable-prevButton">Previous</button>
+                                        <img class="SkillSequenceFrame" id="keyframes-cable-frame" src="examples/experiments/skill_sequence/without_object/" alt="Frame 0" style="width: 80%; height: auto;">
+                                        <button class="btn nextButton" id="keyframes-cable-nextButton">Next</button>
+                                    </div>
+                                    <div class="SkillSequenceResetContainer" id="keyframes-cable-container">
+                                        <button class="btn resetButton" id="keyframes-cable-resetButton">Reset</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Right Column: Prompt display area -->
-                <div class="prompt-container flex-grow-1" id="skilllib-prompt-container" style="border: 5px solid rgba(100, 100, 100, 0.500);border-radius: 10px;">
-                    <!-- Prompt content will be shown here -->
-                </div>
-            </div>
+                <!-- Second Container: pddl-cable-container -->
+                <div class="col-md-6" id="pddl-cable-container">
+                    <h4 class="mt-4 mb-2 text-center">
+                        Pre-processing Translation
+                    </h4>
+                    <div class="col-md-12">
+                        <video id="v2-pddl-cable" width="100%" preload="metadata" playsinline muted loop autoplay disablePictureInPicture>
+                            <source src="imgs/SkillLabtoPDDL(videocut).mp4" type="video/mp4">
+                        </video>
+                    </div>
 
-
-            <!-- Main Container for Buttons and Prompt -->
-            <div class="container d-flex">
-                <div class = "d-flex flex-column">
-                    <!-- Left Column: Button Container -->
-                    <div class="buttons-container">
-                        <div class="d-flex flex-row">
-                            <!-- Translate Button with ChatGPT-4 Icon -->
-                            <button class="btn translate-btn" id="skilllib-translate-button">
-                                <img src="imgs/openai-2.svg" alt="ChatGPT-4 Icon" style="width: 75px; height: 75px; vertical-align: middle;">
-                            </button>
+                    <!-- Cable Skill Lib Container -->
+                    <div class="card mb-4 mt-4 text-dark bg-light" id="cable-skilllib-section">
+                        <h5 class="card-header" style="text-align: left;">Skill Library</h5>
+                        <div class="card-body" id="cable-skilllib-container" style="font-size: 12px; text-align: left; height: 200px; overflow-y: scroll; border: 1px solid #ccc;">
+                            <!-- The Skill Library will be inserted here by JavaScript -->
                         </div>
                     </div>
 
-                    <!-- Arrow under the buttons -->
-                    <div class="arrow-down-container" style="margin-top: 20px; display: flex; justify-content: center;">
-                        <div class="arrow" style="display: flex; flex-direction: column; align-items: center;">
-                            <!-- Arrow Long Tail -->
-                            <div class="arrow-long-tail" style="width: 12px; height: 40px; background-color: rgba(100, 100, 100, 0.500);"></div>
-                            <!-- Arrow Head -->
-                            <div class="arrow-head" style="margin-bottom:20px ; width: 0; height: 0; border-left: 30px solid transparent; border-right: 30px solid transparent; border-top: 30px solid rgba(100, 100, 100, 0.500);"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right Column: Prompt display area -->
-                <!-- Prompt display area -->
-                <div class="prompt-container" id="skilllib-translate-prompt-container" style="margin-top: 20px;"></div>
-            </div>
-
-            <!-- Main Container for Buttons and Prompt -->
-            <div class="container d-flex">
-                <div class="d-flex flex-column">
-                    <!-- Left Column: Button Container -->
-                    <div class="buttons-container" style="border: 5px solid rgba(100, 100, 100, 0.500);border-radius: 10px;">
-                        <div class="d-flex flex-column">
-                            <!-- Cable Button -->
-                            <button class="btn cable-btn" id="cable-PDDL-button">Cable PDDL Domain</button>
-
-                            <!-- Cap Button -->
-                            <button class="btn cap-btn" id="cap-PDDL-button">Cap PDDL Domain</button>
+                    <!-- Cable Skill Lib User Request Container -->
+                    <div class="card mb-4 mt-4 text-dark bg-light" id="cable-skilllib-user-section">
+                        <h5 class="card-header" style="text-align: left;">
+                            <i class="fas fa-robot"></i> User Request
+                        </h5>
+                        <div class="card-body" id="cable-skilllib-user-container" style="font-size: 12px; text-align: left; height: 120px; overflow-y: scroll; border: 1px solid #ccc;">
+                            <!-- The Translate prompt will be inserted here by JavaScript -->
                         </div>
                     </div>
 
-                </div>
+                    <!-- Cable PDDL Container -->
+                    <div class="card mb-4 mt-4 text-dark bg-light" id="cable-pddl-section">
+                        <h5 class="card-header" style="text-align: left;">PDDL Domain</h5>
+                        <div class="card-body" id="cable-pddl-container" style="font-size: 12px; text-align: left; height: 200px; overflow-y: scroll; border: 1px solid #ccc;">
+                            <!-- The Skill Library will be inserted here by JavaScript -->
+                        </div>
+                    </div>
 
-                <!-- Right Column: Prompt display area -->
-                <div class="prompt-container flex-grow-1" id="result-PDDL-container" style="border: 5px solid rgba(100, 100, 100, 0.500);border-radius: 10px;"  >
-                    <!-- Prompt content will be shown here -->
                 </div>
             </div>
         </div>
 
 
+
+
+
+        <!-- Container cap -->
+        <div class="container" id="cap-experiment-container" style="display: none;">
+            <h3 class="mt-4 mb-2 text-center">
+                1. Pre-processing
+            </h3>
+            <div class="row" id="cap-preprocessing-container">
+                <!-- First Container: segmentation-cap-container -->
+                <div class="col-md-6" id="segmentation-cap-container">
+                    <h4 class="mt-4 mb-2 text-center">
+                        Segmentation with Object Status
+                    </h4>
+                    <div class="col-md-12">
+                        <video id="v1-segment-cap" width="100%" preload="metadata" playsinline muted loop autoplay disablePictureInPicture>
+                            <source src="imgs/segmentation(videocut).mp4" type="video/mp4">
+                        </video>
+                    </div>
+
+                    <!-- Four videos of tactile signal pattern -->
+                    <div class="row mt-4">
+                        <div class="col-md-3">
+                            <h6 style="text-align: center;">Compression</h6>
+                            <video id="v3" width="100%" preload="metadata" playsinline muted loop autoplay disablePictureInPicture>
+                                <source src="examples/method/compression_21_2024_05_21_26_force_tactile_post.mp4" type="video/mp4">
+                            </video>
+                            <h6 style="text-align: center;"> Object status: grasped</h6>
+                        </div>
+                        <div class="col-md-3">
+                            <h6 style="text-align: center;">Decompression</h6>
+                            <video id="v4" width="100%" preload="metadata" playsinline muted loop autoplay disablePictureInPicture>
+                                <source src="examples/method/decompression_19_2024_05_21_12_force_tactile_post.mp4" type="video/mp4">
+                            </video>
+                            <h6 style="text-align: center;"> Object status: released</h6>
+                        </div>
+                        <div class="col-md-3">
+                            <h6 style="text-align: center;">Linear Force</h6>
+                            <video id="v5" width="100%" preload="metadata" playsinline muted loop autoplay disablePictureInPicture>
+                                <source src="examples/method/linear_force_0_2024_05_21_14_force_tactile_post.mp4" type="video/mp4">
+                            </video>
+                            <h6 style="text-align: center;"> Object status: under a linear force</h6>
+                        </div>
+                        <div class="col-md-3">
+                            <h6 style="text-align: center;">Rotational Force</h6>
+                            <video id="v6" width="100%" preload="metadata" playsinline muted loop autoplay disablePictureInPicture>
+                                <source src="examples/method/rotational_force_11_2024_08_06_1_force_tactile_post.mp4" type="video/mp4">
+                            </video>
+                            <h6 style="text-align: center;"> Object status: under torque</h6>
+                        </div>
+                    </div>
+
+                    <p>We fine-tune the video classifier <i>TimeSformer</i> with a dataset of labeled tactile videos. Applying this classifier to
+                        the complete demonstration then segments it into events
+                        when new interaction happens.</p>
+
+                    <div class="card mb-4 mt-4 text-dark bg-light Keyframes-section" id="keyframes-cap-section">
+                        <h5 class="card-header">Key Camera Frames</h5>
+                        <div class="card-body">
+                            <div class="col-md-12" id="keyframes-cap">
+                                <div class="SkillSequenceTextContainer" id="keyframes-cap-container">
+                                    <div class="SkillSequenceImageContainer" id="keyframes-cap-container">
+                                        <button class="btn prevButton" id="keyframes-cap-prevButton">Previous</button>
+                                        <img class="SkillSequenceFrame" id="keyframes-cap-frame" src="examples/experiments/skill_sequence/without_object/" alt="Frame 0" style="width: 80%; height: auto;">
+                                        <button class="btn nextButton" id="keyframes-cap-nextButton">Next</button>
+                                    </div>
+                                    <div class="SkillSequenceResetContainer" id="keyframes-cap-container">
+                                        <button class="btn resetButton" id="keyframes-cap-resetButton">Reset</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Second Container: pddl-cap-container -->
+                <div class="col-md-6" id="pddl-cap-container">
+                    <h4 class="mt-4 mb-2 text-center">
+                        Pre-processing Translation
+                    </h4>
+                    <div class="col-md-12">
+                        <video id="v2-pddl-cap" width="100%" preload="metadata" playsinline muted loop autoplay disablePictureInPicture>
+                            <source src="imgs/SkillLabtoPDDL(videocut).mp4" type="video/mp4">
+                        </video>
+                    </div>
+
+                    <!-- cap Skill Lib Container -->
+                    <div class="card mb-4 mt-4 text-dark bg-light" id="cap-skilllib-section">
+                        <h5 class="card-header" style="text-align: left;">Skill Library</h5>
+                        <div class="card-body" id="cap-skilllib-container" style="font-size: 12px; text-align: left; height: 200px; overflow-y: scroll; border: 1px solid #ccc;">
+                            <!-- The Skill Library will be inserted here by JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- cap Skill Lib User Request Container -->
+                    <div class="card mb-4 mt-4 text-dark bg-light" id="cap-skilllib-user-section">
+                        <h5 class="card-header" style="text-align: left;">
+                            <i class="fas fa-robot"></i> User Request
+                        </h5>
+                        <div class="card-body" id="cap-skilllib-user-container" style="font-size: 12px; text-align: left; height: 120px; overflow-y: scroll; border: 1px solid #ccc;">
+                            <!-- The Translate prompt will be inserted here by JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- cap PDDL Container -->
+                    <div class="card mb-4 mt-4 text-dark bg-light" id="cap-pddl-section">
+                        <h5 class="card-header" style="text-align: left;">PDDL Domain</h5>
+                        <div class="card-body" id="cap-pddl-container" style="font-size: 12px; text-align: left; height: 200px; overflow-y: scroll; border: 1px solid #ccc;">
+                            <!-- The Skill Library will be inserted here by JavaScript -->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
 
 
         <div class="row justify-content-md-center">
@@ -241,17 +334,8 @@
                 </video>
             </div>
 
-            <div class="button-container text-center">
-                <div class="btn toggle-btn" id="show-skill-reasoning-cable-btn">
-                    <img src="imgs/button/skill_reasoning_cable.jpg" alt="Skill Reasoning Cable">
-                </div>
-                <div class="btn toggle-btn" id="show-skill-reasoning-cap-btn">
-                    <img src="imgs/button/skill_reasoning_cap.png" alt="Skill Reasoning Cap">
-                </div>
-            </div>
-
             <!-- Skill Reasoning Cable -->
-            <div class="justify-content-center" id="skill-reasoning-cable-container" style="display: none;">
+            <div class="justify-content-center" id="skill-reasoning-cable-container">
                 <!-- Key Camera Frames Cable -->
                 <div class="card mb-4 mt-4 text-dark bg-light Keyframes-section" id="keyframes-cable-section">
                     <h3 class="card-header">Key Camera Frames</h3>
@@ -306,7 +390,7 @@
 
 
             <!-- Skill Reasoning Cap -->
-            <div class="justify-content-center" id="skill-reasoning-cap-container" style="display: none;">
+            <div class="justify-content-center" id="skill-reasoning-cap-container">
                 <!-- Key Camera Frames cap -->
                 <div class="card mb-4 mt-4 text-dark bg-light Keyframes-section" id="keyframes-cap-section">
                     <h3 class="card-header">Key Camera Frames</h3>
@@ -861,32 +945,18 @@
         </div>
 
 
-        <div class="row justify-content-md-center mt-4">
-            <div class="col-md-10 col-lg-8">
-                <h3>Experiments</h3>
-                <div class="card mb-4 mt-4 text-dark bg-light">
-                    <h5 class="card-header">Example Result of Tactile Segmentation</h5>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-12" id="example"
-                                 data-path="examples/example_result_tactile_segmentation.py">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script>hljs.highlightAll();</script>
-    <script src="examples/prompt_skilllibTOPDDL/skilllib_prompt.js"></script>
+    <!-- <script src="examples/prompt_skilllibTOPDDL/skilllib_prompt.js"></script>
     <script src="examples/prompt_skilllibTOPDDL/skilllib_translate_prompt.js"></script>
-    <script src="examples/prompt_skilllibTOPDDL/PDDL_prompt.js"></script>
+    <script src="examples/prompt_skilllibTOPDDL/PDDL_prompt.js"></script> -->
     <script src="examples/experiments/skill_sequence/full_demo.js"></script>
     <script src="examples/experiments/skill_sequence/without_object.js"></script>
     <script src="examples/experiments/skill_sequence/raw_video.js"></script>
     <script src="examples/experiments/skill_sequence/skill_sequence_button.js"></script>
-    <script src="examples/skill_reasoning/skill_reasoning_toggle.js"></script>
-    <script src="examples/skill_reasoning/pddl_cable.js"></script>
-    <script src="examples/skill_reasoning/pddl_cap.js"></script>
+    <!-- <script src="examples/skill_reasoning/skill_reasoning_toggle.js"></script> -->
+    <!-- <script src="examples/skill_reasoning/pddl_cable.js"></script> -->
+    <!-- <script src="examples/skill_reasoning/pddl_cap.js"></script> -->
     <script src="examples/skill_reasoning/keyframes_cable.js"></script>
     <script src="examples/skill_reasoning/keyframes_cap.js"></script>
     <script src="examples/skill_reasoning/task_cable.js"></script>
@@ -927,7 +997,13 @@
     <script src="examples/task_planning/new_task_plan_cap_2.js"></script>
     <script src="examples/task_planning/user_request_cap_3.js"></script>
     <script src="examples/task_planning/new_task_plan_cap_3.js"></script>
-    
+    <script src="examples/prompt_skilllibTOPDDL/cable_skilllib.js"></script>
+    <script src="examples/prompt_skilllibTOPDDL/cable_skilllib_user.js"></script>
+    <script src="examples/prompt_skilllibTOPDDL/cable_pddl.js"></script>
+    <script src="examples/prompt_skilllibTOPDDL/cap_skilllib.js"></script>
+    <script src="examples/prompt_skilllibTOPDDL/cap_skilllib_user.js"></script>
+    <script src="examples/prompt_skilllibTOPDDL/cap_pddl.js"></script>
+    <script src="examples/toggle-cable-cap.js"></script>
 
     <script>
         function toggleDiv() {
