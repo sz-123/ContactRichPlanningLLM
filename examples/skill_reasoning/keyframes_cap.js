@@ -7,7 +7,33 @@ const keyframes_cap_frames = [
     "examples/experiments/skill_sequence/full_demo_cap/frame_5.png",
     "examples/experiments/skill_sequence/full_demo_cap/frame_6.png",
     "examples/experiments/skill_sequence/full_demo_cap/frame_7.png",
-    "examples/experiments/skill_sequence/full_demo_cap/frame_8.png"
+    "examples/experiments/skill_sequence/full_demo_cap/frame_8.png",
+    "examples/experiments/skill_sequence/full_demo_cap/frame_9.png",
+    "examples/experiments/skill_sequence/full_demo_cap/frame_10.png",
+    "examples/experiments/skill_sequence/full_demo_cap/frame_11.png",
+    "examples/experiments/skill_sequence/full_demo_cap/frame_12.png",
+    "examples/experiments/skill_sequence/full_demo_cap/frame_13.png",
+    "examples/experiments/skill_sequence/full_demo_cap/frame_14.png",
+    "examples/experiments/skill_sequence/full_demo_cap/frame_15.png",
+    "examples/experiments/skill_sequence/full_demo_cap/frame_16.png",
+    "examples/experiments/skill_sequence/full_demo_cap/frame_17.png",
+    "examples/experiments/skill_sequence/full_demo_cap/frame_18.png",
+    "examples/experiments/skill_sequence/full_demo_cap/frame_19.png",
+    "examples/experiments/skill_sequence/full_demo_cap/frame_20.png",
+    "examples/experiments/skill_sequence/full_demo_cap/frame_21.png",
+    "examples/experiments/skill_sequence/full_demo_cap/frame_22.png",
+    "examples/experiments/skill_sequence/full_demo_cap/frame_23.png",
+    "examples/experiments/skill_sequence/full_demo_cap/frame_24.png",
+    "examples/experiments/skill_sequence/full_demo_cap/frame_25.png",
+    "examples/experiments/skill_sequence/full_demo_cap/frame_26.png",
+    "examples/experiments/skill_sequence/full_demo_cap/frame_27.png",
+    "examples/experiments/skill_sequence/full_demo_cap/frame_28.png",
+    "examples/experiments/skill_sequence/full_demo_cap/frame_29.png",
+    "examples/experiments/skill_sequence/full_demo_cap/frame_30.png",
+    "examples/experiments/skill_sequence/full_demo_cap/frame_31.png",
+    "examples/experiments/skill_sequence/full_demo_cap/frame_32.png",
+    "examples/experiments/skill_sequence/full_demo_cap/frame_33.png"
+
 ];
 
 
