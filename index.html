@@ -181,7 +181,7 @@
                     <!-- Cable Skill Lib Container -->
                     <div class="card mb-4 mt-4 text-dark bg-light" id="cable-skilllib-section">
                         <h5 class="card-header" style="text-align: left;">Skill Library</h5>
-                        <div class="card-body" id="cable-skilllib-container" style="font-size: 12px; text-align: left; height: 200px; overflow-y: scroll; border: 1px solid #ccc;">
+                        <div class="card-body" id="cable-skilllib-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
                             <!-- The Skill Library will be inserted here by JavaScript -->
                         </div>
                     </div>
@@ -189,9 +189,9 @@
                     <!-- Cable Skill Lib User Request Container -->
                     <div class="card mb-4 mt-4 text-dark bg-light" id="cable-skilllib-user-section">
                         <h5 class="card-header" style="text-align: left;">
-                            <i class="fas fa-robot"></i> User Request
+                            <i class="fas fa-user"></i> User Request
                         </h5>
-                        <div class="card-body" id="cable-skilllib-user-container" style="font-size: 12px; text-align: left; height: 120px; overflow-y: scroll; border: 1px solid #ccc;">
+                        <div class="card-body" id="cable-skilllib-user-container" style="font-size: 15px; text-align: left; height: 120px; overflow-y: scroll; border: 0px solid #ccc;">
                             <!-- The Translate prompt will be inserted here by JavaScript -->
                         </div>
                     </div>
@@ -199,7 +199,7 @@
                     <!-- Cable PDDL Container -->
                     <div class="card mb-4 mt-4 text-dark bg-light" id="cable-pddl-section">
                         <h5 class="card-header" style="text-align: left;">PDDL Domain</h5>
-                        <div class="card-body" id="cable-pddl-container" style="font-size: 12px; text-align: left; height: 200px; overflow-y: scroll; border: 1px solid #ccc;">
+                        <div class="card-body" id="cable-pddl-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
                             <!-- The Skill Library will be inserted here by JavaScript -->
                         </div>
                     </div>
@@ -220,37 +220,166 @@
                 </div>
 
                 <!-- Task Description -->
-                <div class="card mb-4 mt-4 text-dark bg-light" id="task-description-section">
+                <div class="card mb-4 mt-2 text-dark bg-light" id="task-description-section">
                     <h4 class="card-header">Demo Task Description</h4>
-                    <div class="card-body" id="task-cable-container" style="font-size: 15px; text-align: left; height: 100px; overflow-y: scroll; border: 1px solid #ccc;">
+                    <div class="card-body" id="task-cable-container" style="font-size: 15px; text-align: left; height: 100px; overflow-y: scroll; border: 0px solid #ccc;">
                         <!-- The Task Description will be inserted here by JavaScript -->
                     </div>
                 </div>
 
                 <!-- User Request -->
-                <div class="card mb-4 mt-4 text-dark bg-light" id="user-request-section">
+                <div class="card mb-4 mt-2 text-dark bg-light" id="user-request-section">
                     <h4 class="card-header" style="text-align: left;">
-                        <i class="fas fa-robot"></i> User Request
+                        <i class="fas fa-user"></i> User Request
                     </h4>
-                    <div class="card-body" id="user-request-cable-container" style="font-size: 15px; text-align: left; height: 130px; overflow-y: scroll; border: 1px solid #ccc;">
+                    <div class="card-body" id="user-request-cable-container" style="font-size: 15px; text-align: left; height: 130px; overflow-y: scroll; border: 0px solid #ccc;">
                         <!-- The User Request will be inserted here by JavaScript -->
                     </div>
                 </div>
 
-                <!-- Demo Skill Sequence -->
-                <div class="card mb-4 mt-4 text-dark bg-light" id="skill-sequence-section">
-                    <h4 class="card-header">Demo Skill Sequence</h4>
-                    <div class="card-body" id="skill-sequence-cable-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 1px solid #ccc;">
-                        <!-- The Demo Skill Sequence will be inserted here by JavaScript -->
+                <!-- LLM Response -->
+                <div class="row">
+                    <!-- Demo Skill Sequence -->
+                    <div class="col-md-6">
+                        <div class="card mb-4 text-dark bg-light" id="skill-sequence-section">
+                            <h4 class="card-header">Demo Skill Sequence</h4>
+                            <div class="card-body" id="skill-sequence-cable-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 1px solid #ccc;">
+                                <!-- The Demo Skill Sequence will be inserted here by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Demo Plan -->
+                    <div class="col-md-6">
+                        <div class="card mb-4 text-dark bg-light" id="demo-plan-section">
+                            <h4 class="card-header">Demo Plan</h4>
+                            <div class="card-body" id="demo-plan-cable-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 1px solid #ccc;">
+                                <!-- The Demo Plan will be inserted here by JavaScript -->
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
             </div>
 
+            <!-- Cable Condition Reasoning Container -->
+            <h3 class="mt-4 mb-2 text-center"> 3. Condition Reasoning</h3>
+            <div class="container" id="cable-condition-reasoning-section">
 
+                <div class="d-flex justify-content-center">
+                    <video id="v1-condition-reasoning-cable" width="60%" preload="metadata" playsinline muted loop autoplay disablePictureInPicture>
+                        <source src="imgs/condition_reasoning(videocut).mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="row" id="cable-condition-reasoning-container">
+                    <!-- First Container: pre/post-condition-cable-container -->
+                    <div class="col-md-6" id="prepost-condition-cable-container">
+                        <h4 class="mt-4 mb-2 text-center">
+                            Update Pre/Post Condition
+                        </h4>
+                        
+                        <!-- Request/Response Containers -->
+                        <div class="request-response-container">
+                            <!-- First User Request and Response -->
+                            <div class="request-response-pair" id="request-response-1">
+                                <div class="card mb-4 mt-4 text-dark bg-light" id="user-request-condition-cable-section">
+                                    <h5 class="card-header" style="text-align: left;">
+                                        <i class="fas fa-user"></i> 1. User Request
+                                    </h5>
+                                    <div class="card-body" id="user-request-condition-cable-1-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
+                                        <!-- Content -->
+                                    </div>
+                                </div>
+                                <div class="card mb-4 mt-4 text-dark bg-light" id="LLM-response-condition-cable-1-section">
+                                    <h5 class="card-header">1. LLM Response</h5>
+                                    <div class="card-body" id="LLM-response-condition-cable-1-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
+                                        <!-- Content -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Second User Request and Response -->
+                            <div class="request-response-pair" id="request-response-2" style="display: none;">
+                                <div class="card mb-4 mt-4 text-dark bg-light" id="user-request-condition-cable-section">
+                                    <h5 class="card-header" style="text-align: left;">
+                                        <i class="fas fa-user"></i> 2. User Request
+                                    </h5>
+                                    <div class="card-body" id="user-request-condition-cable-2-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
+                                        <!-- Content -->
+                                    </div>
+                                </div>
+                                <div class="card mb-4 mt-4 text-dark bg-light" id="LLM-response-condition-cable-2-section">
+                                    <h5 class="card-header">2. LLM Response</h5>
+                                    <div class="card-body" id="LLM-response-condition-cable-2-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
+                                        <!-- Content -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Third User Request and Response -->
+                            <div class="request-response-pair" id="request-response-3" style="display: none;">
+                                <div class="card mb-4 mt-4 text-dark bg-light" id="user-request-condition-cable-section">
+                                    <h5 class="card-header" style="text-align: left;">
+                                        <i class="fas fa-user"></i> 3. User Request （Skill F/T Signals）
+                                    </h5>
+                                    <div class="card-body" id="user-request-condition-cable-3-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
+                                        <!-- Content -->
+                                    </div>
+                                </div>
+                                <div class="card mb-4 mt-4 text-dark bg-light" id="LLM-response-condition-cable-3-section">
+                                    <h5 class="card-header">3. LLM Response</h5>
+                                    <div class="card-body" id="LLM-response-condition-cable-3-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
+                                        <!-- Content -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Prev and Next Request Buttons -->
+                        <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+                            <button id="cable-condition-prev-request-btn" class="btn prevButton_cable" style="flex: 1; margin-left: 30px; margin-right: 40px; padding: 15px; font-size: 20px; width: 40px; height: 40px;border: 2px solid #000; border-radius: 5px; ">Prev Request</button>
+                            <button id="cable-condition-next-request-btn" class="btn nextButton_cable" style="flex: 1; margin-left: 40px; margin-right: 30px; padding: 15px; font-size: 20px; width: 40px; height: 40px;border: 2px solid #000; border-radius: 5px; ">Next Request</button>
+                        </div>
+                    </div>
+
+
+                    <!-- Update Skill Sequence -->
+                    <div class="col-md-6" id="sequence-condition-cable-container">
+                        <h4 class="mt-4 mb-2 text-center">
+                            Update Skill Sequence
+                        </h4>
+                        
+                        <!-- User Request -->
+                        <div class="card mb-4 mt-4 text-dark bg-light" id="user-request-condition-cable-4-section">
+                            <h5 class="card-header" style="text-align: left;">
+                                <i class="fas fa-user"></i> User Request
+                            </h5>
+                            <div class="card-body" id="user-request-condition-cable-4-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
+                                <!-- The User Request will be inserted here by JavaScript -->
+                            </div>
+                        </div>
+
+                        <!-- LLM Response -->
+                        <div class="card mb-4 mt-4 text-dark bg-light" id="LLM-response-condition-cable-4-section">
+                            <h5 class="card-header">LLM Response</h5>
+                            <div class="card-body" id="LLM-response-condition-cable-4-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
+                                <!-- The User Request will be inserted here by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
 
         </div>
+
+
+
+
+
+
 
 
 
@@ -348,7 +477,7 @@
                     <!-- cap Skill Lib Container -->
                     <div class="card mb-4 mt-4 text-dark bg-light" id="cap-skilllib-section">
                         <h5 class="card-header" style="text-align: left;">Skill Library</h5>
-                        <div class="card-body" id="cap-skilllib-container" style="font-size: 12px; text-align: left; height: 200px; overflow-y: scroll; border: 1px solid #ccc;">
+                        <div class="card-body" id="cap-skilllib-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
                             <!-- The Skill Library will be inserted here by JavaScript -->
                         </div>
                     </div>
@@ -356,9 +485,9 @@
                     <!-- cap Skill Lib User Request Container -->
                     <div class="card mb-4 mt-4 text-dark bg-light" id="cap-skilllib-user-section">
                         <h5 class="card-header" style="text-align: left;">
-                            <i class="fas fa-robot"></i> User Request
+                            <i class="fas fa-user"></i> User Request
                         </h5>
-                        <div class="card-body" id="cap-skilllib-user-container" style="font-size: 12px; text-align: left; height: 120px; overflow-y: scroll; border: 1px solid #ccc;">
+                        <div class="card-body" id="cap-skilllib-user-container" style="font-size: 15px; text-align: left; height: 120px; overflow-y: scroll; border: 0px solid #ccc;">
                             <!-- The Translate prompt will be inserted here by JavaScript -->
                         </div>
                     </div>
@@ -366,7 +495,7 @@
                     <!-- cap PDDL Container -->
                     <div class="card mb-4 mt-4 text-dark bg-light" id="cap-pddl-section">
                         <h5 class="card-header" style="text-align: left;">PDDL Domain</h5>
-                        <div class="card-body" id="cap-pddl-container" style="font-size: 12px; text-align: left; height: 200px; overflow-y: scroll; border: 1px solid #ccc;">
+                        <div class="card-body" id="cap-pddl-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
                             <!-- The Skill Library will be inserted here by JavaScript -->
                         </div>
                     </div>
@@ -386,31 +515,45 @@
                 </div>
 
                 <!-- Task Description -->
-                <div class="card mb-4 mt-4 text-dark bg-light" id="task-description-section">
+                <div class="card mb-4 mt-2 text-dark bg-light" id="task-description-section">
                     <h4 class="card-header">Demo Task Description</h4>
-                    <div class="card-body" id="task-cap-container" style="font-size: 15px; text-align: left; height: 100px; overflow-y: scroll; border: 1px solid #ccc;">
+                    <div class="card-body" id="task-cap-container" style="font-size: 15px; text-align: left; height: 100px; overflow-y: scroll; border: 0px solid #ccc;">
                         <!-- The Task Description will be inserted here by JavaScript -->
                     </div>
                 </div>
 
                 <!-- User Request -->
-                <div class="card mb-4 mt-4 text-dark bg-light" id="user-request-section">
+                <div class="card mb-4 mt-2 text-dark bg-light" id="user-request-section">
                     <h4 class="card-header" style="text-align: left;">
-                        <i class="fas fa-robot"></i> User Request
+                        <i class="fas fa-user"></i> User Request
                     </h4>
-                    <div class="card-body" id="user-request-cap-container" style="font-size: 15px; text-align: left; height: 130; overflow-y: scroll; border: 1px solid #ccc;">
+                    <div class="card-body" id="user-request-cap-container" style="font-size: 15px; text-align: left; height: 130; overflow-y: scroll; border: 0px solid #ccc;">
                         <!-- The User Request will be inserted here by JavaScript -->
                     </div>
                 </div>
+                
+                <!-- LLM Response -->
+                <div class="row">
+                    <!-- Demo Skill Sequence -->
+                    <div class="col-md-6">
+                        <div class="card mb-4 text-dark bg-light" id="skill-sequence-section">
+                            <h4 class="card-header">Demo Skill Sequence</h4>
+                            <div class="card-body" id="skill-sequence-cap-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
+                                <!-- The Demo Skill Sequence will be inserted here by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
 
-                <!-- Demo Skill Sequence -->
-                <div class="card mb-4 mt-4 text-dark bg-light" id="skill-sequence-section">
-                    <h4 class="card-header">Demo Skill Sequence</h4>
-                    <div class="card-body" id="skill-sequence-cap-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 1px solid #ccc;">
-                        <!-- The Demo Skill Sequence will be inserted here by JavaScript -->
+                    <!-- Demo Plan -->
+                    <div class="col-md-6">
+                        <div class="card mb-4 text-dark bg-light" id="demo-plan-section">
+                            <h4 class="card-header">Demo Plan</h4>
+                            <div class="card-body" id="demo-plan-cap-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
+                                <!-- The Demo Plan will be inserted here by JavaScript -->
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
         </div>
 
         <!-- Condition Reasoning -->
@@ -442,73 +585,7 @@
                     </div>
                 </div>
 
-                <h3 class="mt-4 mb-2 text-center"> Update Success Condition</h3>
 
-                <!-- User Request -->
-                <div class="card mb-4 mt-4 text-dark bg-light" id="user-request-condition-cable-section">
-                    <h3 class="card-header">1. User Request</h3>
-                    <div class="card-body" id="user-request-condition-cable-1-container" style="font-size: 20px;">
-                        <!-- The User Request will be inserted here by JavaScript -->
-                    </div>
-                </div>
-
-                <!-- LLM Response -->
-                <div class="card mb-4 mt-4 text-dark bg-light" id="LLM-response-condition-cable-1-section">
-                    <h3 class="card-header">1. LLM Response</h3>
-                    <div class="card-body" id="LLM-response-condition-cable-1-container" style="font-size: 20px;">
-                        <!-- The User Request will be inserted here by JavaScript -->
-                    </div>
-                </div>
-
-                <!-- User Request -->
-                <div class="card mb-4 mt-4 text-dark bg-light" id="user-request-condition-cable-2-section">
-                    <h3 class="card-header">2. User Request</h3>
-                    <div class="card-body" id="user-request-condition-cable-2-container" style="font-size: 20px;">
-                        <!-- The User Request will be inserted here by JavaScript -->
-                    </div>
-                </div>
-
-                <!-- LLM Response -->
-                <div class="card mb-4 mt-4 text-dark bg-light" id="LLM-response-condition-cable-2-section">
-                    <h3 class="card-header">2. LLM Response</h3>
-                    <div class="card-body" id="LLM-response-condition-cable-2-container" style="font-size: 20px;">
-                        <!-- The User Request will be inserted here by JavaScript -->
-                    </div>
-                </div>
-
-                <!-- User Request -->
-                <div class="card mb-4 mt-4 text-dark bg-light" id="user-request-condition-cable-3-section">
-                    <h3 class="card-header">3. User Request</h3>
-                    <div class="card-body" id="user-request-condition-cable-3-container" style="font-size: 20px;">
-                        <!-- The User Request will be inserted here by JavaScript -->
-                    </div>
-                </div>
-
-                <!-- LLM Response -->
-                <div class="card mb-4 mt-4 text-dark bg-light" id="LLM-response-condition-cable-3-section">
-                    <h3 class="card-header">3. LLM Response</h3>
-                    <div class="card-body" id="LLM-response-condition-cable-3-container" style="font-size: 20px;">
-                        <!-- The User Request will be inserted here by JavaScript -->
-                    </div>
-                </div>
-
-                <h3 class="mt-4 mb-2 text-center"> Update Skill Sequence</h3>
-
-                <!-- User Request -->
-                <div class="card mb-4 mt-4 text-dark bg-light" id="user-request-condition-cable-4-section">
-                    <h3 class="card-header">User Request</h3>
-                    <div class="card-body" id="user-request-condition-cable-4-container" style="font-size: 20px;">
-                        <!-- The User Request will be inserted here by JavaScript -->
-                    </div>
-                </div>
-
-                <!-- LLM Response -->
-                <div class="card mb-4 mt-4 text-dark bg-light" id="LLM-response-condition-cable-4-section">
-                    <h3 class="card-header">LLM Response</h3>
-                    <div class="card-body" id="LLM-response-condition-cable-4-container" style="font-size: 20px;">
-                        <!-- The User Request will be inserted here by JavaScript -->
-                    </div>
-                </div>
             </div>
 
 
@@ -950,6 +1027,7 @@
     <script src="examples/condition_reasoning/user_request_cap_4.js"></script>
     <script src="examples/condition_reasoning/LLM_response_cap_4.js"></script>
     <script src="examples/condition_reasoning/condition_reasoning_toggle.js"></script>
+    <script src="examples/condition_reasoning/prev_next_btn_cable.js"></script>
     <script src="examples/task_planning/task_planning_toggle.js"></script>
     <script src="examples/task_planning/demo_task_plan_cable.js"></script>
     <script src="examples/task_planning/new_task_cable.js"></script>
@@ -966,9 +1044,12 @@
     <script src="examples/prompt_skilllibTOPDDL/cable_skilllib.js"></script>
     <script src="examples/prompt_skilllibTOPDDL/cable_skilllib_user.js"></script>
     <script src="examples/prompt_skilllibTOPDDL/cable_pddl.js"></script>
+    <script src="examples/prompt_skilllibTOPDDL/demo_plan_cable.js"></script>
+    <script src="examples/prompt_skilllibTOPDDL/cap_pddl.js"></script>
     <script src="examples/prompt_skilllibTOPDDL/cap_skilllib.js"></script>
     <script src="examples/prompt_skilllibTOPDDL/cap_skilllib_user.js"></script>
     <script src="examples/prompt_skilllibTOPDDL/cap_pddl.js"></script>
+    <script src="examples/prompt_skilllibTOPDDL/demo_plan_cap.js"></script>
     <script src="examples/toggle-cable-cap.js"></script>
 
     <script>

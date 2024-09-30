@@ -1,11 +1,13 @@
 // Define the task description as a JavaScript string
-var LLM_response_condition_cable_3 = `
+var LLM_response_condition_cable_3_description = `
 TODO CHANGE THE CODE TO CABLE
 
 Based on the plot, the resistance torque during the tightening skill reaches peaks around 2 N. To ensure the cap is tightened, we can set a threshold slightly below the peak value to account for variations in the demonstration. A reasonable threshold could be around 1.8 N.
 
 Here is the updated is_tightened function:
+`;
 
+var LLM_response_condition_cable_3_code = `
 from robot_controller import Controller
 from perception import Perception
 import numpy as np
@@ -51,7 +53,6 @@ class ObjectSkillLibrary:
         print(f"Opening the hand of the robot")
         robot_controller.open_gripper(success_condition=is_hand_open)
 
-
 class CapSkillLibrary(ObjectSkillLibrary):
     # Skill library for manipulating bottle cap
     def __init__(self):
@@ -60,8 +61,9 @@ class CapSkillLibrary(ObjectSkillLibrary):
     def tighten(self):
         print(f"Tighten the {self.target_object}")
         robot_controller.screw(success_condition=lambda: is_tightened())
-
 `;
 
-// Insert the task description into the user-request-cable-container element
-document.getElementById('LLM-response-condition-cable-3-container').innerHTML = '<p>' + LLM_response_condition_cable_3.trim().replace(/\n/g, '<br>') + '</p>';
+// Insert the description and code separately into the container
+document.getElementById('LLM-response-condition-cable-3-container').innerHTML = 
+  LLM_response_condition_cable_3_description + 
+  '<pre><code class="language-python">' + Prism.highlight(LLM_response_condition_cable_3_code.trim(), Prism.languages.python, 'python') + '</code></pre>';

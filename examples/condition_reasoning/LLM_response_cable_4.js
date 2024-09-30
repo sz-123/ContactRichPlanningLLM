@@ -63,4 +63,5 @@ cap_skill_library.move_object([0.41650844400114584, -0.04410545364246846, 1.2870
 `;
 
 // Insert the task description into the user-request-cable-container element
-document.getElementById('LLM-response-condition-cable-4-container').innerHTML = '<p>' + LLM_response_condition_cable_4.trim().replace(/\n/g, '<br>') + '</p>';
+document.getElementById('LLM-response-condition-cable-4-container').innerHTML = 
+  '<pre><code class="language-python">' + Prism.highlight(LLM_response_condition_cable_4.trim(), Prism.languages.python, 'python') + '</code></pre>';
