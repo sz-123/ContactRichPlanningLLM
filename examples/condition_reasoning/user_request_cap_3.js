@@ -12,7 +12,7 @@ var img_condition_Resistance_Force_of_Skill_tighten_Full = document.createElemen
 // TODO CHANGE CAP FIGURE
 img_condition_Resistance_Force_of_Skill_tighten_Full.src = "examples/condition_reasoning/Resistance_Force_of_Skill_tighten_Full.jpg"; 
 img_condition_Resistance_Force_of_Skill_tighten_Full.alt = 'Resistance force tighten plot'; // Optional: Alt text for accessibility
-img_condition_Resistance_Force_of_Skill_tighten_Full.style.width = '700px'; // Optional: Set the image size
+img_condition_Resistance_Force_of_Skill_tighten_Full.style.width = '400px'; // Optional: Set the image size
 
 // Append the image to the container
 document.getElementById('user-request-condition-cap-3-container').appendChild(img_condition_Resistance_Force_of_Skill_tighten_Full);

@@ -11,7 +11,7 @@ var img_new_task_cable = document.createElement('img');
 // TODO CHANGE CABLE FIGURE  THIS IS A SCREENSHOT
 img_new_task_cable.src = "examples/task_planning/new_task_cable.jpg"; 
 img_new_task_cable.alt = 'new task cable'; // Optional: Alt text for accessibility
-img_new_task_cable.style.width = '700px'; // Optional: Set the image size
+img_new_task_cable.style.width = '400px'; // Optional: Set the image size
 
 // Append the image to the container
 document.getElementById('new-task-cable-container').appendChild(img_new_task_cable);
