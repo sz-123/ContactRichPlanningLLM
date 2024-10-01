@@ -14,13 +14,11 @@
     <!-- <base href="/"> -->
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/default.min.css">
     <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="css/prompt.css">
     <link rel="stylesheet" href="css/style_experiments.css">
     <link rel="stylesheet" href="css/style_skill_reasoning.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 
@@ -28,9 +26,14 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+    <!-- Prism.js CSS (default light theme) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+
+    <!-- Prism.js script -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+
+    <!-- Optionally include language components (e.g., for Python) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"></script>
     
     <script src="js/app_anon.js"></script>
 	
@@ -85,24 +88,42 @@
             Experiment
         </h3>
 
+        <h4 class="mt-4 mb-2 text-align:left">
+            We evaluate our framework on two sequential manipulation tasks.
+        </h4>
+
         <!-- Container Toggle Button Cable/Cap -->
         <div class="button-container text-center">
+            <!-- Cable Mounting Button -->
             <div class="btn toggle-btn" id="show-cable-btn">
-                <img src="imgs/button/skill_reasoning_cable.jpg" alt="Skill Reasoning Cable">
+                <div class="btn-content">
+                    <img src="imgs/button/skill_reasoning_cable.jpg" alt="Toggle Cable">
+                    <h3 class="mt-2">
+                        <i class="fas fa-hand-pointer"></i> Cable Mounting
+                    </h3>
+                </div>
             </div>
+
+            <!-- Cap Tightening Button -->
             <div class="btn toggle-btn" id="show-cap-btn">
-                <img src="imgs/button/skill_reasoning_cap.png" alt="Skill Reasoning Cap">
+                <div class="btn-content">
+                    <img src="imgs/button/skill_reasoning_cap.png" alt="Toggle Cap">
+                    <h3 class="mt-2">
+                        <i class="fas fa-hand-pointer"></i> Cap Tightening
+                    </h3>
+                </div>
             </div>
         </div>
 
+
         <!-- Container Cable -->
         <div class="container" id="cable-experiment-container">
-            <h3 class="mt-4 mb-2 text-center">
+            <h3 class="mt-4 mb-2 text-center bg-light p-3 rounded shadow-sm">
                 1. Pre-processing
             </h3>
             <div class="row" id="cable-preprocessing-container">
                 <!-- First Container: segmentation-cable-container -->
-                <div class="col-md-6" id="segmentation-cable-container">
+                <div class="col-md-6 border-end" id="segmentation-cable-container">
                     <h4 class="mt-4 mb-2 text-center">
                         Segmentation with Object Status
                     </h4>
@@ -210,7 +231,7 @@
 
 
             <!-- Cable Skill Reasoning Container -->
-            <h3 class="mt-4 mb-2 text-center"> 2. Skill Reasoning</h3>
+            <h3 class="mt-4 mb-2 text-center bg-light p-3 rounded shadow-sm"> 2. Skill Reasoning</h3>
             <div class="container" id="cable-skill-reasoning-container">
 
                 <div class="d-flex justify-content-center">
@@ -263,7 +284,7 @@
             </div>
 
             <!-- Cable Condition Reasoning Container -->
-            <h3 class="mt-4 mb-2 text-center"> 3. Condition Reasoning</h3>
+            <h3 class="mt-4 mb-2 text-center bg-light p-3 rounded shadow-sm"> 3. Condition Reasoning</h3>
             <div class="container" id="cable-condition-reasoning-section">
 
                 <div class="d-flex justify-content-center">
@@ -274,7 +295,7 @@
 
                 <div class="row" id="cable-condition-reasoning-container">
                     <!-- First Container: pre/post-condition-cable-container -->
-                    <div class="col-md-6" id="prepost-condition-cable-container">
+                    <div class="col-md-6 border-end" id="prepost-condition-cable-container">
                         <h4 class="mt-4 mb-2 text-center">
                             Update Pre/Post Condition
                         </h4>
@@ -374,7 +395,7 @@
             </div>
 
             <!-- Cable Task Planning Container -->
-            <h3 class="mt-4 mb-2 text-center"> 4. Task Planning</h3>
+            <h3 class="mt-4 mb-2 text-center bg-light p-3 rounded shadow-sm"> 4. Task Planning</h3>
             <div class="container" id="cable-task-planning-container">
 
                 <div class="d-flex justify-content-center">
@@ -452,7 +473,7 @@
 
         <!-- Container cap -->
         <div class="container" id="cap-experiment-container" style="display: none;">
-            <h3 class="mt-4 mb-2 text-center">
+            <h3 class="mt-4 mb-2 text-center bg-light p-3 rounded shadow-sm">
                 1. Pre-processing
             </h3>
             <div class="row" id="cap-preprocessing-container">
@@ -564,7 +585,7 @@
 
 
             <!-- Cap Skill Reasoning Container -->
-            <h3 class="mt-4 mb-2 text-center"> 2. Skill Reasoning</h3>
+            <h3 class="mt-4 mb-2 text-center bg-light p-3 rounded shadow-sm"> 2. Skill Reasoning</h3>
             <div class="container" id="cap-skill-reasoning-container">
 
                 <div class="d-flex justify-content-center">
@@ -617,7 +638,7 @@
 
 
         <!-- Cap Condition Reasoning Container -->
-        <h3 class="mt-4 mb-2 text-center"> 3. Condition Reasoning</h3>
+        <h3 class="mt-4 mb-2 text-center bg-light p-3 rounded shadow-sm"> 3. Condition Reasoning</h3>
         <div class="container" id="cap-condition-reasoning-section">
 
             <div class="d-flex justify-content-center">
@@ -728,7 +749,7 @@
         </div>
 
         <!-- Cap Task Planning Container -->
-        <h3 class="mt-4 mb-2 text-center"> 4. Task Planning</h3>
+        <h3 class="mt-4 mb-2 text-center bg-light p-3 rounded shadow-sm"> 4. Task Planning</h3>
         <div class="container" id="cap-task-planning-container">
 
             <div class="d-flex justify-content-center">
@@ -763,23 +784,70 @@
             </div>
 
 
-            <!-- User Request and Response -->
-            <div class="request-response-pair-new-task-cap" id="request-response-1-new">
-                <div class="card mb-4 text-dark bg-light" id="user-request-task-cap-section">
-                    <h5 class="card-header" style="text-align: left;">
-                        <i class="fas fa-user"></i>User Request
-                    </h5>
-                    <div class="card-body" id="task-planning-user-request-cap-container" style="font-size: 15px; text-align: left; height: 50px; overflow-y: scroll; border: 0px solid #ccc;">
-                        <!-- Content -->
+            <!-- Request/Response Container -->
+            <div class="request-response-container">
+                <!-- First User Request and Response -->
+                <div class="request-response-pair-planning-cap" id="request-response-1-planning-cap" style="display: block;">
+                    <div class="card mb-4 mt-4 text-dark bg-light" id="task-planning-user-request-cap-section">
+                        <h5 class="card-header" style="text-align: left;">
+                            <i class="fas fa-user"></i> 1. User Request
+                        </h5>
+                        <div class="card-body" id="task-planning-user-request-cap-container" style="font-size: 15px; text-align: left; height: 50px; overflow-y: scroll; border: 0px solid #ccc;">
+                            <!-- Content will be inserted here by JavaScript -->
+                        </div>
+                    </div>
+
+                    <div class="card mb-4 mt-4 text-dark bg-light" id="task-planning-new-cap-section">
+                        <h5 class="card-header">1. New Task Plan</h5>
+                        <div class="card-body" id="task-planning-new-cap-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
+                            <!-- Content will be inserted here by JavaScript -->
+                        </div>
                     </div>
                 </div>
 
-                <div class="card mb-4 mt-2 text-dark bg-light" id="LLM-response-task-cap-1-section-new">
-                    <h5 class="card-header">New Task Plan</h5>
-                    <div class="card-body" id="task-planning-new-cap-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
-                        <!-- Content -->
+                <!-- Second User Request and Response -->
+                <div class="request-response-pair-planning-cap" id="request-response-2-planning-cap" style="display: none;">
+                    <div class="card mb-4 mt-4 text-dark bg-light" id="task-planning-user-request-cap-2-section">
+                        <h5 class="card-header" style="text-align: left;">
+                            <i class="fas fa-user"></i> 2. User Request
+                        </h5>
+                        <div class="card-body" id="task-planning-user-request-cap-2-container" style="font-size: 15px; text-align: left; height: 50px; overflow-y: scroll; border: 0px solid #ccc;">
+                            <!-- Content will be inserted here by JavaScript -->
+                        </div>
+                    </div>
+
+                    <div class="card mb-4 mt-4 text-dark bg-light" id="task-planning-new-cap-2-section">
+                        <h5 class="card-header">2. LLM Response</h5>
+                        <div class="card-body" id="task-planning-new-cap-2-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
+                            <!-- Content will be inserted here by JavaScript -->
+                        </div>
                     </div>
                 </div>
+
+                <!-- Third User Request and Response -->
+                <div class="request-response-pair-planning-cap" id="request-response-3-planning-cap" style="display: none;">
+                    <div class="card mb-4 mt-4 text-dark bg-light" id="task-planning-user-request-cap-3-section">
+                        <h5 class="card-header" style="text-align: left;">
+                            <i class="fas fa-user"></i> 3. User Request
+                        </h5>
+                        <div class="card-body" id="task-planning-user-request-cap-3-container" style="font-size: 15px; text-align: left; height: 50px; overflow-y: scroll; border: 0px solid #ccc;">
+                            <!-- Content will be inserted here by JavaScript -->
+                        </div>
+                    </div>
+
+                    <div class="card mb-4 mt-4 text-dark bg-light" id="task-planning-new-cap-3-section">
+                        <h5 class="card-header">3. New Task Plan</h5>
+                        <div class="card-body" id="task-planning-new-cap-3-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
+                            <!-- Content will be inserted here by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Prev and Next Request Buttons -->
+            <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+                <button id="cap-planning-prev-request-btn" class="btn prevButton_cap_planning" style="flex: 1; margin-left: 30px; margin-right: 40px; padding: 15px; font-size: 20px; width: 40px; height: 40px;border: 2px solid #000; border-radius: 5px; ">Prev Request</button>
+                <button id="cap-planning-next-request-btn" class="btn nextButton_cap_planning" style="flex: 1; margin-left: 40px; margin-right: 30px; padding: 15px; font-size: 20px; width: 40px; height: 40px;border: 2px solid #000; border-radius: 5px; ">Next Request</button>
             </div>
 
 
@@ -810,112 +878,16 @@
 
 
 
-        <!-- Task Planning -->
-        <div class="row justify-content-md-center">
-            <h3 class="mt-4 mb-2 text-center"> Task Planning</h3>
-            <div class="d-flex justify-content-center">
-                <video id="v1" width="100%" preload="metadata" playsinline muted loop autoplay disablePictureInPicture>
-                    <source src="imgs/task_planning(videocut).mp4" type="video/mp4">
-                </video>
-            </div>
-
-            <div class="button-container text-center">
-                <div class="btn toggle-btn" id="show-task-planning-cable-btn">
-                    <img src="imgs/button/skill_reasoning_cable.jpg" alt="Task Planning Cable">
-                </div>
-                <div class="btn toggle-btn" id="show-task-planning-cap-btn">
-                    <img src="imgs/button/skill_reasoning_cap.png" alt="Task Planning Cap">
-                </div>
-            </div>
-
-            <!-- Task Planning Cable -->
-            <div class="justify-content-center" id="task-planning-cable-container" style="display: none;">
-
-                <!-- New Task User Request Cable -->
-                <div class="card mb-4 mt-4 text-dark bg-light" id="task-planning-user-request-cable-section">
-                    <h3 class="card-header">User Request</h3>
-                    <div class="card-body" id="task-planning-user-request-cable-container" style="font-size: 20px;">
-                        <!-- The User Request will be inserted here by JavaScript -->
-                    </div>
-                </div>
-
-                <!-- New Task Plan Cable -->
-                <div class="card mb-4 mt-4 text-dark bg-light" id="task-planning-new-cable-section">
-                    <h3 class="card-header">New Task Plan</h3>
-                    <div class="card-body" id="task-planning-new-cable-container" style="font-size: 20px;">
-                        <!-- The User Request will be inserted here by JavaScript -->
-                    </div>
-                </div>
-            </div>
 
 
-            <!-- Task Planning Cap -->
-            <div class="justify-content-center" id="task-planning-cap-container" style="display: none;">
-                <!-- LLM Response Demo Task Plan Skill Sequence -->
-                <div class="card mb-4 mt-4 text-dark bg-light" id="task-planning-cap-section">
-                    <h3 class="card-header">Demo Task Plan</h3>
-                    <div class="card-body" id="demo-task-plan-cap-container" style="font-size: 20px;">
-                        <!-- The User Request will be inserted here by JavaScript -->
-                    </div>
-                </div>
- 
-                <!-- New Task Description cap -->
-                <div class="card mb-4 mt-4 text-dark bg-light" id="new-task-cap-section">
-                    <h3 class="card-header">New Task Description</h3>
-                    <div class="card-body" id="new-task-cap-container" style="font-size: 20px;">
-                        <!-- The User Request will be inserted here by JavaScript -->
-                    </div>
-                </div>
 
-                <!-- New Task User Request cap -->
-                <div class="card mb-4 mt-4 text-dark bg-light" id="task-planning-user-request-cap-section">
-                    <h3 class="card-header">1.User Request</h3>
-                    <div class="card-body" id="task-planning-user-request-cap-container" style="font-size: 20px;">
-                        <!-- The User Request will be inserted here by JavaScript -->
-                    </div>
-                </div>
 
-                <!-- New Task Plan cap -->
-                <div class="card mb-4 mt-4 text-dark bg-light" id="task-planning-new-cap-section">
-                    <h3 class="card-header">New Task Plan</h3>
-                    <div class="card-body" id="task-planning-new-cap-container" style="font-size: 20px;">
-                        <!-- The User Request will be inserted here by JavaScript -->
-                    </div>
-                </div>
 
-                <!-- New Task User Request cap -->
-                <div class="card mb-4 mt-4 text-dark bg-light" id="task-planning-user-request-cap-2-section">
-                    <h3 class="card-header">2.User Request</h3>
-                    <div class="card-body" id="task-planning-user-request-cap-2-container" style="font-size: 20px;">
-                        <!-- The User Request will be inserted here by JavaScript -->
-                    </div>
-                </div>
 
-                <!-- New Task Plan cap -->
-                <div class="card mb-4 mt-4 text-dark bg-light" id="task-planning-new-cap-2-section">
-                    <h3 class="card-header">LLM Response</h3>
-                    <div class="card-body" id="task-planning-new-cap-2-container" style="font-size: 20px;">
-                        <!-- The User Request will be inserted here by JavaScript -->
-                    </div>
-                </div>
-                <!-- New Task User Request cap -->
-                <div class="card mb-4 mt-4 text-dark bg-light" id="task-planning-user-request-cap-3-section">
-                    <h3 class="card-header">3.User Request</h3>
-                    <div class="card-body" id="task-planning-user-request-cap-3-container" style="font-size: 20px;">
-                        <!-- The User Request will be inserted here by JavaScript -->
-                    </div>
-                </div>
 
-                <!-- New Task Plan cap -->
-                <div class="card mb-4 mt-4 text-dark bg-light" id="task-planning-new-cap-3-section">
-                    <h3 class="card-header">New Task Plan</h3>
-                    <div class="card-body" id="task-planning-new-cap-3-container" style="font-size: 20px;">
-                        <!-- The User Request will be inserted here by JavaScript -->
-                    </div>
-                </div>
-            </div>
 
-        </div>
+
+
             
 
         <div class="row justify-content-md-center">
@@ -1150,10 +1122,8 @@
     <script src="examples/condition_reasoning/LLM_response_cap_3.js"></script>
     <script src="examples/condition_reasoning/user_request_cap_4.js"></script>
     <script src="examples/condition_reasoning/LLM_response_cap_4.js"></script>
-    <script src="examples/condition_reasoning/condition_reasoning_toggle.js"></script>
     <script src="examples/condition_reasoning/prev_next_btn_cable.js"></script>
     <script src="examples/condition_reasoning/prev_next_btn_cap.js"></script>
-    <script src="examples/task_planning/task_planning_toggle.js"></script>
     <script src="examples/task_planning/demo_task_plan_cable.js"></script>
     <script src="examples/task_planning/new_task_cable.js"></script>
     <script src="examples/task_planning/user_request_cable.js"></script>
@@ -1166,6 +1136,7 @@
     <script src="examples/task_planning/new_task_plan_cap_2.js"></script>
     <script src="examples/task_planning/user_request_cap_3.js"></script>
     <script src="examples/task_planning/new_task_plan_cap_3.js"></script>
+    <script src="examples/task_planning/prev_next_btn_cap.js"></script>
     <script src="examples/prompt_skilllibTOPDDL/cable_skilllib.js"></script>
     <script src="examples/prompt_skilllibTOPDDL/cable_skilllib_user.js"></script>
     <script src="examples/prompt_skilllibTOPDDL/cable_pddl.js"></script>
@@ -1176,6 +1147,7 @@
     <script src="examples/prompt_skilllibTOPDDL/cap_pddl.js"></script>
     <script src="examples/prompt_skilllibTOPDDL/demo_plan_cap.js"></script>
     <script src="examples/toggle-cable-cap.js"></script>
+
 
     <script>
         function toggleDiv() {

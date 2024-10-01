@@ -1,28 +1,22 @@
 // Define the task description as a JavaScript string
-var user_request_condition_cable_4 = `
+var user_request_condition_cable_4_description = `
 Additionally, we have obtained a database about environmental objects in this task.
-As the second step of your reasoning, based on the PDDL domain, PDDL plan and also the world knowledge, use the following script to generate an executable plan in the formatting of code script.
-prompt_database + 
-from robot_controller import Controller
-robot_controller = Controller()
+As the second step of your reasoning, based on the PDDL domain, PDDL plan, and world knowledge, use the following script to generate an executable plan in the formatting of a code script.
+`;
 
-def get_object_property(object, property):
-    # get the object property from the database
-    return database['object']['property']
-
+var user_request_condition_cable_4_code = `
 from robot_controller import Controller
 from perception import Perception
 
 robot_controller = Controller()
-percpeption = Perception()
-
+perception = Perception()
 
 class ObjectSkillLibrary:
     # Skill library for manipulating any object
     def __init__(self, target_object):
-        # target_object is the object which the robot hand directly manipulate, such as a cable or a screw
+        # target_object is the object which the robot hand directly manipulates, such as a cable or a screw
         self.target_object = target_object
-        # env_object are contexual objects in the environment that target_object interacts with, such as a screw holder
+        # env_object are contextual objects in the environment that target_object interacts with, such as a screw holder
 
     def move_object(self, pose):
         print(f"Moving {self.target_object} to {pose}")
@@ -37,7 +31,6 @@ class ObjectSkillLibrary:
         print(f"Opening the hand of the robot to release the {self.target_object}")
         robot_controller.open_gripper()
 
-
 class CableSkillLibrary(ObjectSkillLibrary):
     # Skill library for manipulating cable
     def __init__(self):
@@ -50,11 +43,16 @@ class CableSkillLibrary(ObjectSkillLibrary):
     def stretch(self):
         print(f"Stretching the {self.target_object} linearly in opposite directions")
         robot_controller.stretch()
+`;
 
+var user_request_condition_cable_4_footer = `
 Replace all parameters in your previous answer with specific object properties.
 Omit timestamps and comments, only preserve the actions.
 Integrate consecutive repeating actions.
 `;
 
-// Insert the task description into the user-request-cable-container element
-document.getElementById('user-request-condition-cable-4-container').innerHTML = '<p>' + user_request_condition_cable_4.trim().replace(/\n/g, '<br>') + '</p>';
+// Insert the description, code, and footer separately into the container
+document.getElementById('user-request-condition-cable-4-container').innerHTML = 
+  '<p>' + user_request_condition_cable_4_description.trim().replace(/\n/g, '<br>') + '</p>' +
+  '<pre><code class="language-python">' + Prism.highlight(user_request_condition_cable_4_code.trim(), Prism.languages.python, 'python') + '</code></pre>' +
+  '<p>' + user_request_condition_cable_4_footer.trim().replace(/\n/g, '<br>') + '</p>';

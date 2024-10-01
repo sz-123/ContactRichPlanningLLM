@@ -9,6 +9,10 @@
     opacity: 1; /* 选中时恢复颜色 */
 }
 
+.show-btn-active img {
+    opacity: 1; /* 选中时恢复颜色 */
+}
+
 .btn img:hover {
     opacity: 1.0; /* 鼠标悬停时强调效果 */
 }

@@ -6,8 +6,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Function to reset button highlights
     function resetButtonHighlight() {
-        showCableBtn.classList.remove("btn-primary");
-        showCapBtn.classList.remove("btn-primary");
+        showCableBtn.classList.remove("show-btn-active");
+        showCapBtn.classList.remove("show-btn-active");
     }
 
     // Function to hide both containers
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
         hideBothContainers();
         cableContainer.style.display = "block";
         resetButtonHighlight();
-        showCableBtn.classList.add("btn-primary");
+        showCableBtn.classList.add("show-btn-active");
     });
 
     // Show Cap Container and highlight button
@@ -29,6 +29,6 @@ document.addEventListener("DOMContentLoaded", function() {
         hideBothContainers();
         capContainer.style.display = "block";
         resetButtonHighlight();
-        showCapBtn.classList.add("btn-primary");
+        showCapBtn.classList.add("show-btn-active");
     });
 });

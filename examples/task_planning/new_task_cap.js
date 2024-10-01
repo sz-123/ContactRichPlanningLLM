@@ -11,7 +11,7 @@ var img_new_task_cap = document.createElement('img');
 // TODO CHANGE cap FIGURE  THIS IS A SCREENSHOT
 img_new_task_cap.src = "examples/task_planning/new_task_cap.jpg"; 
 img_new_task_cap.alt = 'new task cap'; // Optional: Alt text for accessibility
-img_new_task_cap.style.width = '700px'; // Optional: Set the image size
+img_new_task_cap.style.width = '400px'; // Optional: Set the image size
 
 // Append the image to the container
 document.getElementById('new-task-cap-container').appendChild(img_new_task_cap);

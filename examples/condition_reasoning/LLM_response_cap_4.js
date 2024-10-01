@@ -61,5 +61,6 @@ cap_skill_library.open_hand()
 cap_skill_library.move_object([0.41650844400114584, -0.04410545364246846, 1.2870269841352825])  # Move gripper away from the bottle
 `;
 
-// Insert the task description into the user-request-cap-container element
-document.getElementById('LLM-response-condition-cap-4-container').innerHTML = '<p>' + LLM_response_condition_cap_4.trim().replace(/\n/g, '<br>') + '</p>';
+// Insert the task description into the user-request-cable-container element
+document.getElementById('LLM-response-condition-cap-4-container').innerHTML = 
+  '<pre><code class="language-python">' + Prism.highlight(LLM_response_condition_cap_4.trim(), Prism.languages.python, 'python') + '</code></pre>';
