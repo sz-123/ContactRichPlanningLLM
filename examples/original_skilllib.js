@@ -1,3 +1,5 @@
+// Define the task description as a JavaScript string
+var originalSkilllib= `
 from robot_controller import Controller
 from perception import Perception
 
@@ -59,3 +61,8 @@ class CableSkillLibrary(ObjectSkillLibrary):
     def stretch(self):
         print(f"Stretching the {self.target_object} linearly in opposite directions")
         robot_controller.stretch(success_condition=is_stretched)
+`;
+
+// Insert the task description into the user-request-cap-container element
+document.getElementById('original-skilllib').innerHTML = 
+'<pre><code class="language-python">' + Prism.highlight(originalSkilllib.trim(), Prism.languages.python, 'python') + '</code></pre>';
