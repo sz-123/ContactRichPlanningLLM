@@ -24,25 +24,25 @@ class Perception:
             # If control mode is 'force', return the direction of the applied force
             return self.robot_controller.get_apply_force_direction()
         elif self.robot_controller.get_control_mode() == "position":
-            # If control mode is 'position', return the moving direction
+             # If control mode is 'position', return the moving direction
             return self.robot_controller.get_move_direction()
-
+        
     def get_resistance_force(self):
         # measure the magnitude of external force in resistance to robot action
         force_xyz = self.force_torque_sensor.get_current_force_vector()
         resistance_force = projection(force_xyz, self.get_action_direction())
         return resistance_force
-
+    
     def get_resistance_torque(self):
         # measure the magnitude of external torque in resistance to robot action
         torque_xyz = self.force_torque_sensor.get_torque_vector()
         resistance_torque = projection(torque_xyz, self.get_action_direction())
         return resistance_torque
-
+    
     def get_grasping_status(self):
         # measure the tactile sensor to determine if the object is grasped by robot hand
         return self.tactile_sensor.is_grasped()
-
+    
     def get_robot_hand_pose(self):
         # get the current pose of the robot end effector
         return self.robot_controller.get_cartesian_pose()

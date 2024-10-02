@@ -161,7 +161,3 @@
       margin: 0 auto;
   }
 
-pre.codegen {
-  max-height: 300px;
-  overflow-y: scroll;
-}

@@ -16,27 +16,27 @@ const common_skill_text = "Skill: ";
 const full_demo_skills = ["move_object clip8",
 "grasp cable",
 "stretch cable",
-"insert cable clip8",
-"open_hand",
+"insert cable down clip8",
+"release cable",
 "move_object clip5",
 "grasp cable",
 "stretch cable",
-"insert cable clip5",
-"open_hand"
+"insert cable down clip5",
+"release cable"
 ];
 
 const common_reasoning_text = "Reasoning: ";
 
-const full_demo_reasonings = ["Because the robot is moving with the cable towards the position of clip 8.",
-"Because the tactile status indicates the cable is grasped.",
-"Because the tactile status indicates the cable is under linear force, suggesting a stretching action.",
-"Because the tactile status indicates the cable is under torque, suggesting an insertion action into clip 8.",
-"Because the tactile status indicates the cable is released, suggesting the robot has opened its hand.",
-"Because the robot is moving with the cable towards the position of clip 5.",
-"Because the tactile status indicates the cable is grasped.",
-"Because the tactile status indicates the cable is under linear force, suggesting a stretching action.",
-"Because the tactile status indicates the cable is under torque, suggesting an insertion action into clip 5.",
-"Because the tactile status indicates the cable is released, suggesting the robot has opened its hand."
+const full_demo_reasonings = ["Because one of the robots is moving the cable towards the position of clip 8.",
+"Because the tactile status indicates that the cable is grasped.",
+"Because the tactile status indicates that the cable is under linear force, suggesting a stretching action.",
+"Because the tactile status indicates that the cable is under torque, suggesting an insertion into clip 8.",
+"ecause the tactile status indicates that the cable is released.",
+"Because one of the robots is moving the cable towards the position of clip 5.",
+"Because the tactile status indicates that the cable is grasped.",
+"Because the tactile status indicates that the cable is under linear force, suggesting a stretching action.",
+"Because the tactile status indicates that the cable is under torque, suggesting an insertion into clip 5.",
+"Because the tactile status indicates that the cable is released."
 ];
 
 const full_demo_plan =`
@@ -44,16 +44,16 @@ const full_demo_plan =`
 cable_skill_library = CableSkillLibrary()
 
 # Executable plan
-cable_skill_library.move_object(database['clip8']['position'])
+cable_skill_library.move_object(get_object_property('clip8', 'position'))
 cable_skill_library.grasp()
 cable_skill_library.stretch()
-cable_skill_library.insert(database['clip8']['insertion_direction'], 'clip8')
-cable_skill_library.open_hand()
-cable_skill_library.move_object(database['clip5']['position'])
+cable_skill_library.insert(get_object_property('clip8', 'insertion_direction'), 'clip8')
+cable_skill_library.release()
+cable_skill_library.move_object(get_object_property('clip5', 'position'))
 cable_skill_library.grasp()
 cable_skill_library.stretch()
-cable_skill_library.insert(database['clip5']['insertion_direction'], 'clip5')
-cable_skill_library.open_hand()
+cable_skill_library.insert(get_object_property('clip5', 'insertion_direction'), 'clip5')
+cable_skill_library.release()
 `;
 
 

@@ -66,15 +66,15 @@ Based on the plot, use the above interfaces to determine the threshold for the s
 `;
 
 // Insert the second task description as plain text
-var secondTaskElement = document.createElement('p');
-secondTaskElement.innerHTML = user_request_condition_cable_3_2_description.trim().replace(/\n/g, '<br>');
+// var secondTaskElement = document.createElement('p');
+// secondTaskElement.innerHTML = user_request_condition_cable_3_2_description.trim().replace(/\n/g, '<br>');
 
 // Append the second task description to the container
-document.getElementById('user-request-condition-cable-3-container').appendChild(secondTaskElement);
+// document.getElementById('user-request-condition-cable-3-container').appendChild(secondTaskElement);
 
 // Highlight and insert the code
-document.getElementById('user-request-condition-cable-3-container').innerHTML += 
-  '<pre><code class="language-python">' + Prism.highlight(user_request_condition_cable_3_2_code.trim(), Prism.languages.python, 'python') + '</code></pre>';
+// document.getElementById('user-request-condition-cable-3-container').innerHTML += 
+//   '<pre><code class="language-python">' + Prism.highlight(user_request_condition_cable_3_2_code.trim(), Prism.languages.python, 'python') + '</code></pre>';
 
 // Insert the final descriptive sentence as plain text
 var footerElement = document.createElement('p');
