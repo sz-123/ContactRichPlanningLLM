@@ -117,9 +117,45 @@
             </div>
         </div>
 
+        <div class="vertical-nav">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="#cable-experiment-container">Cable Mounting</a>
+                    <ul class="nav flex-column ms-3">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#cable-experiment-container">Experiments</a>
+                            <ul class="nav flex-column ms-3">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#cable-experiment-container">1. Pre-processing</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#cable-skill-reasoning-1-container">2. Skill Reasoning</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#cable-condition-reasoning-section">3. Condition Reasoning</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#cable-task-planning-container">4. Task Planning</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#eva-demo-reasoning-cable-container">Evaluation on Demonstration Reasoning</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#eva-task-planning-cable-container">Evaluation on Task Planning</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        
+        
+
 
         <!-- Container Cable -->
-        <div class="container" id="cable-experiment-container">
+        <div class="container" id="cable-experiment-container" >
             <h4 class="mt-4 mb-2 text-center bg-light p-3 rounded shadow-sm">
                 1. Pre-processing
             </h4>
@@ -702,6 +738,7 @@
             </div>
 
         </div>
+        </div>
 
 
 
@@ -721,9 +758,9 @@
 
         <!-- Container cap -->
         <div class="container" id="cap-experiment-container" style="display: none;">
-            <h3 class="mt-4 mb-2 text-center bg-light p-3 rounded shadow-sm">
+            <h4 class="mt-4 mb-2 text-center bg-light p-3 rounded shadow-sm">
                 1. Pre-processing
-            </h3>
+            </h4>
             <div class="row" id="cap-preprocessing-container">
                 <!-- First Container: segmentation-cap-container -->
                 <div class="col-md-6" id="segmentation-cap-container">
@@ -1101,7 +1138,7 @@
         </div>
 
 
-
+    </div>
 
 
         
@@ -1210,6 +1247,7 @@
     <script src="examples/insert_both_w_ft.js"></script>
     <script src="examples/insert_both_wo_ft.js"></script>
     <script src="examples/evaluation_task_planning/new_task_plan_cable.js"></script>
+    <script src="examples/vertical_nav.js"></script>
     
 </body>
 </html>

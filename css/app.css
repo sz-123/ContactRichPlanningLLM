@@ -161,3 +161,52 @@
       margin: 0 auto;
   }
 
+
+  .vertical-nav {
+    position: fixed;
+    top: 100px;
+    left: 0;
+    width: 450px;
+    background-color: #f8f9fa;
+    padding: 10px;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    height: auto;
+    overflow-y: auto;
+}
+
+.vertical-nav .nav-link {
+    color: #007bff;
+    padding: 5px 10px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+.vertical-nav .nav-link:hover {
+    background-color: #e2e6ea;
+    color: #0056b3;
+}
+
+.vertical-nav .nav-item {
+    margin-bottom: 10px;
+}
+
+/* 一级菜单：Cable，字体最大 */
+.vertical-nav .nav > .nav-item > .nav-link {
+    font-size: 20px;  /* 顶级菜单字体大小 */
+    font-weight: bold;
+}
+
+/* 二级菜单：Experiments等，字体较大 */
+.vertical-nav .nav > .nav-item > .nav .nav-link {
+    font-size: 18px;  /* 第二级菜单字体大小 */
+    padding-left: 15px;  /* 缩进 */
+    font-weight: bold;
+}
+
+/* 三级菜单：Pre-processing等，字体较小 */
+.vertical-nav .nav > .nav-item > .nav > .nav-item > .nav-link {
+    font-size: 16px;  /* 第三级菜单字体大小 */
+    padding-left: 30px;  /* 更大的缩进 */
+}
