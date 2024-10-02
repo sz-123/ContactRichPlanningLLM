@@ -1,0 +1,31 @@
+.btn img {
+    width: 500px;
+    height: 350px;
+    opacity: 0.4; /* 未选中时变灰 */
+    transition: opacity 0.5s;
+}
+
+.btn.active img {
+    opacity: 1; /* 选中时恢复颜色 */
+}
+
+.show-btn-active img {
+    opacity: 1; /* 选中时恢复颜色 */
+}
+
+.btn img:hover {
+    opacity: 1.0; /* 鼠标悬停时强调效果 */
+}
+
+.btn {
+    cursor: pointer;
+}
+
+/* 设置button-container为flexbox布局，图片水平排列 */
+.button-container {
+    display: flex;
+    justify-content: center; /* 居中排列 */
+    gap: 500px; /* 图片之间的间距 */
+    margin-top: 150px;
+    margin-bottom: 150px; /* 底部增加些空隙 */
+}

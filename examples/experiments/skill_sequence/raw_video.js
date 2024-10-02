@@ -17,43 +17,43 @@ const raw_video_frames = [
 const raw_video_skills = ["move_object cable",
 "move_object cable",
 "move_object cable",
-"insert cable down clip8",
-"insert cable down clip8",
-"insert cable down clip8",
-"insert cable down clip8",
+"insert cable downward clip8",
+"insert cable downward clip8",
+"insert cable downward clip8",
+"insert cable downward clip8",
 "move_object cable",
 "move_object cable",
-"move_object cable",
-"insert cable down clip5",
-"insert cable down clip5"
+"insert cable downward clip5",
+"insert cable downward clip5",
+"insert cable downward clip5"
 ];
 
 
 
 
-const raw_video_reasonings = ["Because the cable is being moved towards the position of clip8.",
-"Because the cable is still being moved towards the position of clip8.",
-"Because the cable is almost at the position of clip8.",
-"Because the cable is being inserted into clip8 in the downward direction.",
-"Because the cable is still being inserted into clip8 in the downward direction.",
-"Because the cable is almost fully inserted into clip8 in the downward direction.",
-"Because the cable is now fully inserted into clip8 in the downward direction.",
-"Because the cable is being moved towards the position of clip5.",
-"Because the cable is still being moved towards the position of clip5.",
-"Because the cable is almost at the position of clip5.",
-"Because the cable is being inserted into clip5 in the downward direction.",
-"Because the cable is still being inserted into clip5 in the downward direction."
+const raw_video_reasonings = ["Because the robot on the right is moving the cable towards clip8.",
+"Because the robot on the right continues to move the cable towards clip8.",
+"Because the robot on the right is still moving the cable towards clip8.",
+"Because the robot on the right is inserting the cable into clip8 in the downward direction.",
+"Because the robot on the right continues to insert the cable into clip8 in the downward direction.",
+"Because the robot on the right is still inserting the cable into clip8 in the downward direction.",
+"Because the robot on the right is still inserting the cable into clip8 in the downward direction.",
+"Because the robot on the left is moving the cable towards clip5.",
+"Because the robot on the left continues to move the cable towards clip5.",
+"Because the robot on the left is inserting the cable into clip5 in the downward direction.",
+"Because the robot on the left continues to insert the cable into clip5 in the downward direction.",
+"Because the robot on the left is still inserting the cable into clip5 in the downward direction."
 ];
 
 const raw_video_demo_plan =`
 # Initialize the skill library
 cable_skill_library = CableSkillLibrary()
 
-# Execute the plan
-cable_skill_library.move_object(clip8_position)
-cable_skill_library.insert(database['clip8']['insertion_direction'], 'clip8')
-cable_skill_library.move_object(clip5_position)
-cable_skill_library.insert(database['clip5']['insertion_direction'], 'clip5')
+# Executable plan
+cable_skill_library.move_object(get_object_property('clip8', 'position'))
+cable_skill_library.insert(get_object_property('clip8', 'insertion_direction'), 'clip8')
+cable_skill_library.move_object(get_object_property('clip5', 'position'))
+cable_skill_library.insert(get_object_property('clip5', 'insertion_direction'), 'clip5')
 `;
 
 

@@ -2,7 +2,7 @@ $(document).ready(function() {
 
     // generated code
     var codegen_html_template = `
-<pre class="codegen"><code class="language-python">{code}</code></pre>`;
+<pre style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;" class="codegen"><code class="language-python">{code}</code></pre>`;
     $('[id^="example"]').each(function() {
         var id = this.id;
         var path = this.getAttribute("data-path");

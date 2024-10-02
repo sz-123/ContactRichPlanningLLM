@@ -1,6 +1,6 @@
 // PDDL domain result variables
 const resultCablePDDLDomain = `
-<pre><code>TODO: check the PDDL domain for the cable skill library.
+<pre style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;"><code>TODO: check the PDDL domain for the cable skill library.
 (define (domain robot_skills)
   (:requirements :strips :typing)
   (:types 
@@ -37,7 +37,7 @@ const resultCablePDDLDomain = `
 `;
 
 const resultCapPDDLDomain = `
-<pre><code>TODO: check the PDDL domain for the cap skill library here
+<pre style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;"><code>TODO: check the PDDL domain for the cap skill library here
 (define (domain robot_skills)
   (:requirements :strips :typing)
   (:types 

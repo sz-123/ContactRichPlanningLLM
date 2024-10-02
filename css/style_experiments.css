@@ -40,12 +40,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 20px;
-    margin-right: 20px;
-    padding: 10px;
-    width: 100px;
-    height: 40px;
-    font-size: 16px;
+    margin-left: 12px;
+    margin-right: 12px;
+    padding: 8px;
+    width: 60px;
+    height: 25px;
+    font-size: 12px;
     text-align: center;
     box-sizing: border-box;
     border: 2px solid #000; /* 添加黑色边框 */
@@ -56,11 +56,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100px;
-    height: 40px;
-    font-size: 16px;
-    margin: 0;
-    padding: 10px;
+    margin-left: 12px;
+    margin-right: 12px;
+    padding: 8px;
+    width: 60px;
+    height: 25px;
+    font-size: 12px;
     text-align: center;
     box-sizing: border-box;
     border: 2px solid #000; /* 添加黑色边框 */
@@ -97,4 +98,17 @@
 /* When the div is open, change the triangle to down-pointing */
 .toggle-title.open::before {
     content: "\25BC"; /* Down-pointing triangle (open state) */
+}
+
+
+/* styles.css */
+pre {
+    background-color: #f8f9fa;
+    overflow: visible;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+code {
+    background-color: inherit;
 }
