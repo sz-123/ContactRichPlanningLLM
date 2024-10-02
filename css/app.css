@@ -166,10 +166,10 @@
     position: fixed;
     top: 100px;
     left: 0;
-    width: 450px;
-    background-color: #f8f9fa;
+    width: 350px;
+    background-color: transparent; /* 设置为透明背景 */
     padding: 10px;
-    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: none; /* 移除阴影 */
     z-index: 1000;
     height: auto;
     overflow-y: auto;
@@ -184,7 +184,7 @@
 }
 
 .vertical-nav .nav-link:hover {
-    background-color: #e2e6ea;
+    background-color: rgba(226, 230, 234, 0.5); /* 轻微的半透明悬停背景 */
     color: #0056b3;
 }
 
