@@ -21,4 +21,4 @@ cap_skill_library.open_hand()
 // Insert the task description into the user-request-cap-container element
 // Use Prism.js to highlight code
 document.getElementById('task-planning-new-cap-container').innerHTML = 
-  '<pre><code class="language-python">' + Prism.highlight(new_task_plan_cap.trim(), Prism.languages.python, 'python') + '</code></pre>';
+  '<pre style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;"><code class="language-python">' + Prism.highlight(new_task_plan_cap.trim(), Prism.languages.python, 'python') + '</code></pre>';

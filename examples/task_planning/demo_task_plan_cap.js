@@ -50,4 +50,4 @@ cap_skill_library.open_hand()
 
 // Insert the task description into the user-request-cap-container element
 document.getElementById('demo-task-plan-cap-container').innerHTML = 
-'<pre><code class="language-python">' + Prism.highlight(task_planning_cap.trim(), Prism.languages.python, 'python') + '</code></pre>';
+'<pre style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;"><code class="language-python">' + Prism.highlight(task_planning_cap.trim(), Prism.languages.python, 'python') + '</code></pre>';

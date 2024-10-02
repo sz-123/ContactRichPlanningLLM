@@ -20,7 +20,7 @@ const raw_video_skills = ["move_object cable",
 "insert cable downward clip8",
 "insert cable downward clip8",
 "insert cable downward clip8",
-"release cable",
+"insert cable downward clip8",
 "move_object cable",
 "move_object cable",
 "insert cable downward clip5",
@@ -37,7 +37,7 @@ const raw_video_reasonings = ["Because the robot on the right is moving the cabl
 "Because the robot on the right is inserting the cable into clip8 in the downward direction.",
 "Because the robot on the right continues to insert the cable into clip8 in the downward direction.",
 "Because the robot on the right is still inserting the cable into clip8 in the downward direction.",
-"Because the robot on the right has finished inserting the cable into clip8 and is now releasing it.",
+"Because the robot on the right is still inserting the cable into clip8 in the downward direction.",
 "Because the robot on the left is moving the cable towards clip5.",
 "Because the robot on the left continues to move the cable towards clip5.",
 "Because the robot on the left is inserting the cable into clip5 in the downward direction.",
@@ -52,7 +52,6 @@ cable_skill_library = CableSkillLibrary()
 # Executable plan
 cable_skill_library.move_object(get_object_property('clip8', 'position'))
 cable_skill_library.insert(get_object_property('clip8', 'insertion_direction'), 'clip8')
-cable_skill_library.release()
 cable_skill_library.move_object(get_object_property('clip5', 'position'))
 cable_skill_library.insert(get_object_property('clip5', 'insertion_direction'), 'clip5')
 `;

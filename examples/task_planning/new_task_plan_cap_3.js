@@ -20,4 +20,4 @@ cap_skill_library.open_hand()
 
 // Use Prism.js to highlight code
 document.getElementById('task-planning-new-cap-3-container').innerHTML = 
-  '<pre><code class="language-python">' + Prism.highlight(new_task_plan_cap_3.trim(), Prism.languages.python, 'python') + '</code></pre>';
+  '<pre style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;"><code class="language-python">' + Prism.highlight(new_task_plan_cap_3.trim(), Prism.languages.python, 'python') + '</code></pre>';

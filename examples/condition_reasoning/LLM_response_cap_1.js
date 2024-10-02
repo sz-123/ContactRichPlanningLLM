@@ -54,4 +54,4 @@ class CapSkillLibrary(ObjectSkillLibrary):
 
 // Insert the task description into the user-request-cable-container element
 document.getElementById('LLM-response-condition-cap-1-container').innerHTML = 
-  '<pre><code class="language-python">' + Prism.highlight(LLM_response_condition_cap_1.trim(), Prism.languages.python, 'python') + '</code></pre>';
+  '<pre style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;"><code class="language-python">' + Prism.highlight(LLM_response_condition_cap_1.trim(), Prism.languages.python, 'python') + '</code></pre>';

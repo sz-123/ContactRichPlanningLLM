@@ -76,7 +76,7 @@ Based on the plot, use the above interfaces to determine the threshold for the s
 
 // Highlight and insert the code
 // document.getElementById('user-request-condition-cap-3-container').innerHTML += 
-//   '<pre><code class="language-python">' + Prism.highlight(user_request_condition_cap_3_2_code.trim(), Prism.languages.python, 'python') + '</code></pre>';
+//   '<pre style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;"><code class="language-python">' + Prism.highlight(user_request_condition_cap_3_2_code.trim(), Prism.languages.python, 'python') + '</code></pre>';
 
 // Insert the final descriptive sentence as plain text
 var footerElement = document.createElement('p');

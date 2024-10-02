@@ -50,5 +50,5 @@ Integrate consecutive repeating actions.
 // Insert the description, code, and footer separately into the container
 document.getElementById('user-request-condition-cap-4-container').innerHTML = 
   '<p>' + user_request_condition_cap_4_description.trim().replace(/\n/g, '<br>') + '</p>' +
-  '<pre><code class="language-python">' + Prism.highlight(user_request_condition_cap_4_code.trim(), Prism.languages.python, 'python') + '</code></pre>' +
+  '<pre style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;"><code class="language-python">' + Prism.highlight(user_request_condition_cap_4_code.trim(), Prism.languages.python, 'python') + '</code></pre>' +
   '<p>' + user_request_condition_cap_4_footer.trim().replace(/\n/g, '<br>') + '</p>';

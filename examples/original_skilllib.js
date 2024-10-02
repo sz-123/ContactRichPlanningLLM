@@ -65,4 +65,4 @@ class CableSkillLibrary(ObjectSkillLibrary):
 
 // Insert the task description into the user-request-cap-container element
 document.getElementById('original-skilllib').innerHTML = 
-'<pre><code class="language-python">' + Prism.highlight(originalSkilllib.trim(), Prism.languages.python, 'python') + '</code></pre>';
+'<pre style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;" style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;"><code class="language-python">' + Prism.highlight(originalSkilllib.trim(), Prism.languages.python, 'python') + '</code></pre>';

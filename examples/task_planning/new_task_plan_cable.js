@@ -24,4 +24,4 @@ cable_skill_library.open_hand()
 
 // Insert the task description into the user-request-cap-container element
 document.getElementById('task-planning-new-cable-container').innerHTML = 
-'<pre><code class="language-python">' + Prism.highlight(new_task_plan_cable.trim(), Prism.languages.python, 'python') + '</code></pre>';
+'<pre style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;"><code class="language-python">' + Prism.highlight(new_task_plan_cable.trim(), Prism.languages.python, 'python') + '</code></pre>';

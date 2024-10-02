@@ -89,4 +89,4 @@ cable_skill_library.insert(get_object_property('clip5', 'insertion_direction'), 
 // Insert the task description into the user-request-cable-container element
 // Use Prism.js to highlight code
 document.getElementById('demo-plan-cable-container').innerHTML = 
-  '<pre><code class="language-python">' + Prism.highlight(cableDemoPlan.trim(), Prism.languages.python, 'python') + '</code></pre>';
+  '<pre style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;"><code class="language-python">' + Prism.highlight(cableDemoPlan.trim(), Prism.languages.python, 'python') + '</code></pre>';

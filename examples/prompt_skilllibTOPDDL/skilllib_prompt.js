@@ -1,6 +1,6 @@
 // Prompts
 const promptCommonSkillLib = `
-<pre><code>from robot_controller import Controller
+<pre style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;"><code>from robot_controller import Controller
 from perception import Perception
 
 robot_controller = Controller()
@@ -25,7 +25,7 @@ class ObjectSkillLibrary:
 `;
 
 const promptCableSkillLib = `
-<pre><code style="color: #754292; font-weight: bold">class CableSkillLibrary(ObjectSkillLibrary):
+<pre style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;"><code style="color: #754292; font-weight: bold">class CableSkillLibrary(ObjectSkillLibrary):
     def __init__(self):
         super().__init__("cable")
 
@@ -40,7 +40,7 @@ const promptCableSkillLib = `
 `;
 
 const promptCapSkillLib = `
-<pre><code style="color: #754292; font-weight: bold">class CapSkillLibrary(ObjectSkillLibrary):
+<pre style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;"><code style="color: #754292; font-weight: bold">class CapSkillLibrary(ObjectSkillLibrary):
     def __init__(self):
         super().__init__("cap")
 

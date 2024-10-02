@@ -99,3 +99,16 @@
 .toggle-title.open::before {
     content: "\25BC"; /* Down-pointing triangle (open state) */
 }
+
+
+/* styles.css */
+pre {
+    background-color: #f8f9fa;
+    overflow: visible;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+code {
+    background-color: inherit;
+}

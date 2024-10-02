@@ -105,7 +105,7 @@ if __name__ == "__main__":
 
 // Insert the task description into the user-request-cap-container element
 document.getElementById('new-task-plan-cable-1').innerHTML = 
-'<pre><code class="language-python">' + Prism.highlight(new_task_plan_cable_1.trim(), Prism.languages.python, 'python') + '</code></pre>';
+Prism.highlight(new_task_plan_cable_1.trim(), Prism.languages.python, 'python');
 
 
 // Define the task description as a JavaScript string
@@ -209,7 +209,7 @@ if __name__ == "__main__":
 
 // Insert the task description into the user-request-cap-container element
 document.getElementById('new-task-plan-cable-2').innerHTML = 
-'<pre><code class="language-python">' + Prism.highlight(new_task_plan_cable_2.trim(), Prism.languages.python, 'python') + '</code></pre>';
+'<pre style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;"><code class="language-python">' + Prism.highlight(new_task_plan_cable_2.trim(), Prism.languages.python, 'python') + '</code></pre>';
 
 
 // Define the task description as a JavaScript string
@@ -324,7 +324,7 @@ if __name__ == "__main__":
 
 // Insert the task description into the user-request-cap-container element
 document.getElementById('new-task-plan-cable-3').innerHTML = 
-'<pre><code class="language-python">' + Prism.highlight(new_task_plan_cable_3.trim(), Prism.languages.python, 'python') + '</code></pre>';
+'<pre style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;"><code class="language-python">' + Prism.highlight(new_task_plan_cable_3.trim(), Prism.languages.python, 'python') + '</code></pre>';
 
 
 // Define the task description as a JavaScript string
@@ -433,4 +433,4 @@ if __name__ == "__main__":
 
 // Insert the task description into the user-request-cap-container element
 document.getElementById('new-task-plan-cable-4').innerHTML = 
-'<pre><code class="language-python">' + Prism.highlight(new_task_plan_cable_4.trim(), Prism.languages.python, 'python') + '</code></pre>';
+'<pre style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;"><code class="language-python">' + Prism.highlight(new_task_plan_cable_4.trim(), Prism.languages.python, 'python') + '</code></pre>';

@@ -72,4 +72,4 @@ class CableSkillLibrary(ObjectSkillLibrary):
 // Insert the description and code separately into the container
 document.getElementById('LLM-response-condition-cable-3-container').innerHTML = 
   LLM_response_condition_cable_3_description + 
-  '<pre><code class="language-python">' + Prism.highlight(LLM_response_condition_cable_3_code.trim(), Prism.languages.python, 'python') + '</code></pre>';
+  '<pre style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;" style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;"><code class="language-python">' + Prism.highlight(LLM_response_condition_cable_3_code.trim(), Prism.languages.python, 'python') + '</code></pre>';
