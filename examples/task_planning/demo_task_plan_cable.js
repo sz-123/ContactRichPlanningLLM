@@ -4,16 +4,16 @@ var task_planning_cable= `
 cable_skill_library = CableSkillLibrary()
 
 # Executable plan
-cable_skill_library.move_object(database['clip8']['position'])
+cable_skill_library.move_object(get_object_property('clip8', 'position'))
 cable_skill_library.grasp()
 cable_skill_library.stretch()
-cable_skill_library.insert(database['clip8']['insertion_direction'], 'clip8')
-cable_skill_library.open_hand()
-cable_skill_library.move_object(database['clip5']['position'])
+cable_skill_library.insert(get_object_property('clip8', 'insertion_direction'), 'clip8')
+cable_skill_library.release()
+cable_skill_library.move_object(get_object_property('clip5', 'position'))
 cable_skill_library.grasp()
 cable_skill_library.stretch()
-cable_skill_library.insert(database['clip5']['insertion_direction'], 'clip5')
-cable_skill_library.open_hand()
+cable_skill_library.insert(get_object_property('clip5', 'insertion_direction'), 'clip5')
+cable_skill_library.release()
 `;
 
 // Insert the task description into the user-request-cap-container element
