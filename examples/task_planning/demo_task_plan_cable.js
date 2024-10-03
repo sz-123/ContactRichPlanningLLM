@@ -93,6 +93,12 @@ if __name__ == "__main__":
     cable_skill_library.release()
 `;
 
+var task_planning_cable_description = `
+As an example, this was the task plan from a human demonstration to mount a cable onto two clips.
+`;
+
+
 // Insert the task description into the user-request-cap-container element
 document.getElementById('demo-task-plan-cable-container').innerHTML = 
+'<p>' + task_planning_cable_description.trim() + '</p>' +
 '<pre style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;"><code class="language-python">' + Prism.highlight(task_planning_cable.trim(), Prism.languages.python, 'python') + '</code></pre>';

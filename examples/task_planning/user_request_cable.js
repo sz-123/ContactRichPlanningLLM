@@ -1,6 +1,9 @@
 // Define the task description as a JavaScript string
 var task_planning_user_request_cable= `
-Finally, generate an executable plan in the formatting of code script to mount the cable onto all clips from right to left in a new scenario below.
+You will generate an executable plan to finish a certain task. 
+Your plan will consist only of skills from a given skill library.
+
+The task is to mount the cable onto all clips from right to left in a scenario below.
 `;
 
 // Insert the task description into the user-request-cap-container element

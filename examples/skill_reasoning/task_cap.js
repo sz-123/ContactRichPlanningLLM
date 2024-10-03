@@ -1,6 +1,6 @@
 // Define the task description as a JavaScript string
 var prompt_task_description_cap = `
-he video is about one robot hand picking a cap and then attaching it onto a bottle. 
+The video is about one robot hand picking a cap and then attaching it onto a bottle. 
 Each frame has been annotated with the status of the cap collected by the tactile sensor and the bottle position (blue bounding box).
 The red object in the view is the cap.
 `;
