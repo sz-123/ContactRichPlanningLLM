@@ -10,12 +10,12 @@ percpeption = Perception()
 class ObjectSkillLibrary:
     # Skill library for manipulating any object
     def __init__(self, target_object):
-        # target_object is the object which the robot hand directly manipulate
+        # target_object is the object which the robot hand directly manipulates
         self.target_object = target_object
         # env_object are contexual objects in the environment that target_object interacts with
 
     def move_object(self, pose):
-        print(f"Moving to {pose} with {self.target_object} grasped in hand")
+        print(f"Moving the {self.target_object} to {pose}")
         robot_controller.move_cart_pose(pose)
 
     def grasp(self):

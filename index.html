@@ -1139,23 +1139,23 @@
                         <div class="card-body">
                             <!-- Content of Full Demo Section -->
                             <h5 class="text-center">Keyframes and Reasoning</h5>
-                            <div class="col-md-12" id="skill-sequence-full-demo">
-                                <div class="SkillSequenceTextContainer" id="full-demo-text-container">
-                                    <div class="SkillSequenceImageContainer" id="full-demo-image-container">
-                                        <img class="SkillSequenceFrame" id="full-demo-frame" src="examples/experiments/skill_sequence/full_demo/frame_0.png" alt="Frame 0" style="width: 100%; height: auto; max-width: 400px;">
+                            <div class="col-md-12" id="skill-sequence-full-demo-cap">
+                                <div class="SkillSequenceTextContainer" id="full-demo-cap-text-container">
+                                    <div class="SkillSequenceImageContainer" id="full-demo-cap-image-container">
+                                        <img class="SkillSequenceFrame" id="full-demo-cap-frame" src="examples/experiments/skill_sequence/full_demo_cap/frame_0.png" alt="Frame 0" style="width: 100%; height: auto; max-width: 400px;">
                                     </div>
-                                    <div class="SkillSequenceResetContainer" id="full-demo-reset-container">
-                                        <button class="btn prevButton" id="full-demo-prevButton">Previous</button>
-                                        <button class="btn resetButton" id="full-demo-resetButton">Reset</button>
-                                        <button class="btn nextButton" id="full-demo-nextButton">Next</button>
+                                    <div class="SkillSequenceResetContainer" id="full-demo-cap-reset-container">
+                                        <button class="btn prevButton" id="full-demo-cap-prevButton">Previous</button>
+                                        <button class="btn resetButton" id="full-demo-cap-resetButton">Reset</button>
+                                        <button class="btn nextButton" id="full-demo-cap-nextButton">Next</button>
                                     </div>
-                                    <h5 id="full-demo-skill">Skill: move_object clip8</h5>
-                                    <h5 id="full-demo-reasoning">Because one of the robots is moving the cable towards the position of clip 8.</h5>
+                                    <h5 id="full-demo-cap-skill">Skill: grasp cap</h5>
+                                    <h5 id="full-demo-cap-reasoning">Because the tactile status is 'grasped' and the cap is in the robot's grip.</h5>
                                 </div>
                             </div>
                             <h5 class="mt-4 text-center">Demo Task Plan</h5>
-                            <div class="DemoPlanTextContainer" id="full-demo-plan-text-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
-                                <pre style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;" style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;"><code class="language-python" id="full-demo-plan" ></code></pre>
+                            <div class="DemoPlanTextContainer" id="full-demo-cap-plan-text-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
+                                <pre style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;" style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;"><code class="language-python" id="full-demo-cap-plan" ></code></pre>
                             </div>
                         </div>
                     </div>
@@ -1299,7 +1299,7 @@
                         <!-- First row -->
                         <div class="container d-flex flex-row justify-content-between">
                             <!-- Full Demo -->
-                            <div class="card mb-4 mt-4 text-dark bg-light skill-section border-end" id="full-demo-section" style="flex: 1; margin-right: 10px;">
+                            <div class="card mb-4 mt-4 text-dark bg-light skill-section border-end" id="full-demo-cap-section" style="flex: 1; margin-right: 10px;">
                                 <h6 class="card-header">Full Demo</h6>
                                 <!-- Video section -->
                                 <div class="video-container">
@@ -1392,7 +1392,10 @@
     <script src="examples/experiments/skill_sequence/full_demo.js"></script>
     <script src="examples/experiments/skill_sequence/without_object.js"></script>
     <script src="examples/experiments/skill_sequence/raw_video.js"></script>
-    <script src="examples/experiments/skill_sequence/skill_sequence_button.js"></script>
+    <script src="examples/experiments/skill_sequence/full_demo_cap.js"></script>
+    <script src="examples/experiments/skill_sequence/without_object_cap.js"></script>
+    <script src="examples/experiments/skill_sequence/raw_video_cap.js"></script>
+
     <script src="examples/skill_reasoning/keyframes_cable.js"></script>
     <script src="examples/skill_reasoning/keyframes_cap.js"></script>
     <script src="examples/skill_reasoning/task_cable.js"></script>

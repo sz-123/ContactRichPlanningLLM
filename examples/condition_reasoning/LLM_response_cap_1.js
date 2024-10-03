@@ -6,16 +6,16 @@ from perception import Perception
 robot_controller = Controller()
 perception = Perception()
 
+def is_at(pose):
+    # post-condition to check if the object is at the specified pose
+    pass
+
 def is_grasped():
     # post-condition to check if the object is grasped
     pass
 
-def is_at_pose(pose):
-    # post-condition to check if the object is at the specified pose
-    pass
-
-def is_hand_empty():
-    # post-condition to check if the robot's hand is empty
+def is_released():
+    # post-condition to check if the object is released
     pass
 
 def is_tightened():
@@ -31,7 +31,7 @@ class ObjectSkillLibrary:
 
     def move_object(self, pose):
         print(f"Moving to {pose} with {self.target_object} grasped in hand")
-        robot_controller.move_cart_pose(pose, success_condition=is_at_pose(pose))
+        robot_controller.move_cart_pose(pose, success_condition=is_at(pose))
 
     def grasp(self):
         print(f"Moving to grasp the {self.target_object}")
@@ -40,7 +40,7 @@ class ObjectSkillLibrary:
 
     def release(self):
         print(f"Opening the hand of the robot to release the {self.target_object}")
-        robot_controller.open_gripper(success_condition=is_hand_empty())
+        robot_controller.open_gripper(success_condition=is_released())
 
 class CapSkillLibrary(ObjectSkillLibrary):
     # Skill library for manipulating bottle cap
@@ -50,6 +50,7 @@ class CapSkillLibrary(ObjectSkillLibrary):
     def tighten(self):
         print(f"Tighten the {self.target_object}")
         robot_controller.screw(success_condition=is_tightened())
+
 `;
 
 // Insert the task description into the user-request-cable-container element
