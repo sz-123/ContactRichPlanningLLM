@@ -1,21 +1,37 @@
 // Define the task description as a JavaScript string
 var new_task_plan_cap= `
-# Initialize the skill library for the cap
+# Initialize the CapSkillLibrary
 cap_skill_library = CapSkillLibrary()
 
-# Define the sequence of actions for the new scenario
-bottle1_position = get_object_property('bottle1', 'position')
+# Grasp the inner cap
+cap_skill_library.target_object = 'inner_cap2'
+cap_skill_library.grasp()
 
-cap_skill_library.move_object(bottle1_position)
+# Move the inner cap to the bottle's position
+bottle_position = get_object_property('bottle2', 'position')
+cap_skill_library.move_object(bottle_position)
+cap_skill_library.release()
+
+# Tighten the inner cap
+for _ in range(3):  # Adjust the number of attempts as needed
+    inner_cap_skill_library.grasp()
+    inner_cap_skill_library.tighten()
+    inner_cap_skill_library.release()
+
+
+# Grasp the outer cap
+cap_skill_library.target_object = 'outer_cap2'
 cap_skill_library.grasp()
-cap_skill_library.tighten()
-cap_skill_library.open_hand()
-cap_skill_library.grasp()
-cap_skill_library.tighten()
-cap_skill_library.open_hand()
-cap_skill_library.grasp()
-cap_skill_library.tighten()
-cap_skill_library.open_hand()
+
+# Move the outer cap to the bottle's position
+cap_skill_library.move_object(bottle_position)
+cap_skill_library.release()
+
+# Tighten the outer cap
+for _ in range(3):  # Adjust the number of attempts as needed
+    inner_cap_skill_library.grasp()
+    inner_cap_skill_library.tighten()
+    inner_cap_skill_library.release()
 `;
 
 // Insert the task description into the user-request-cap-container element
