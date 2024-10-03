@@ -591,7 +591,7 @@
         
                     <div class="card mb-4 mt-4 text-dark bg-light">
                         <h5 class="card-header">Initial Skill Library</h5>
-                        <div class="card-body" id="original-skilllib" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
+                        <div class="card-body" id="original-skilllib-cap" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
                             <!-- Content -->
                         </div>
                     </div>
@@ -1232,38 +1232,20 @@
                     <div class="card mb-4 mt-4 text-dark bg-light">
                         <h5 class="card-header ">Updated Skills</h5>
                         <div class="card-body">
-                            <h5 class="shaded-title">Stretch</h5>
+                            <h5 class="shaded-title">Tighten</h5>
                             <div class="row justify-content-md-center mt-4">
                                 <div class="col-md-6 col-lg-6" style="position: relative; overflow: hidden;">
                                     <h6 style="text-align: center;">With F/T Sensor</h6>
-                                    <div class="card-body" id="stretch_w_ft" style="font-size: 15px; text-align: left; border: 0px solid #ccc;">
-                                    </div>
-                                    <div class="row">
-                                        <img src="imgs/stretch_ft.jpg" alt="F/T Measurement" style="margin-left: 50px;  margin-bottom: 20px; width: 80%; height: auto;">
-                                    </div> 
-                                </div>
-                                <div class="col-md-6 col-lg-6" style="position: relative; overflow: hidden; ">
-                                    <h6 style="text-align: center;">Without F/T Sensor</h6>
-                                    <div class="card-body" id="stretch_wo_ft" style="font-size: 15px; text-align: left; border: 0px solid #ccc;"> 
-                                    </div>
-                            </div>
-                
-                            <br>
-                            <h5 class="shaded-title">Insertion</h5>
-                            <div class="row justify-content-md-center mt-4">
-                                <div class="col-md-6 col-lg-6" style="position: relative; overflow: hidden;">
-                                    <h6 style="text-align: center;">With F/T Sensor</h6>
-                                    <div class="card-body" id="insert_both_w_ft" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
+                                    <div class="card-body" id="tighten_w_ft" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
                                     </div>
                                     <br>
                                     <div class="row">
-                                        <img src="imgs/insert_c_clip_ft.jpg" alt="F/T Measurement" style="width: 50%; height: auto;">
-                                        <img src="imgs/insert_u_clip_ft.jpg" alt="F/T Measurement" style="width: 50%; height: auto;">
+                                        <img src="imgs/tighten_w_ft.jpg" alt="F/T Measurement" style="width: 80%; height: auto;">
                                     </div> 
                                 </div>
                                 <div class="col-md-6 col-lg-6" style="position: relative; overflow: hidden; ">
                                     <h6 style="text-align: center;">Without F/T Sensor</h6>
-                                    <div class="card-body" id="insert_both_wo_ft" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
+                                    <div class="card-body" id="tighten_wo_ft" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
                                     </div>
                                 </div>
                             </div>
@@ -1289,6 +1271,7 @@
                 <div class="card mb-4 mt-4 text-dark bg-light">
                     <h5 class="card-header ">Plan in New Scenerios</h5>
                     <div class="card-body text-center">
+                        <!-- TODO CHANGE SRC -->
                         <img src="imgs/new_plan_cap_config.jpg" alt="new plan" style="width: 75%; height: auto;">
                     </div>
                 </div>   
@@ -1451,10 +1434,13 @@
     <script src="examples/prompt_skilllibTOPDDL/demo_plan_cap.js"></script>
     <script src="examples/toggle-cable-cap.js"></script>
     <script src="examples/original_skilllib.js"></script>
+    <script src="examples/original_skilllib_cap.js"></script>
     <script src="examples/stretch_w_ft.js"></script>
     <script src="examples/stretch_wo_ft.js"></script>
     <script src="examples/insert_both_w_ft.js"></script>
     <script src="examples/insert_both_wo_ft.js"></script>
+    <script src="examples/tighten_w_ft.js"></script>
+    <script src="examples/tighten_wo_ft.js"></script>
     <script src="examples/evaluation_task_planning/new_task_plan_cable.js"></script>
     <script src="examples/evaluation_task_planning/new_task_plan_cap.js"></script>
     <script src="examples/vertical_nav.js"></script>
