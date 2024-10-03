@@ -1275,32 +1275,41 @@
                         </div>
                     </div>
                     -->
-        
+
                     <div class="card mb-4 mt-4 text-dark bg-light">
-                        <h6 class="card-header ">Updated Tighten Skill</h6>
+                        <h6 class="card-header">Updated Tighten Skill</h6>
                         <div class="card-body">
-                            <!-- First row -->
                             <div class="container d-flex flex-row justify-content-between">
-                                <!-- With F/T -->
-                                <div class="card mb-4 mt-4 text-dark bg-light skill-section border-end" id="full-demo-section" style="flex: 1; margin-right: 10px;">
-                                    <h6  class="card-header">With F/T Sensor</h6>
-                                    <div class="card-body" id="tighten_w_ft" style="font-size: 15px; text-align: left; border: 0px solid #ccc;">
-                                    </div>
-                                    <!-- <div class="row">
-                                        <img src="imgs/tighten_w_ft.jpg" alt="F/T Measurement" style="margin-left: 50px;  margin-bottom: 20px; width: 80%; height: auto;">
-                                    </div>  -->
+                                <!-- Image section on the left -->
+                                <div class="mb-4 mt-4 text-dark skill-section" id="image-section" style="flex: 1; margin-right: 10px;">
+                                    <img src="imgs/tighten_w_ft.jpg" alt="F/T Measurement" style="width: 90%; height: auto; display: block;">
                                 </div>
-        
-                                 <!-- Without F/T -->
-                                 <div class="card mb-4 mt-4 text-dark bg-light skill-section border-end" id="full-demo-section" style="flex: 1; margin-right: 10px;">
-                                    <h6 class="card-header">Without F/T Sensor</h6>
-                                    <div class="card-body" id="tighten_wo_ft" style="font-size: 15px; text-align: left; border: 0px solid #ccc;"> 
+                            
+                                <!-- Code section on the right -->
+                                <div class="skill_update" style="flex: 1;">
+                                    <!-- With F/T Sensor Code Section (Initially Visible) -->
+                                    <div class="card mb-4 mt-4 text-dark bg-light skill-section border-end" id="tighten_w_ft_container">
+                                        <h6 class="card-header">With F/T Sensor</h6>
+                                        <div class="card-body" id="tighten_w_ft" style="font-size: 15px; text-align: left; border: 0px solid #ccc;"></div>
                                     </div>
+                
+                                    <div class="card mb-4 mt-4 text-dark bg-light skill-section border-end" id="tighten_wo_ft_container" style="display: none;">
+                                        <h6 class="card-header">Without F/T Sensor</h6>
+                                        <div class="card-body" id="tighten_wo_ft" style="font-size: 15px; text-align: left; border: 0px solid #ccc;">
+                                        </div>
+                                    </div>
+                            
+                                    <!-- Buttons to toggle views -->
+                                    <div class="d-flex justify-content-center mb-3">
+                                        <button id="beforeBtn_tighten_cap" class="btn prevButton_transition" onclick="showBefore_tighten_cap()">Before</button>
+                                        <button id="afterBtn_tighten_cap" class="btn nextButton_transition" onclick="showAfter_tighten_cap()">After</button>
+                                    </div>
+                                    
                                 </div>
-        
                             </div>
                         </div>
                     </div>
+                </div>
         
                 <div class="card mb-4 mt-4 text-dark bg-light">
                     <h6 class="card-header ">Success Rate</h6>
@@ -1499,6 +1508,7 @@
     <script src="examples/vertical_nav.js"></script>
     <script src="examples/eva_stretch_toggle.js"></script>
     <script src="examples/eva_insert_toggle.js"></script>
+    <script src="examples/eva_tighten_toggle.js"></script>
     
 </body>
 </html>
