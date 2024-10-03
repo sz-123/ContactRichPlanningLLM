@@ -34,8 +34,6 @@ const full_demo_cap_frames = [
     "examples/experiments/skill_sequence/full_demo_cap/frame_32.png",
 ];
 
-const common_skill_text = "Skill: ";
-
 const full_demo_cap_skills = [
     "grasp cap",
     "move_object cap bottle1",
@@ -81,7 +79,6 @@ const full_demo_cap_skills = [
     "idle"
 ];
 
-const common_reasoning_text = "Reasoning: ";
 
 const full_demo_cap_reasonings = ["Because the tactile status is 'grasped' and the cap is in the robot's grip.",
     "Because the robot is moving the cap towards the bottle while maintaining the 'grasped' status.",
