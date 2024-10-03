@@ -618,27 +618,41 @@
                     -->
 
                     <div class="card mb-4 mt-4 text-dark bg-light">
-                        <h6 class="card-header ">Updated Stretch Skill</h6>
+                        <h6 class="card-header">Updated Stretch Skill</h6>
                         <div class="card-body">
-                            <!-- First row -->
                             <div class="container d-flex flex-row justify-content-between">
-                                <!-- With F/T -->
-                                <div class="card mb-4 mt-4 text-dark bg-light skill-section border-end" id="full-demo-section" style="flex: 1; margin-right: 10px;">
-                                    <h6  class="card-header">With F/T Sensor</h6>
-                                    <div class="card-body" id="stretch_w_ft" style="font-size: 15px; text-align: left; border: 0px solid #ccc;">
-                                    </div>
-                                    <!-- <div class="row">
-                                        <img src="imgs/stretch_ft.jpg" alt="F/T Measurement" style="margin-left: 50px;  margin-bottom: 20px; width: 80%; height: auto;">
-                                    </div>  -->
+                                <!-- Image section on the left -->
+                                <div class="mb-4 mt-4 text-dark skill-section" id="image-section" style="flex: 1; margin-right: 10px;">
+                                    <img src="imgs/stretch_ft.jpg" alt="F/T Measurement" style="width: 90%; height: auto; display: block;">
                                 </div>
-
-                                 <!-- Without F/T -->
-                                 <div class="card mb-4 mt-4 text-dark bg-light skill-section border-end" id="full-demo-section" style="flex: 1; margin-right: 10px;">
-                                    <h6 class="card-header">Without F/T Sensor</h6>
-                                    <div class="card-body" id="stretch_wo_ft" style="font-size: 15px; text-align: left; border: 0px solid #ccc;"> 
+                            
+                                <!-- Code section on the right -->
+                                <div class="skill_update" style="flex: 1;">
+                                    <!-- With F/T Sensor Code Section (Initially Visible) -->
+                                    <div class="card mb-4 mt-4 text-dark bg-light skill-section border-end" id="stretch_w_ft_container">
+                                        <h6 class="card-header">With F/T Sensor</h6>
+                                        <div class="card-body" id="stretch_w_ft" style="font-size: 15px; text-align: left; border: 0px solid #ccc;"></div>
                                     </div>
+                            
+                                    <!-- Without F/T Sensor Code Section (Initially Hidden) -->
+                                    <!-- <div class="card-header" id="stretch_wo_ft_container" style="display: none;">
+                                        <h6 class="card-header">Without F/T Sensor</h6>
+                                        <div class="card-body" id="stretch_wo_ft" style="font-size: 15px; text-align: left; border: 0px solid #ccc;"></div>
+                                    </div> -->
+                
+                                    <div class="card mb-4 mt-4 text-dark bg-light skill-section border-end" id="stretch_wo_ft_container" style="display: none;">
+                                        <h6 class="card-header">Without F/T Sensor</h6>
+                                        <div class="card-body" id="stretch_wo_ft" style="font-size: 15px; text-align: left; border: 0px solid #ccc;">
+                                        </div>
+                                    </div>
+                            
+                                    <!-- Buttons to toggle views -->
+                                    <div class="d-flex justify-content-center mb-3">
+                                        <button id="beforeBtn_stretch_cable" class="btn prevButton_transition" onclick="showBefore_stretch_cable()">Before</button>
+                                        <button id="afterBtn_stretch_cable" class="btn nextButton_transition" onclick="showAfter_stretch_cable()">After</button>
+                                    </div>
+                                    
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -646,28 +660,37 @@
                     <div class="card mb-4 mt-4 text-dark bg-light">
                         <h6 class="card-header ">Updated Insert Skill</h6>
                         <div class="card-body">
-                            <!-- First row -->
-                            <div class="container d-flex flex-row justify-content-between">
-                                <!-- With F/T -->
-                                <div class="card mb-4 mt-4 text-dark bg-light skill-section border-end" id="full-demo-section" style="flex: 1; margin-right: 10px;">
-                                    <h6  class="card-header">With F/T Sensor</h6>
-                                    <div class="card-body" id="insert_both_w_ft" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
-                                    </div>
-                                    <br>
-                                    <!-- <div class="row">
-                                        <img src="imgs/insert_c_clip_ft.jpg" alt="F/T Measurement" style="width: 50%; height: auto;">
-                                        <img src="imgs/insert_u_clip_ft.jpg" alt="F/T Measurement" style="width: 50%; height: auto;">
-                                    </div>  -->
-                                </div>
-
-                                 <!-- Without F/T -->
-                                 <div class="card mb-4 mt-4 text-dark bg-light skill-section border-end" id="full-demo-section" style="flex: 1; margin-right: 10px;">
-                                    <h6 class="card-header">Without F/T Sensor</h6>
-                                    <div class="card-body" id="insert_both_wo_ft" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
+                            <div class="container d-flex flex-row justify-content-between" style="flex: 1 1 50%;">
+                                <!-- Image section on the left with two images -->
+                                <div class="mb-4 mt-4 text-dark skill-section" id="image-section" style="flex: 1; margin-right: 10px;">
+                                    <div class="row">
+                                        <img src="imgs/insert_c_clip_ft.jpg" alt="F/T Measurement C-Clip" style="width: 95%; height: auto;">
+                                        <img src="imgs/insert_u_clip_ft.jpg" alt="F/T Measurement U-Clip" style="width: 95%; height: auto;">
                                     </div>
                                 </div>
-
+                            
+                                <!-- Code section on the right -->
+                                <div class="skill_update" style="flex: 1;">
+                                    <!-- With F/T Sensor Code Section -->
+                                    <div class="card mb-4 mt-4 text-dark bg-light skill-section border-end" id="insert_w_ft_container" style="width: 580px; height: auto;">
+                                        <h6 class="card-header">With F/T Sensor</h6>
+                                        <div class="card-body" id="insert_w_ft" style="font-size: 15px; text-align: left; height: auto; overflow-y: auto; border: 0px solid #ccc;"></div>
+                                    </div>
+                            
+                                    <!-- Without F/T Sensor Code Section (Initially Hidden) -->
+                                    <div class="card mb-4 mt-4 text-dark bg-light skill-section border-end" id="insert_wo_ft_container" style="width: 580px;display: none;">
+                                        <h6 class="card-header">Without F/T Sensor</h6>
+                                        <div class="card-body" id="insert_wo_ft" style="font-size: 15px; text-align: left; height: auto; overflow-y: auto; border: 0px solid #ccc;"></div>
+                                    </div>
+                            
+                                    <!-- Buttons to toggle views -->
+                                    <div class="d-flex justify-content-center mb-3">
+                                        <button id="beforeBtn_insert_cable" class="btn prevButton_transition" onclick="showBefore_insert_cable()">Before</button>
+                                        <button id="afterBtn_insert_cable" class="btn nextButton_transition" onclick="showAfter_insert_cable()">After</button>
+                                    </div>
+                                </div>
                             </div>
+                            
                         </div>
                     </div>
                 
@@ -1474,13 +1497,15 @@
     <script src="examples/original_skilllib_cap.js"></script>
     <script src="examples/stretch_w_ft.js"></script>
     <script src="examples/stretch_wo_ft.js"></script>
-    <script src="examples/insert_both_w_ft.js"></script>
-    <script src="examples/insert_both_wo_ft.js"></script>
+    <script src="examples/insert_w_ft.js"></script>
+    <script src="examples/insert_wo_ft.js"></script>
     <script src="examples/tighten_w_ft.js"></script>
     <script src="examples/tighten_wo_ft.js"></script>
     <script src="examples/evaluation_task_planning/new_task_plan_cable.js"></script>
     <script src="examples/evaluation_task_planning/new_task_plan_cap.js"></script>
     <script src="examples/vertical_nav.js"></script>
+    <script src="examples/eva_stretch_toggle.js"></script>
+    <script src="examples/eva_insert_toggle.js"></script>
     
 </body>
 </html>

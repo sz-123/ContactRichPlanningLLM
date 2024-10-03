@@ -112,3 +112,23 @@ pre {
 code {
     background-color: inherit;
 }
+
+
+.prevButton_transition,
+.nextButton_transition {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
+    margin-left: 25px;
+    margin-right: 25px;
+
+    padding: 8px;
+    width: 90 px;
+    height: 25px;
+    font-size: 12px;
+    text-align: center;
+    box-sizing: border-box;
+    border: 2px solid #000; /* 添加黑色边框 */
+    border-radius: 5px; /* 圆角效果，可选 */
+}
