@@ -27,4 +27,4 @@ var secondTaskElement = document.createElement('p');
 secondTaskElement.innerHTML = new_task_cable_2.trim().replace(/\n/g, '<br>');
 
 // Append the second task description to the container
-document.getElementById('new-task-cable-container').appendChild(secondTaskElement);
+// document.getElementById('new-task-cable-container').appendChild(secondTaskElement);

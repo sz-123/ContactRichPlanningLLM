@@ -1,25 +1,29 @@
 // Define the task description as a JavaScript string
 var new_task_plan_cable= `
+# Initialize the CableSkillLibrary
 cable_skill_library = CableSkillLibrary()
 
-# Executable plan to mount the cable onto all clips from right to left
-cable_skill_library.move_object(get_object_property('clip8', 'position'))
-cable_skill_library.grasp()
-cable_skill_library.stretch()
-cable_skill_library.insert(get_object_property('clip8', 'insertion_direction'), 'clip8')
-cable_skill_library.open_hand()
-
+# Executable plan
+# Clip 5
 cable_skill_library.move_object(get_object_property('clip5', 'position'))
 cable_skill_library.grasp()
 cable_skill_library.stretch()
-cable_skill_library.insert(get_object_property('clip5', 'insertion_direction'), 'clip5')
-cable_skill_library.open_hand()
+cable_skill_library.insert(get_object_property('clip5', 'insertion_direction'), 'clip5', get_object_property('clip5', 'clip_type'))
+cable_skill_library.release()
 
-cable_skill_library.move_object(get_object_property('clip0', 'position'))
+# Clip 6
+cable_skill_library.move_object(get_object_property('clip6', 'position'))
 cable_skill_library.grasp()
 cable_skill_library.stretch()
-cable_skill_library.insert(get_object_property('clip0', 'insertion_direction'), 'clip0')
-cable_skill_library.open_hand()
+cable_skill_library.insert(get_object_property('clip6', 'insertion_direction'), 'clip6', get_object_property('clip6', 'clip_type'))
+cable_skill_library.release()
+
+# Clip 8
+cable_skill_library.move_object(get_object_property('clip8', 'position'))
+cable_skill_library.grasp()
+cable_skill_library.stretch()
+cable_skill_library.insert(get_object_property('clip8', 'insertion_direction'), 'clip8', get_object_property('clip8', 'clip_type'))
+cable_skill_library.release()
 `;
 
 // Insert the task description into the user-request-cap-container element

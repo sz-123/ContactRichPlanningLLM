@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const showCapBtn = document.getElementById("show-cap-btn");
     const cableContainer = document.getElementById("cable-experiment-container");
     const capContainer = document.getElementById("cap-experiment-container");
+    const cableSidebar = document.getElementById("cable-experiment-sidebar");
+    const capSidebar = document.getElementById("cap-experiment-sidebar");
 
     // Function to reset button highlights
     function resetButtonHighlight() {
@@ -10,24 +12,28 @@ document.addEventListener("DOMContentLoaded", function() {
         showCapBtn.classList.remove("show-btn-active");
     }
 
-    // Function to hide both containers
-    function hideBothContainers() {
+    // Function to hide both containers and sidebars
+    function hideBothContainersAndSidebars() {
         cableContainer.style.display = "none";
         capContainer.style.display = "none";
+        cableSidebar.style.display = "none";
+        capSidebar.style.display = "none";
     }
 
-    // Show Cable Container and highlight button
+    // Show Cable Container and Sidebar, highlight button
     showCableBtn.addEventListener("click", function() {
-        hideBothContainers();
+        hideBothContainersAndSidebars();
         cableContainer.style.display = "block";
+        cableSidebar.style.display = "block";
         resetButtonHighlight();
         showCableBtn.classList.add("show-btn-active");
     });
 
-    // Show Cap Container and highlight button
+    // Show Cap Container and Sidebar, highlight button
     showCapBtn.addEventListener("click", function() {
-        hideBothContainers();
+        hideBothContainersAndSidebars();
         capContainer.style.display = "block";
+        capSidebar.style.display = "block";
         resetButtonHighlight();
         showCapBtn.classList.add("show-btn-active");
     });

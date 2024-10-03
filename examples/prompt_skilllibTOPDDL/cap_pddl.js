@@ -2,33 +2,31 @@
 var capPDDL= `
 (define (domain robot_skills)
   (:requirements :strips :typing)
-  (:types 
-    object
-    pose
-  )
-  (:predicates 
-    (at ?obj - object ?p - pose)
+  (:types object)
+  (:predicates
+    (at ?obj - object ?pose - pose)
     (grasped ?obj - object)
-    (hand_open)
+    (released ?obj - object)
+    (tightened ?obj - object)
   )
   (:action move_object
-    :parameters (?obj - object ?p - pose)
-    :precondition (and (grasped ?obj))
-    :effect (at ?obj ?p)
+    :parameters (?obj - object ?pose - pose)
+    :precondition (and (at ?obj ?current_pose))
+    :effect (and (not (at ?obj ?current_pose)) (at ?obj ?pose))
   )
   (:action grasp
     :parameters (?obj - object)
-    :precondition (and (not (grasped ?obj)) (hand_open))
-    :effect (and (grasped ?obj) (not (hand_open)))
+    :precondition (and (at ?obj ?pose))
+    :effect (and (grasped ?obj) (not (released ?obj)))
   )
-  (:action open_hand
-    :parameters ()
-    :precondition (grasped ?obj)
-    :effect (and (hand_open) (not (grasped ?obj)))
+  (:action release
+    :parameters (?obj - object)
+    :precondition (and (grasped ?obj))
+    :effect (and (released ?obj) (not (grasped ?obj)))
   )
   (:action tighten
     :parameters (?obj - object)
-    :precondition (grasped ?obj)
+    :precondition (and (grasped ?obj))
     :effect (tightened ?obj)
   )
 )

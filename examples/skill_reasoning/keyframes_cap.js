@@ -32,7 +32,6 @@ const keyframes_cap_frames = [
     "examples/experiments/skill_sequence/full_demo_cap/frame_30.png",
     "examples/experiments/skill_sequence/full_demo_cap/frame_31.png",
     "examples/experiments/skill_sequence/full_demo_cap/frame_32.png",
-    "examples/experiments/skill_sequence/full_demo_cap/frame_33.png"
 
 ];
 
