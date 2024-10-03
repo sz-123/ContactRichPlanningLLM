@@ -90,7 +90,6 @@ const raw_video_cap_reasonings = ["Because the robot on the right is moving the 
 ];
 
 const raw_video_cap_demo_plan =`
-TODO CHECK
 # Initialize the CapSkillLibrary
 cap_skill_library = CapSkillLibrary()
 

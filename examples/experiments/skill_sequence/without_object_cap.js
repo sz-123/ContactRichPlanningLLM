@@ -154,7 +154,7 @@ prevButton_withoutOb_cap.addEventListener('click', () => {
 });
 
 nextButton_withoutOb_cap.addEventListener('click', () => {
-    if (currentFrame_without_object_cap < without_object_frames.length - 1) {
+    if (currentFrame_without_object_cap < without_object_cap_frames.length - 1) {
         currentFrame_without_object_cap++;
         updateFrame_withoutOb_cap();
     }
@@ -169,5 +169,5 @@ resetButton_withoutOb_cap.addEventListener('click', () => {
 updateFrame_withoutOb_cap();
 
 const planElement_withoutOb_cap = document.getElementById('without-object-cap-plan');
-planElement_withoutOb_cap.textContent = without_object_demo_plan; // Use textContent to preserve formatting
+planElement_withoutOb_cap.textContent = without_object_cap_demo_plan; // Use textContent to preserve formatting
 Prism.highlightElement(planElement_withoutOb_cap); // Apply Prism.js highlighting
