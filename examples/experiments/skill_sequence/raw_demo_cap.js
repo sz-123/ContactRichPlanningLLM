@@ -75,7 +75,8 @@ const raw_video_cap_skills = [
 
 
 
-const raw_video_cap_reasonings = ["Because the robot on the right is moving the cable towards clip8.",
+const raw_video_cap_reasonings = [
+"Because the robot on the right is moving the cable towards clip8.",
 "Because the robot on the right continues to move the cable towards clip8.",
 "Because the robot on the right is still moving the cable towards clip8.",
 "Because the robot on the right is inserting the cable into clip8 in the downward direction.",
