@@ -52,72 +52,7 @@
     </style>
 </head>
 <body>
-    <div class="container" id="main">
-        <div class="row mt-4">
-            <h2 class="col-md-12 text-center">
-                <b>Learning Task Planning from Multi-Modal Demonstration</b><br>
-                <b>for Multi-Stage Contact-Rich Manipulation</b>
-            </h2>
-        </div>
-        
-        <div class="row justify-content-md-center">
-            <!-- <h4 class="mt-4 mb-2 text-center">
-                Kejia Chen<sup>*</sup>, Zheng Shen<sup>*</sup>, Yue Zhang, Lingyun Chen, Fan Wu, Zhenshan Bing, Sami Haddadin, Alois Knoll
-            </h4> -->
-            <p class="text-justify">
-                Large Language Models (LLMs) have gained popularity in task planning for long-horizon manipulation tasks. 
-                To enhance the validity of LLM-generated plans, visual demonstrations and online videos have been widely employed to guide the planning process. 
-                However, for manipulation tasks involving subtle movements but rich contact interactions, visual perception alone may be insufficient for the LLM to fully interpret the demonstration. 
-                Additionally, visual data provides limited information on force-related parameters and conditions, which are crucial for effective execution on real robots.
-            </p>
-            <p class="text-justify">
-                We introduce an in-context learning framework that incorporates tactile and force-torque information from human demonstrations to enhance LLMs' ability to generate plans for new task scenarios. 
-                We propose a bootstrapped reasoning pipeline that sequentially integrates each modality into a comprehensive task plan. 
-                This task plan is then used as a reference for planning in new task configurations.
-                Real-world experiments on two different sequential manipulation tasks demonstrate the effectiveness of our framework in improving LLMs' understanding of multi-modal demonstrations and enhancing the overall planning performance.
-            </p>
-            
-            <p style="text-align:center;">
-                <image src="imgs/overview_simplified.jpg" width="90%">
-            </p>
-
-            <p style="text-align:center;">
-                <iframe width="1000" height="650" src="https://www.youtube.com/embed/FFRWuQ1hNHY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </p>
-        </div>  
-
-        <h3 class="mt-4 mb-2 text-center">
-            <b>In-context Learning Framework</b>
-        </h3>
-
-        <h5 class="mt-4 mb-2 text-align:left">
-            We deploy our framework to two sequential manipulation tasks. <br>
-            <b style="color: chocolate;">Click on each of the image below to view the corresponding workflow and experiment results.</b>
-        </h5>
-
-        <!-- Container Toggle Button Cable/Cap -->
-        <div class="button-container text-center">
-            <!-- Cable Mounting Button -->
-            <div class="btn toggle-btn" id="show-cable-btn">
-                <div class="btn-content">
-                    <img src="imgs/button/skill_reasoning_cable.jpg" alt="Toggle Cable" style="width: 500px; height: 300px;">
-                    <h5 class="mt-2">
-                        <i class="fas fa-hand-pointer"></i> Cable Mounting
-                    </h5>
-                </div>
-            </div>
-
-            <!-- Cap Tightening Button -->
-            <div class="btn toggle-btn" id="show-cap-btn">
-                <div class="btn-content">
-                    <img src="imgs/button/skill_reasoning_cap.png" alt="Toggle Cap" style="width: 500px; height: 300px;">
-                    <h5 class="mt-2">
-                        <i class="fas fa-hand-pointer"></i> Cap Tightening
-                    </h5>
-                </div>
-            </div>
-        </div>
-
+    <div class="flex-container">
         <!-- Cable Mounting Sidebar -->
         <div id="cable-experiment-sidebar" class="vertical-nav">
             <ul class="nav flex-column">
@@ -142,10 +77,10 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#eva-demo-reasoning-cable-container">Evaluation on Demonstration Reasoning</a>
+                            <a class="nav-link" href="#eva-demo-reasoning-cable-container">Eval on Demo Reasoning</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#eva-task-planning-cable-container">Evaluation on Task Planning</a>
+                            <a class="nav-link" href="#eva-task-planning-cable-container">Eval on Task Planning</a>
                         </li>
                     </ul>
                 </li>
@@ -176,1260 +111,1324 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#eva-demo-reasoning-cap-container">Evaluation on Demonstration Reasoning</a>
+                            <a class="nav-link" href="#eva-demo-reasoning-cap-container">Eval on Demo Reasoning</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#eva-task-planning-cap-container">Evaluation on Task Planning</a>
+                            <a class="nav-link" href="#eva-task-planning-cap-container">Eval on Task Planning</a>
                         </li>
                     </ul>
                 </li>
             </ul>
         </div>
-
         
-        
-        
-
-
-        <!-- Container Cable -->
-        <div class="container" id="cable-experiment-container" >
-            <h5 class="mt-4 mb-2 text-left">
-                <b>1. Pre-processing</b>
-            </h5>
-            <hr>
-            <div class="row" id="cable-preprocessing-container">
-                <!-- First Container: segmentation-cable-container -->
-                <div class="col-md-6 border-end" id="segmentation-cable-container">
-                    <h5 class="mt-4 mb-2 text-center">
-                        Segmentation with Object Status
-                    </h5>
-                    <div class="mt-4 col-md-12">
-                        <div class="d-flex justify-content-center">
-                            <img id="img-segmentation" src="imgs/segmentation.png" alt="Segmentation Image" width="70%">
-                        </div>
-                    </div>
-
-                    <!-- Four videos of tactile signal pattern -->
-                    <div class="row mt-4">
-                        <div class="col-md-3">
-                            <h6 style="text-align: center;">Compression</h6>
-                            <video id="v3" width="100%" preload="metadata" playsinline muted loop autoplay disablePictureInPicture>
-                                <source src="examples/method/compression_21_2024_05_21_26_force_tactile_post.mp4" type="video/mp4">
-                            </video>
-                            <h6 style="text-align: center;"> Object status: grasped</h6>
-                        </div>
-                        <div class="col-md-3">
-                            <h6 style="text-align: center;">Decompression</h6>
-                            <video id="v4" width="100%" preload="metadata" playsinline muted loop autoplay disablePictureInPicture>
-                                <source src="examples/method/decompression_19_2024_05_21_12_force_tactile_post.mp4" type="video/mp4">
-                            </video>
-                            <h6 style="text-align: center;"> Object status: released</h6>
-                        </div>
-                        <div class="col-md-3">
-                            <h6 style="text-align: center;">Linear Force</h6>
-                            <video id="v5" width="100%" preload="metadata" playsinline muted loop autoplay disablePictureInPicture>
-                                <source src="examples/method/linear_force_0_2024_05_21_14_force_tactile_post.mp4" type="video/mp4">
-                            </video>
-                            <h6 style="text-align: center;"> Object status: under a linear force</h6>
-                        </div>
-                        <div class="col-md-3">
-                            <h6 style="text-align: center;">Rotational Force</h6>
-                            <video id="v6" width="100%" preload="metadata" playsinline muted loop autoplay disablePictureInPicture>
-                                <source src="examples/method/rotational_force_11_2024_08_06_1_force_tactile_post.mp4" type="video/mp4">
-                            </video>
-                            <h6 style="text-align: center;"> Object status: under torque</h6>
-                        </div>
-                    </div>
-
-                    <p>We fine-tune the video classifier <i>TimeSformer</i> with a dataset of labeled tactile videos. Applying this classifier to
-                        the complete demonstration then segments it into events
-                        when new interaction happens.</p>
-
-                    <div class="card mb-4 mt-4 text-dark bg-light Keyframes-section" id="keyframes-cable-section">
-                        <h6 class="card-header">Key Camera Frames</h6>
-                        <div class="card-body">
-                            <div class="col-md-12" id="keyframes-cable">
-                                <div class="SkillSequenceTextContainer" id="keyframes-cable-container">
-                                    <div class="SkillSequenceImageContainer" id="keyframes-cable-container">
-                                        <img class="SkillSequenceFrame" id="keyframes-cable-frame" src="examples/experiments/skill_sequence/without_object/" alt="Frame 0" style="width: 90%; height: auto;">
-                                    </div>
-                                    <div class="SkillSequenceResetContainer" id="keyframes-cable-container">
-                                        <button class="btn prevButton" id="keyframes-cable-prevButton">Previous</button>
-                                        <button class="btn resetButton" id="keyframes-cable-resetButton">Reset</button>
-                                        <button class="btn nextButton" id="keyframes-cable-nextButton">Next</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Second Container: pddl-cable-container -->
-                <div class="col-md-6" id="pddl-cable-container">
-                    <h5 class="mt-4 mb-2 text-center">
-                        Pre-processing Translation
-                    </h5>
-                    <div class="mt-4 col-md-12">
-                        <div class="d-flex justify-content-center">
-                            <img id="img-translation" src="imgs/translation.png" alt="Transition Image" width="60%">
-                        </div>
-                    </div>
-
-                    <!-- Cable Skill Lib Container -->
-                    <div class="card mb-4 mt-4 text-dark bg-light" id="cable-skilllib-section">
-                        <h6 class="card-header" style="text-align: left;"><i class="fas fa-user"></i> User Input (Skill Library)</h6>
-                        <div class="card-body" id="cable-skilllib-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
-                            <!-- The Skill Library will be inserted here by JavaScript -->
-                        </div>
-                    </div>
-
-                    <!-- Cable Skill Lib User Request Container -->
-                    <div class="card mb-4 mt-4 text-dark bg-light" id="cable-skilllib-user-section">
-                        <h6 class="card-header" style="text-align: left;">
-                            <i class="fas fa-user"></i> User Request
-                        </h6>
-                        <div class="card-body" id="cable-skilllib-user-container" style="font-size: 15px; text-align: left; height: 180px; overflow-y: scroll; border: 0px solid #ccc;">
-                            <!-- The Translate prompt will be inserted here by JavaScript -->
-                        </div>
-                    </div>
-
-                    <!-- Cable PDDL Container -->
-                    <div class="card mb-4 mt-4 text-dark bg-light" id="cable-pddl-section">
-                        <h6 class="card-header" style="text-align: left;"><i class="fas fa-robot"></i> LLM Response (PDDL Domain)</h6>
-                        <div class="card-body" id="cable-pddl-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
-                            <!-- The Skill Library will be inserted here by JavaScript -->
-                        </div>
-                    </div>
-
-                </div>
+        <!-- Main Content -->
+        <div class="container" id="main">
+            <div class="row mt-4">
+                <h2 class="col-md-12 text-center">
+                    <b>Learning Task Planning from Multi-Modal Demonstration</b><br>
+                    <b>for Multi-Stage Contact-Rich Manipulation</b>
+                </h2>
             </div>
-
-
-
-            <!-- Cable Skill Reasoning Container -->
-            <h5 class="mt-4 mb-2 text-left">
-                <b>2. Skill Reasoning</b>
-            </h5>
-            <hr>
-
-            <div class="d-flex justify-content-center mt-4">
-                <img id="img-skill" src="imgs/skill_reasoning.png" alt="Skill Reasoning Image" width="35%">
-            </div>
-
-            <div class="container" id="cable-skill-container" style="width: 90%; margin: 0 auto;">
-                <div class="request-response-pair-skill-cable" id="cable-skill-reasoning-1-container">
-                    <!-- <h5 class="mt-4 mb-2 text-center"> Step1. Extraction of Demo Skill Sequence</h5> -->
-
-                    <!-- Task Description -->
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="card mb-4 mt-2 text-dark bg-light" id="task-description-section">
-                                <h6 class="card-header" style="text-align: left;">
-                                    <i class="fas fa-user"></i> 1. User Input (Demo Task Description)
-                                </h6>
-                                <div class="card-body" id="task-cable-container" style="font-size: 15px; text-align: left; height: 150px; overflow-y: scroll; border: 0px solid #ccc;">
-                                    <!-- The Task Description will be inserted here by JavaScript -->
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- User Request -->
-                        <div class="col-md-6">
-                        <div class="card mb-4 mt-2 text-dark bg-light" id="user-request-section">
-                            <h6 class="card-header" style="text-align: left;">
-                                <i class="fas fa-user"></i> 1. User Request
-                            </h6>
-                            <div class="card-body" id="user-request-cable-container" style="font-size: 15px; text-align: left; height: 150px; overflow-y: scroll; border: 0px solid #ccc;">
-                                <!-- The User Request will be inserted here by JavaScript -->
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-
-                    <!-- LLM Response -->
-                    <!-- Demo Skill Sequence -->
-                    <div class="card mb-4 text-dark bg-light" id="skill-sequence-section">
-                        <h6 class="card-header"><i class="fas fa-robot"></i> 1. LLM Response (Demo Skill Sequence)</h6>
-                        <div class="card-body" id="skill-sequence-cable-container" style="font-size: 15px; text-align: left; height: 220px; overflow-y: scroll; border: 1px solid #ccc;">
-                            <!-- The Demo Skill Sequence will be inserted here by JavaScript -->
-                        </div>
-                    </div>
-                </div>
-
-                <div class="request-response-pair-skill-cable" id="cable-skill-reasoning-2-container"> 
-                    <!-- <h5 class="mt-4 mb-2 text-center"> Step2: Update Skill Sequence with Parameters</h5> -->
-                    <div class="card mb-4 text-dark bg-light" id="user-request-condition-cable-4-section">
-                        <h6 class="card-header" style="text-align: left;">
-                            <i class="fas fa-user"></i> 2. User Request
-                        </h6>
-                        <div class="card-body" id="user-request-condition-cable-4-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
-                            <!-- The User Request will be inserted here by JavaScript -->
-                        </div>
-                    </div>
-
-                    <!-- Demo Plan -->    
-                    <div class="card mb-4 text-dark bg-light" id="demo-plan-section">
-                        <h6 class="card-header"> <i class="fas fa-robot"></i> 2. LLM Response (Demo Skill Sequence)</h6>
-                        <div class="card-body" id="demo-plan-cable-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 1px solid #ccc;">
-                            <!-- The Demo Plan will be inserted here by JavaScript -->
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Prev and Next Request Buttons -->
-                <div style="display: flex; justify-content: center; margin-top: 20px;">
-                    <button id="cable-skill-prev-request-btn" class="btn prevButton_cable_skill" style="flex: 0.1; margin-left: 15px; margin-right: 20px; padding: 2px; font-size: 15px; width: 30px; height: 30px;border: 1px solid #000; border-radius: 5px; ">Prev Request</button>
-                    <button id="cable-skill-next-request-btn" class="btn nextButton_cable_skill" style="flex: 0.1; margin-left: 20px; margin-right: 15px; padding: 2px; font-size: 15px; width: 30px; height: 30px;border: 1px solid #000; border-radius: 5px; ">Next Request</button>
-                </div>
-            </div>
-            <br>
-
-
-
-
-            <!-- Cable Condition Reasoning Container -->
-            <h5 class="mt-4 mb-2 text-left">
-                <b>3. Condition Reasoning</b>
-            </h5>
-            <hr>
-            <div class="container" id="cable-condition-reasoning-section">
-
-                <div class="d-flex justify-content-center">
-                    <div class="d-flex justify-content-center mt-4">
-                        <img id="img-condition" src="imgs/condition_reasoning.png" alt="Condition Reasoning Image" width="35%">
-                    </div>
-                </div>
-
-                <div class="row" id="cable-condition-reasoning-container">
-                    <!-- First Container: pre/post-condition-cable-container -->
-                    <div class="container" id="prepost-condition-cable-container" style="width: 90%; margin: 0 auto;">
-                        <!-- Request/Response Containers -->
-                        <div class="request-response-container">
-                            <!-- First User Request and Response -->
-                            <div class="request-response-pair" id="request-response-1">
-                                <div class="card mb-4 mt-4 text-dark bg-light" id="user-request-condition-cable-section">
-                                    <h6 class="card-header" style="text-align: left;">
-                                        <i class="fas fa-user"></i> 1. User Request
-                                    </h6>
-                                    <div class="card-body" id="user-request-condition-cable-1-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
-                                        <!-- Content -->
-                                    </div>
-                                </div>
-                                <div class="card mb-4 mt-4 text-dark bg-light" id="LLM-response-condition-cable-1-section">
-                                    <h6 class="card-header"><i class="fas fa-robot"></i> 1. LLM Response</h6>
-                                    <div class="card-body" id="LLM-response-condition-cable-1-container" style="font-size: 15px; text-align: left; height: 400px; overflow-y: scroll; border: 0px solid #ccc;">
-                                        <!-- Content -->
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Second User Request and Response -->
-                            <div class="request-response-pair" id="request-response-2" style="display: none;">
-                                <div class="card mb-4 mt-4 text-dark bg-light" id="user-request-condition-cable-section">
-                                    <h6 class="card-header" style="text-align: left;">
-                                        <i class="fas fa-user"></i> 2. User Request
-                                    </h6>
-                                    <div class="card-body" id="user-request-condition-cable-2-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
-                                        <!-- Content -->
-                                    </div>
-                                </div>
-                                <div class="card mb-4 mt-4 text-dark bg-light" id="LLM-response-condition-cable-2-section">
-                                    <h6 class="card-header"><i class="fas fa-robot"></i> 2. LLM Response</h6>
-                                    <div class="card-body" id="LLM-response-condition-cable-2-container" style="font-size: 15px; text-align: left; height: 400px; overflow-y: scroll; border: 0px solid #ccc;">
-                                        <!-- Content -->
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Third User Request and Response -->
-                            <div class="request-response-pair" id="request-response-3" style="display: none;">
-                                <div class="card mb-4 mt-4 text-dark bg-light" id="user-request-condition-cable-section">
-                                    <h6 class="card-header" style="text-align: left;">
-                                        <i class="fas fa-user"></i> 3. User Request（Skill F/T Signals）
-                                    </h6>
-                                    <div class="card-body" id="user-request-condition-cable-3-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
-                                        <!-- Content -->
-                                    </div>
-                                </div>
-                                <div class="card mb-4 mt-4 text-dark bg-light" id="LLM-response-condition-cable-3-section">
-                                    <h6 class="card-header"><i class="fas fa-robot"></i> 3. LLM Response (Demo Task Plan)</h6>
-                                    <div class="card-body" id="LLM-response-condition-cable-3-container" style="font-size: 15px; text-align: left; height: 400px; overflow-y: scroll; border: 0px solid #ccc;">
-                                        <!-- Content -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Prev and Next Request Buttons -->
-                        <div style="display: flex; justify-content: center; margin-top: 20px;">
-                            <button id="cable-condition-prev-request-btn" class="btn prevButton_cable" style="flex: 0.1; margin-left: 15px; margin-right: 20px; padding: 2px; font-size: 15px; width: 30px; height: 30px;border: 1px solid #000; border-radius: 5px; ">Prev Request</button>
-                            <button id="cable-condition-next-request-btn" class="btn nextButton_cable" style="flex: 0.1; margin-left: 15px; margin-right: 20px; padding: 2px; font-size: 15px; width: 30px; height: 30px;border: 1px solid #000; border-radius: 5px; ">Next Request</button>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-
-            <!-- Cable Task Planning Container -->
-            <h5 class="mt-4 mb-2 text-left">
-                <b>4. Task Planning</b>
-            </h5>
-            <hr>
-            <div class="container" id="cable-task-planning-container">
-
-                <div class="d-flex justify-content-center">
-                    <div class="d-flex justify-content-center mt-4">
-                        <img id="img-task" src="imgs/task_planning.png" alt="Task Planning Image" width="35%">
-                    </div>
-                </div>
-                
-                <div class="container" id="cable-new-plan-container" style="width: 90%; margin: 0 auto;">
-                    <div class="row">
-                    <!-- User Request and Response -->
-                    <div class="col-md-5">
-                        <div class="card mb-4 text-dark bg-light" id="user-request-task-cable-section">
-                            <h6 class="card-header" style="text-align: left;">
-                                <i class="fas fa-user"></i> User Request
-                            </h6>
-                            <div class="card-body" id="task-planning-user-request-cable-container" style="font-size: 15px; text-align: left; height: 250px; overflow-y: scroll; border: 0px solid #ccc;">
-                                <!-- Content -->
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-md-7">
-                        <!-- Demo Task Plan -->
-                        <div class="card mb-4 mt-2 text-dark bg-light" id="demo-task-plan-cable-section">
-                            <h6 class="card-header"><i class="fas fa-user"></i> User Input (Demo Task Plan)</h6>
-                            <div class="card-body" id="demo-task-plan-cable-container" style="font-size: 15px; text-align: left; height: 250px; overflow-y: scroll; border: 0px solid #ccc;">
-                                <!-- The Task Plan Description will be inserted here by JavaScript -->
-                            </div>
-                        </div>
-                    </div>
-
-                    </div>
-
-
-                    <div class="card mb-4 mt-2 text-dark bg-light" id="LLM-response-task-cable-1-section-new">
-                        <h6 class="card-header"><i class="fas fa-robot"></i> LLM Response (New Task Plan)</h6>
-                        <div class="card-body" id="task-planning-new-cable-container" style="font-size: 15px; text-align: left; height: 300px; overflow-y: scroll; border: 0px solid #ccc;">
-                            <!-- Content -->
-                        </div>
-                    </div>
-                </div>
-
-
-
-            </div>
-
-
-            <br><br>
             
-
-            <div class="container" id="eva-demo-reasoning-cable-container">
-                <h3 class="mt-4 mb-2 text-center">
-                    <b>Evaluation on Demonstration Reasoning</b>
-                </h3>
+            <div class="row justify-content-md-center">
+                <!-- <h4 class="mt-4 mb-2 text-center">
+                    Kejia Chen<sup>*</sup>, Zheng Shen<sup>*</sup>, Yue Zhang, Lingyun Chen, Fan Wu, Zhenshan Bing, Sami Haddadin, Alois Knoll
+                </h4> -->
+                <p class="text-justify">
+                    Large Language Models (LLMs) have gained popularity in task planning for long-horizon manipulation tasks. 
+                    To enhance the validity of LLM-generated plans, visual demonstrations and online videos have been widely employed to guide the planning process. 
+                    However, for manipulation tasks involving subtle movements but rich contact interactions, visual perception alone may be insufficient for the LLM to fully interpret the demonstration. 
+                    Additionally, visual data provides limited information on force-related parameters and conditions, which are crucial for effective execution on real robots.
+                </p>
+                <p class="text-justify">
+                    We introduce an in-context learning framework that incorporates tactile and force-torque information from human demonstrations to enhance LLMs' ability to generate plans for new task scenarios. 
+                    We propose a bootstrapped reasoning pipeline that sequentially integrates each modality into a comprehensive task plan. 
+                    This task plan is then used as a reference for planning in new task configurations.
+                    Real-world experiments on two different sequential manipulation tasks demonstrate the effectiveness of our framework in improving LLMs' understanding of multi-modal demonstrations and enhancing the overall planning performance.
+                </p>
+                
+                <p style="text-align:center;">
+                    <image src="imgs/overview_simplified.jpg" width="90%">
+                </p>
     
-                <div class="mt-4">
-                    <p>We present real-world experiments to evaluate the effectiveness of our demonstration reasoning pipeline and planning results for new tasks. This evaluation is conducted through ablation study: by disabling or replacing certain parts in our framework, we design the following control groups.</p>
-                    
-                    <div class="mt-4" style="padding-left: 30px;">
-                    <p><b>A. Transition Frames Without Object Status:</b> Key frames in our demonstration reasoning pipeline are replaced by frames at key timestamps but without status annotation.</p>
-                    
-                    <p><b>B. Uniform Sampled Frames Without Object Status:</b> Frames are sampled uniformly from video, again without status annotation.</p>
-                    
-                    <p><b>C. Conditions Without F/T Signals:</b> Force/torque signals are excluded from the demonstration reasoning pipeline, so the success conditions remain as initially generated by the LLM without any updates.</p>
-                    
-                    <p><b>D. Without Demonstrations:</b> No demonstration data is provided and the LLM generates the plan solely based on its prior knowledge.</p>
+                <p style="text-align:center;">
+                    <iframe width="1000" height="650" src="https://www.youtube.com/embed/FFRWuQ1hNHY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </p>
+            </div>  
+    
+            <h3 class="mt-4 mb-2 text-center">
+                <b>In-context Learning Framework</b>
+            </h3>
+    
+            <h5 class="mt-4 mb-2 text-align:left">
+                We deploy our framework to two sequential manipulation tasks. <br>
+                <b style="color: chocolate;">Click on each of the image below to view the corresponding workflow and experiment results.</b>
+            </h5>
+    
+            <!-- Container Toggle Button Cable/Cap -->
+            <div class="button-container text-center">
+                <!-- Cable Mounting Button -->
+                <div class="btn toggle-btn" id="show-cable-btn">
+                    <div class="btn-content">
+                        <img src="imgs/button/skill_reasoning_cable.jpg" alt="Toggle Cable" style="width: 500px; height: 300px;">
+                        <h5 class="mt-2">
+                            <i class="fas fa-hand-pointer"></i> Cable Mounting
+                        </h5>
                     </div>
                 </div>
     
+                <!-- Cap Tightening Button -->
+                <div class="btn toggle-btn" id="show-cap-btn">
+                    <div class="btn-content">
+                        <img src="imgs/button/skill_reasoning_cap.png" alt="Toggle Cap" style="width: 500px; height: 300px;">
+                        <h5 class="mt-2">
+                            <i class="fas fa-hand-pointer"></i> Cap Tightening
+                        </h5>
+                    </div>
+                </div>
+            </div>
     
+            
+            
+            
+            
+    
+    
+            <!-- Container Cable -->
+            <div class="container" id="cable-experiment-container" >
                 <h5 class="mt-4 mb-2 text-left">
-                    <b>Skill Sequences</b>
+                    <b>1. Pre-processing</b>
                 </h5>
                 <hr>
-                <div class="container d-flex flex-row justify-content-between">
+                <div class="row" id="cable-preprocessing-container">
+                    <!-- First Container: segmentation-cable-container -->
+                    <div class="col-md-6 border-end" id="segmentation-cable-container">
+                        <h5 class="mt-4 mb-2 text-center">
+                            Segmentation with Object Status
+                        </h5>
+                        <div class="mt-4 col-md-12">
+                            <div class="d-flex justify-content-center">
+                                <img id="img-segmentation" src="imgs/segmentation.png" alt="Segmentation Image" width="70%">
+                            </div>
+                        </div>
     
-                    <!-- Skill Sequence Full Demo -->
-                    <div class="card mb-4 mt-4 text-dark bg-light skill-section border-end" id="full-demo-section" style="flex: 1; margin-right: 10px;">
-                        <h6 class="card-header">Full Demo</h6>
-                        <div class="card-body">
-                            <!-- Content of Full Demo Section -->
-                            <h6 class="text-center">Keyframes and Reasoning</h6>
-                            <div class="col-md-12" id="skill-sequence-full-demo">
-                                <div class="SkillSequenceTextContainer" id="full-demo-text-container">
-                                    <div class="SkillSequenceImageContainer" id="full-demo-image-container">
-                                        <img class="SkillSequenceFrame" id="full-demo-frame" src="examples/experiments/skill_sequence/full_demo/frame_0.png" alt="Frame 0" style="width: 100%; height: auto; max-width: 400px;">
-                                    </div>
-                                    <div class="SkillSequenceResetContainer" id="full-demo-reset-container">
-                                        <button class="btn prevButton" id="full-demo-prevButton">Previous</button>
-                                        <button class="btn resetButton" id="full-demo-resetButton">Reset</button>
-                                        <button class="btn nextButton" id="full-demo-nextButton">Next</button>
-                                    </div>
-                                    <br>
-                                    <h6 id="full-demo-skill">Skill: move_object clip8</h6>
-                                    <h6 id="full-demo-reasoning">Because one of the robots is moving the cable towards the position of clip 8.</h6>
-                                </div>
+                        <!-- Four videos of tactile signal pattern -->
+                        <div class="row mt-4">
+                            <div class="col-md-3">
+                                <h6 style="text-align: center;">Compression</h6>
+                                <video id="v3" width="100%" preload="metadata" playsinline muted loop autoplay disablePictureInPicture>
+                                    <source src="examples/method/compression_21_2024_05_21_26_force_tactile_post.mp4" type="video/mp4">
+                                </video>
+                                <h6 style="text-align: center;"> Object status: grasped</h6>
                             </div>
-                            <!-- <h6 class="mt-4 text-center">Demo Task Plan</h6> -->
-                            <div class="DemoPlanTextContainer" id="full-demo-plan-text-container" style="font-size: 15px; text-align: left; height: 250px; overflow-y: scroll; border: 0px solid #ccc;">
-                                <pre style="background-color: #ffffff00; overflow: visible; white-space: pre-wrap; word-wrap: break-word;" style="background-color: #ffffff; overflow: visible; white-space: pre-wrap; word-wrap: break-word;"><code class="language-python" id="full-demo-plan" ></code></pre>
+                            <div class="col-md-3">
+                                <h6 style="text-align: center;">Decompression</h6>
+                                <video id="v4" width="100%" preload="metadata" playsinline muted loop autoplay disablePictureInPicture>
+                                    <source src="examples/method/decompression_19_2024_05_21_12_force_tactile_post.mp4" type="video/mp4">
+                                </video>
+                                <h6 style="text-align: center;"> Object status: released</h6>
                             </div>
-                        </div>
-                    </div>
-                
-                    <!-- Skill Sequence Without Object -->
-                    <div class="card mb-4 mt-4 text-dark bg-light skill-section border-end" id="without-object-section" style="flex: 1; margin-right: 10px;">
-                        <h6 class="card-header">Transition Frames Without Object Status</h6>
-                        <div class="card-body">
-                            <!-- Content of Without Object Section -->
-                            <h6 class="text-center">Keyframes and Reasoning</h6>
-                            <div class="col-md-12" id="skill-sequence-without-object">
-                                <div class="SkillSequenceTextContainer" id="without-object-text-container">
-                                    <div class="SkillSequenceImageContainer" id="without-object-image-container">
-                                        <img class="SkillSequenceFrame" id="without-object-frame" src="examples/experiments/skill_sequence/without_object/frame_0.png" alt="Frame 0" style="width: 100%; height: auto; max-width: 400px;">
-                                    </div>
-                                    <div class="SkillSequenceResetContainer" id="without-object-reset-container">
-                                        <button class="btn prevButton" id="without-object-prevButton">Previous</button>
-                                        <button class="btn resetButton" id="without-object-resetButton">Reset</button>
-                                        <button class="btn nextButton" id="without-object-nextButton">Next</button>
-                                    </div>
-                                    <br>
-                                    <h6 id="without-object-skill">Skill: move_object clip8</h6>
-                                    <h6 id="without-object-reasoning">Because the robot on the right is moving the cable towards the position of clip8.</h6>
-                                </div>
+                            <div class="col-md-3">
+                                <h6 style="text-align: center;">Linear Force</h6>
+                                <video id="v5" width="100%" preload="metadata" playsinline muted loop autoplay disablePictureInPicture>
+                                    <source src="examples/method/linear_force_0_2024_05_21_14_force_tactile_post.mp4" type="video/mp4">
+                                </video>
+                                <h6 style="text-align: center;"> Object status: under a linear force</h6>
                             </div>
-                            <!-- <h6 class="mt-4 text-center">Demo Task Plan</h6> -->
-                            <div class="DemoPlanTextContainer" id="without-object-plan-text-container" style="font-size: 15px; text-align: left; height: 250px; overflow-y: scroll; border: 0px solid #ccc;">
-                                <pre style="background-color: #ffffff00; overflow: visible; white-space: pre-wrap; word-wrap: break-word;" style="background-color: #ffffff; overflow: visible; white-space: pre-wrap; word-wrap: break-word;"><code class="language-python" id="without-object-plan"></code></pre>
+                            <div class="col-md-3">
+                                <h6 style="text-align: center;">Rotational Force</h6>
+                                <video id="v6" width="100%" preload="metadata" playsinline muted loop autoplay disablePictureInPicture>
+                                    <source src="examples/method/rotational_force_11_2024_08_06_1_force_tactile_post.mp4" type="video/mp4">
+                                </video>
+                                <h6 style="text-align: center;"> Object status: under torque</h6>
                             </div>
                         </div>
-                    </div>
-                
-                    <!-- Skill Sequence Raw Video -->
-                    <div class="card mb-4 mt-4 text-dark bg-light skill-section" id="raw-video-section" style="flex: 1;">
-                        <h6 class="card-header">Uniform Sampling Without Object Status</h6>
-                        <div class="card-body">
-                            <!-- Content of Raw Video Section -->
-                            <h6 class="text-center">Keyframes and Reasoning</h6>
-                            <div class="col-md-12" id="skill-sequence-raw-video">
-                                <div class="SkillSequenceTextContainer" id="raw-video-text-container">
-                                    <div class="SkillSequenceImageContainer" id="raw-video-image-container">
-                                        <img class="SkillSequenceFrame" id="raw-video-frame" src="examples/experiments/skill_sequence/raw_video/frame_0.png" alt="Frame 0" style="width: 100%; height: auto; max-width: 400px;">
-                                    </div>
-                                    <div class="SkillSequenceResetContainer" id="raw-video-reset-container">
-                                        <button class="btn prevButton" id="raw-video-prevButton">Previous</button>
-                                        <button class="btn resetButton" id="raw-video-resetButton">Reset</button>
-                                        <button class="btn nextButton" id="raw-video-nextButton">Next</button>
-                                    </div>
-                                    <br>
-                                    <h6 id="raw-video-skill">Skill: move_object cable</h6>
-                                    <h6 id="raw-video-reasoning">Because the cable is being moved towards the position of clip8.</h6>
-                                </div>
-                            </div>
-                            <!-- <h6 class="mt-4 text-center">Demo Task Plan</h6> -->
-                            <div class="DemoPlanTextContainer" id="raw-video-plan-text-container" style="font-size: 15px; text-align: left; height: 250px; overflow-y: scroll; border: 0px solid #ffffff;">
-                                <pre style="background-color:#ffffff00; overflow: visible; white-space: pre-wrap; word-wrap: break-word;"><code class="language-python" id="raw-video-plan"></code></pre>
-                            </div>
-                        </div>
-                    </div>
-                
-                </div>
-                
     
-                
-                <div class="container" id="post-condition-cable-container">
-                    <h5 class="mt-4 mb-2 text-left">
-                        <b>Transition Conditions</b>
-                    </h5>
-                    <hr>
-                    
-                    <!-- 
-                    <div class="card mb-4 mt-4 text-dark bg-light">
-                        <h6 class="card-header">Initial Skill Library</h6>
-                        <div class="card-body" id="original-skilllib-cap" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
-                        </div>
-                    </div>
-                    -->
-
-                    <div class="card mb-4 mt-4 text-dark bg-light">
-                        <h6 class="card-header">Updated Stretch Skill</h6>
-                        <div class="card-body">
-                            <div class="container d-flex flex-row justify-content-between">
-                                <!-- Image section on the left -->
-                                <div class="mb-4 mt-4 text-dark skill-section" id="image-section" style="flex: 1; margin-right: 10px;">
-                                    <img src="imgs/stretch_ft.jpg" alt="F/T Measurement" style="width: 90%; height: auto; display: block;">
-                                </div>
-                            
-                                <!-- Code section on the right -->
-                                <div class="skill_update" style="flex: 1;">
-                                    <!-- With F/T Sensor Code Section (Initially Visible) -->
-                                    <div class="card mb-4 mt-4 text-dark bg-light skill-section border-end" id="stretch_w_ft_container">
-                                        <h6 class="card-header">With F/T Sensor</h6>
-                                        <div class="card-body" id="stretch_w_ft" style="font-size: 15px; text-align: left; border: 0px solid #ccc;"></div>
-                                    </div>
-                            
-                                    <!-- Without F/T Sensor Code Section (Initially Hidden) -->
-                                    <!-- <div class="card-header" id="stretch_wo_ft_container" style="display: none;">
-                                        <h6 class="card-header">Without F/T Sensor</h6>
-                                        <div class="card-body" id="stretch_wo_ft" style="font-size: 15px; text-align: left; border: 0px solid #ccc;"></div>
-                                    </div> -->
-                
-                                    <div class="card mb-4 mt-4 text-dark bg-light skill-section border-end" id="stretch_wo_ft_container" style="display: none;">
-                                        <h6 class="card-header">Without F/T Sensor</h6>
-                                        <div class="card-body" id="stretch_wo_ft" style="font-size: 15px; text-align: left; border: 0px solid #ccc;">
+                        <p>We fine-tune the video classifier <i>TimeSformer</i> with a dataset of labeled tactile videos. Applying this classifier to
+                            the complete demonstration then segments it into events
+                            when new interaction happens.</p>
+    
+                        <div class="card mb-4 mt-4 text-dark bg-light Keyframes-section" id="keyframes-cable-section">
+                            <h6 class="card-header">Key Camera Frames</h6>
+                            <div class="card-body">
+                                <div class="col-md-12" id="keyframes-cable">
+                                    <div class="SkillSequenceTextContainer" id="keyframes-cable-container">
+                                        <div class="SkillSequenceImageContainer" id="keyframes-cable-container">
+                                            <img class="SkillSequenceFrame" id="keyframes-cable-frame" src="examples/experiments/skill_sequence/without_object/" alt="Frame 0" style="width: 90%; height: auto;">
+                                        </div>
+                                        <div class="SkillSequenceResetContainer" id="keyframes-cable-container">
+                                            <button class="btn prevButton" id="keyframes-cable-prevButton">Previous</button>
+                                            <button class="btn resetButton" id="keyframes-cable-resetButton">Reset</button>
+                                            <button class="btn nextButton" id="keyframes-cable-nextButton">Next</button>
                                         </div>
                                     </div>
-                            
-                                    <!-- Buttons to toggle views -->
-                                    <div class="d-flex justify-content-center mb-3">
-                                        <button id="beforeBtn_stretch_cable" class="btn prevButton_transition" onclick="showBefore_stretch_cable()">Before</button>
-                                        <button id="afterBtn_stretch_cable" class="btn nextButton_transition" onclick="showAfter_stretch_cable()">After</button>
-                                    </div>
-                                    
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="card mb-4 mt-4 text-dark bg-light">
-                        <h6 class="card-header ">Updated Insert Skill</h6>
-                        <div class="card-body">
-                            <div class="container d-flex flex-row justify-content-between" style="flex: 1 1 50%;">
-                                <!-- Image section on the left with two images -->
-                                <div class="mb-4 mt-4 text-dark skill-section" id="image-section" style="flex: 1; margin-right: 10px;">
-                                    <div class="row">
-                                        <img src="imgs/insert_c_clip_ft.jpg" alt="F/T Measurement C-Clip" style="width: 95%; height: auto;">
-                                        <img src="imgs/insert_u_clip_ft.jpg" alt="F/T Measurement U-Clip" style="width: 95%; height: auto;">
-                                    </div>
-                                </div>
-                            
-                                <!-- Code section on the right -->
-                                <div class="skill_update" style="flex: 1;">
-                                    <!-- With F/T Sensor Code Section -->
-                                    <div class="card mb-4 mt-4 text-dark bg-light skill-section border-end" id="insert_w_ft_container" style="width: 580px; height: auto;">
-                                        <h6 class="card-header">With F/T Sensor</h6>
-                                        <div class="card-body" id="insert_w_ft" style="font-size: 15px; text-align: left; height: auto; overflow-y: auto; border: 0px solid #ccc;"></div>
-                                    </div>
-                            
-                                    <!-- Without F/T Sensor Code Section (Initially Hidden) -->
-                                    <div class="card mb-4 mt-4 text-dark bg-light skill-section border-end" id="insert_wo_ft_container" style="width: 580px;display: none;">
-                                        <h6 class="card-header">Without F/T Sensor</h6>
-                                        <div class="card-body" id="insert_wo_ft" style="font-size: 15px; text-align: left; height: auto; overflow-y: auto; border: 0px solid #ccc;"></div>
-                                    </div>
-                            
-                                    <!-- Buttons to toggle views -->
-                                    <div class="d-flex justify-content-center mb-3">
-                                        <button id="beforeBtn_insert_cable" class="btn prevButton_transition" onclick="showBefore_insert_cable()">Before</button>
-                                        <button id="afterBtn_insert_cable" class="btn nextButton_transition" onclick="showAfter_insert_cable()">After</button>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-                
-                <div class="card mb-4 mt-4 text-dark bg-light">
-                    <h6 class="card-header ">Success Rate</h6>
-                    <div class="card-body">
-                        <!-- <iframe src="examples/evaluation_skill_condition_cable.html" style="width:80%; height:250px; border:none; display: block; margin: 0 auto;"></iframe> -->
-                        <img src="imgs/cable_evaluation/condition_success_rate.png" alt="condition success" style="width: 40%; height: auto; display: block; margin: 0 auto;">
-                    </div>
-                </div>        
-            </div>
     
-            
-            <br><br>
-            <div class="container" id="eva-task-planning-cable-container">
-                <h3 class="mt-4 mb-2 text-center">
-                    <b>Evaluation on Task Planning</b>
-                </h3>
+                    <!-- Second Container: pddl-cable-container -->
+                    <div class="col-md-6" id="pddl-cable-container">
+                        <h5 class="mt-4 mb-2 text-center">
+                            Pre-processing Translation
+                        </h5>
+                        <div class="mt-4 col-md-12">
+                            <div class="d-flex justify-content-center">
+                                <img id="img-translation" src="imgs/translation.png" alt="Transition Image" width="60%">
+                            </div>
+                        </div>
     
+                        <!-- Cable Skill Lib Container -->
+                        <div class="card mb-4 mt-4 text-dark bg-light" id="cable-skilllib-section">
+                            <h6 class="card-header" style="text-align: left;"><i class="fas fa-user"></i> User Input (Skill Library)</h6>
+                            <div class="card-body" id="cable-skilllib-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
+                                <!-- The Skill Library will be inserted here by JavaScript -->
+                            </div>
+                        </div>
     
-                <!-- <div class="card mb-4 mt-4 text-dark bg-light">
-                    <h6 class="card-header ">Plan in New Scenerios</h6>
-                    <div class="card-body text-center">
-                        <img src="imgs/new_plan_cable_config.jpg" alt="new plan" style="width: 75%; height: auto;">
-                    </div>
-                </div>    -->
-                
-                <div class="card mb-4 mt-4 text-dark bg-light">
-                    <h6 class="card-header ">New Task Plan</h6>
-                    <div class="card-body">
-                        <!-- First row -->
-                        <div class="container d-flex flex-row justify-content-between">
-                            <!-- Full Demo -->
-                            <div class="card mb-4 mt-4 text-dark bg-light skill-section border-end" id="full-demo-section" style="flex: 1; margin-right: 10px;">
-                                <h6 class="card-header">Full Demo</h6>
-                                <!-- Video section -->
-                                <div class="video-container">
-                                    <video autoplay muted controls style="width: 100%;">
-                                        <source src="imgs/full_annotation.mp4" type="video/mp4">
-                                    </video>
-                                </div>
-                                <!-- <div class="card-body DemoPlanTextContainer" id="new-task-plan-cable-1-container" style="font-size: 15px; text-align: left; height: 200px; overflow: auto; border: 0px solid #ccc;">
-                                    <pre style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;" style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;"><code class="language-python" id="new-task-plan-cable-1"></code></pre>
-                                </div> -->
-                            </div>
-                    
-                            <!-- Uniform Sampled Frames Without Object -->
-                            <div class="card mb-4 mt-4 text-dark bg-light skill-section border-end" id="without-object-section" style="flex: 1; margin-right: 10px;">
-                                <h6 class="card-header"> A. Without Status / B. Uniform Sampled</h6>
-                                <!-- Video section -->
-                                <div class="video-container">
-                                    <video autoplay muted controls style="width: 100%;">
-                                        <source src="imgs/without_object_annotation.mp4" type="video/mp4">
-                                    </video>
-                                </div>
-                                <!-- <div class="card-body DemoPlanTextContainer" id="new-task-plan-cable-2-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: auto; border: 0px solid #ccc;">
-                                    <pre style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;" style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;"><code class="language-python" id="new-task-plan-cable-2"></code></pre>
-                                </div> -->
-                            </div>
-                        </div>
-                    
-                        <!-- Second row -->
-                        <div class="container d-flex flex-row justify-content-between">
-                            <!-- Without F/T Signal -->
-                            <div class="card mb-4 mt-4 text-dark bg-light skill-section border-end" id="without-object-section" style="flex: 1; margin-right: 10px;">
-                                <h6 class="card-header"> C. Without F/T Signal</h6>
-                                <!-- Video section -->
-                                <div class="video-container">
-                                    <video autoplay muted controls style="width: 100%;">
-                                        <source src="imgs/no_ft_annotation.mp4" type="video/mp4">
-                                    </video>
-                                </div>
-                                <!-- <div class="card-body DemoPlanTextContainer" id="new-task-plan-cable-3-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
-                                    <pre style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;" style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;"><code class="language-python" id="new-task-plan-cable-3"></code></pre>
-                                </div> -->
-                            </div>
-                    
-                            <!-- Without Any Demo -->
-                            <div class="card mb-4 mt-4 text-dark bg-light skill-section border-end" id="without-object-section" style="flex: 1; margin-right: 10px;">
-                                <h6 class="card-header"> D. Without Any Demo</h6>
-                                <!-- Video section -->
-                                <div class="video-container">
-                                    <video autoplay muted controls style="width: 100%;">
-                                        <source src="imgs/no_demo_annotation.mp4" type="video/mp4">
-                                    </video>
-                                </div>
-                                <!-- <div class="card-body DemoPlanTextContainer" id="new-task-plan-cable-4-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
-                                    <pre style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;" style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;"><code class="language-python" id="new-task-plan-cable-4"></code></pre>
-                                </div> -->
-                            </div>
-                        </div>         
-                    </div>
-                </div>  
-        
-    
-    
-                <div class="card mb-4 mt-4 text-dark bg-light">
-                    <h6 class="card-header ">Success Rate</h6>
-                    <div class="card-body">
-                        <!-- <iframe src="examples/evaluation_task_planning_cable.html" style="width:80%; height:295px; border:none; display: block; margin: 0 auto;"></iframe> -->
-                        <img src="imgs/cable_evaluation/overall_success_rate.png" alt="all success" style="width: 50%; height: auto; display: block; margin: 0 auto;">
-                    </div>
-                </div> 
-            </div>
-
-        </div>
-        </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <!-- Container Cap -->
-        <div class="container" id="cap-experiment-container" style="display: none;">
-            <h5 class="mt-4 mb-2 text-left">
-                <b>1. Pre-processing</b>
-            </h5>
-            <hr>
-            <div class="row" id="cap-preprocessing-container">
-                <!-- First Container: segmentation-cap-container -->
-                <div class="col-md-6 border-end" id="segmentation-cap-container">
-                    <h5 class="mt-4 mb-2 text-center">
-                        Segmentation with Object Status
-                    </h5>
-                    <div class="mt-4 col-md-12">
-                        <div class="d-flex justify-content-center">
-                            <img id="img-segmentation" src="imgs/segmentation.png" alt="Segmentation Image" width="70%">
-                        </div>
-                    </div>
-        
-                    <!-- Four videos of tactile signal pattern -->
-                    <div class="row mt-4">
-                        <div class="col-md-3">
-                            <h6 style="text-align: center;">Compression</h6>
-                            <video id="v3" width="100%" preload="metadata" playsinline muted loop autoplay disablePictureInPicture>
-                                <source src="examples/method/compression_21_2024_05_21_26_force_tactile_post.mp4" type="video/mp4">
-                            </video>
-                            <h6 style="text-align: center;"> Object status: grasped</h6>
-                        </div>
-                        <div class="col-md-3">
-                            <h6 style="text-align: center;">Decompression</h6>
-                            <video id="v4" width="100%" preload="metadata" playsinline muted loop autoplay disablePictureInPicture>
-                                <source src="examples/method/decompression_19_2024_05_21_12_force_tactile_post.mp4" type="video/mp4">
-                            </video>
-                            <h6 style="text-align: center;"> Object status: released</h6>
-                        </div>
-                        <div class="col-md-3">
-                            <h6 style="text-align: center;">Linear Force</h6>
-                            <video id="v5" width="100%" preload="metadata" playsinline muted loop autoplay disablePictureInPicture>
-                                <source src="examples/method/linear_force_0_2024_05_21_14_force_tactile_post.mp4" type="video/mp4">
-                            </video>
-                            <h6 style="text-align: center;"> Object status: under a linear force</h6>
-                        </div>
-                        <div class="col-md-3">
-                            <h6 style="text-align: center;">Rotational Force</h6>
-                            <video id="v6" width="100%" preload="metadata" playsinline muted loop autoplay disablePictureInPicture>
-                                <source src="examples/method/rotational_force_11_2024_08_06_1_force_tactile_post.mp4" type="video/mp4">
-                            </video>
-                            <h6 style="text-align: center;"> Object status: under torque</h6>
-                        </div>
-                    </div>
-        
-                    <p>We fine-tune the video classifier <i>TimeSformer</i> with a dataset of labeled tactile videos. Applying this classifier to
-                        the complete demonstration then segments it into events
-                        when new interaction happens.</p>
-        
-                    <div class="card mb-4 mt-4 text-dark bg-light Keyframes-section" id="keyframes-cap-section">
-                        <h6 class="card-header">Key Camera Frames</h6>
-                        <div class="card-body">
-                            <div class="col-md-12" id="keyframes-cap">
-                                <div class="SkillSequenceTextContainer" id="keyframes-cap-container">
-                                    <div class="SkillSequenceImageContainer" id="keyframes-cap-container">
-                                        <img class="SkillSequenceFrame" id="keyframes-cap-frame" src="examples/experiments/skill_sequence/without_object/" alt="Frame 0" style="width: 90%; height: auto;">
-                                    </div>
-                                    <div class="SkillSequenceResetContainer" id="keyframes-cap-container">
-                                        <button class="btn prevButton" id="keyframes-cap-prevButton">Previous</button>
-                                        <button class="btn resetButton" id="keyframes-cap-resetButton">Reset</button>
-                                        <button class="btn nextButton" id="keyframes-cap-nextButton">Next</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        
-                <!-- Second Container: pddl-cap-container -->
-                <div class="col-md-6" id="pddl-cap-container">
-                    <h5 class="mt-4 mb-2 text-center">
-                        Pre-processing Translation
-                    </h5>
-                    <div class="mt-4 col-md-12">
-                        <div class="d-flex justify-content-center">
-                            <img id="img-translation" src="imgs/translation.png" alt="Transition Image" width="60%">
-                        </div>
-                    </div>
-        
-                    <!-- cap Skill Lib Container -->
-                    <div class="card mb-4 mt-4 text-dark bg-light" id="cap-skilllib-section">
-                        <h6 class="card-header" style="text-align: left;"><i class="fas fa-user"></i> User Input (Skill Library)</h6>
-                        <div class="card-body" id="cap-skilllib-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
-                            <!-- The Skill Library will be inserted here by JavaScript -->
-                        </div>
-                    </div>
-        
-                    <!-- cap Skill Lib User Request Container -->
-                    <div class="card mb-4 mt-4 text-dark bg-light" id="cap-skilllib-user-section">
-                        <h6 class="card-header" style="text-align: left;">
-                            <i class="fas fa-user"></i> User Request
-                        </h6>
-                        <div class="card-body" id="cap-skilllib-user-container" style="font-size: 15px; text-align: left; height: 180px; overflow-y: scroll; border: 0px solid #ccc;">
-                            <!-- The Translate prompt will be inserted here by JavaScript -->
-                        </div>
-                    </div>
-        
-                    <!-- cap PDDL Container -->
-                    <div class="card mb-4 mt-4 text-dark bg-light" id="cap-pddl-section">
-                        <h6 class="card-header" style="text-align: left;"><i class="fas fa-robot"></i> LLM Response (PDDL Domain)</h6>
-                        <div class="card-body" id="cap-pddl-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
-                            <!-- The Skill Library will be inserted here by JavaScript -->
-                        </div>
-                    </div>
-        
-                </div>
-            </div>
-        
-        
-        
-            <!-- cap Skill Reasoning Container -->
-            <h5 class="mt-4 mb-2 text-left">
-                <b>2. Skill Reasoning</b>
-            </h5>
-            <hr>
-        
-            <div class="d-flex justify-content-center mt-4">
-                <img id="img-skill" src="imgs/skill_reasoning.png" alt="Skill Reasoning Image" width="35%">
-            </div>
-        
-            <div class="container" id="cap-skill-container" style="width: 90%; margin: 0 auto;">
-                <div class="request-response-pair-skill-cap" id="cap-skill-reasoning-1-container">
-                    <!-- <h5 class="mt-4 mb-2 text-center"> Step1. Extraction of Demo Skill Sequence</h5> -->
-        
-                    <!-- Task Description -->
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="card mb-4 mt-2 text-dark bg-light" id="task-description-section">
-                                <h6 class="card-header" style="text-align: left;">
-                                    <i class="fas fa-user"></i> 1. User Input (Demo Task Description)
-                                </h6>
-                                <div class="card-body" id="task-cap-container" style="font-size: 15px; text-align: left; height: 150px; overflow-y: scroll; border: 0px solid #ccc;">
-                                    <!-- The Task Description will be inserted here by JavaScript -->
-                                </div>
-                            </div>
-                        </div>
-        
-                        <!-- User Request -->
-                        <div class="col-md-6">
-                        <div class="card mb-4 mt-2 text-dark bg-light" id="user-request-section">
-                            <h6 class="card-header" style="text-align: left;">
-                                <i class="fas fa-user"></i> 1. User Request
-                            </h6>
-                            <div class="card-body" id="user-request-cap-container" style="font-size: 15px; text-align: left; height: 150px; overflow-y: scroll; border: 0px solid #ccc;">
-                                <!-- The User Request will be inserted here by JavaScript -->
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-        
-                    <!-- LLM Response -->
-                    <!-- Demo Skill Sequence -->
-                    <div class="card mb-4 text-dark bg-light" id="skill-sequence-section">
-                        <h6 class="card-header"><i class="fas fa-robot"></i> 1. LLM Response (Demo Skill Sequence)</h6>
-                        <div class="card-body" id="skill-sequence-cap-container" style="font-size: 15px; text-align: left; height: 220px; overflow-y: scroll; border: 1px solid #ccc;">
-                            <!-- The Demo Skill Sequence will be inserted here by JavaScript -->
-                        </div>
-                    </div>
-                </div>
-        
-                <div class="request-response-pair-skill-cap" id="cap-skill-reasoning-2-container"> 
-                    <!-- <h5 class="mt-4 mb-2 text-center"> Step2: Update Skill Sequence with Parameters</h5> -->
-                    <div class="card mb-4 text-dark bg-light" id="user-request-condition-cap-4-section">
-                        <h6 class="card-header" style="text-align: left;">
-                            <i class="fas fa-user"></i> 2. User Request
-                        </h6>
-                        <div class="card-body" id="user-request-condition-cap-4-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
-                            <!-- The User Request will be inserted here by JavaScript -->
-                        </div>
-                    </div>
-        
-                    <!-- Demo Plan -->    
-                    <div class="card mb-4 text-dark bg-light" id="demo-plan-section">
-                        <h6 class="card-header"> <i class="fas fa-robot"></i> 2. LLM Response (Demo Skill Sequence)</h6>
-                        <div class="card-body" id="demo-plan-cap-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 1px solid #ccc;">
-                            <!-- The Demo Plan will be inserted here by JavaScript -->
-                        </div>
-                    </div>
-                </div>
-        
-                <!-- Prev and Next Request Buttons -->
-                <div style="display: flex; justify-content: center; margin-top: 20px;">
-                    <button id="cap-skill-prev-request-btn" class="btn prevButton_cap_skill" style="flex: 0.1; margin-left: 15px; margin-right: 20px; padding: 2px; font-size: 15px; width: 30px; height: 30px;border: 1px solid #000; border-radius: 5px; ">Prev Request</button>
-                    <button id="cap-skill-next-request-btn" class="btn nextButton_cap_skill" style="flex: 0.1; margin-left: 20px; margin-right: 15px; padding: 2px; font-size: 15px; width: 30px; height: 30px;border: 1px solid #000; border-radius: 5px; ">Next Request</button>
-                </div>
-            </div>
-            <br>
-        
-        
-        
-        
-            <!-- cap Condition Reasoning Container -->
-            <h5 class="mt-4 mb-2 text-left">
-                <b>3. Condition Reasoning</b>
-            </h5>
-            <hr>
-            <div class="container" id="cap-condition-reasoning-section">
-        
-                <div class="d-flex justify-content-center">
-                    <div class="d-flex justify-content-center mt-4">
-                        <img id="img-condition" src="imgs/condition_reasoning.png" alt="Condition Reasoning Image" width="35%">
-                    </div>
-                </div>
-        
-                <div class="row" id="cap-condition-reasoning-container">
-                    <!-- First Container: pre/post-condition-cap-container -->
-                    <div class="container" id="prepost-condition-cap-container" style="width: 90%; margin: 0 auto;">
-                        <!-- Request/Response Containers -->
-                        <div class="request-response-container">
-                            <!-- First User Request and Response -->
-                            <div class="request-response-pair-new-task-cap" id="request-response-1">
-                                <div class="card mb-4 mt-4 text-dark bg-light" id="user-request-condition-cap-section">
-                                    <h6 class="card-header" style="text-align: left;">
-                                        <i class="fas fa-user"></i> 1. User Request
-                                    </h6>
-                                    <div class="card-body" id="user-request-condition-cap-1-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
-                                        <!-- Content -->
-                                    </div>
-                                </div>
-                                <div class="card mb-4 mt-4 text-dark bg-light" id="LLM-response-condition-cap-1-section">
-                                    <h6 class="card-header"><i class="fas fa-robot"></i> 1. LLM Response</h6>
-                                    <div class="card-body" id="LLM-response-condition-cap-1-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
-                                        <!-- Content -->
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Second User Request and Response -->
-                            <div class="request-response-pair-new-task-cap" id="request-response-2" style="display: none;">
-                                <div class="card mb-4 mt-4 text-dark bg-light" id="user-request-condition-cap-section">
-                                    <h6 class="card-header" style="text-align: left;">
-                                        <i class="fas fa-user"></i> 2. User Request
-                                    </h6>
-                                    <div class="card-body" id="user-request-condition-cap-2-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
-                                        <!-- Content -->
-                                    </div>
-                                </div>
-                                <div class="card mb-4 mt-4 text-dark bg-light" id="LLM-response-condition-cap-2-section">
-                                    <h6 class="card-header"><i class="fas fa-robot"></i> 2. LLM Response</h6>
-                                    <div class="card-body" id="LLM-response-condition-cap-2-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
-                                        <!-- Content -->
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Third User Request and Response -->
-                            <div class="request-response-pair-new-task-cap" id="request-response-3" style="display: none;">
-                                <div class="card mb-4 mt-4 text-dark bg-light" id="user-request-condition-cap-section">
-                                    <h6 class="card-header" style="text-align: left;">
-                                        <i class="fas fa-user"></i> 3. User Request（Skill F/T Signals）
-                                    </h6>
-                                    <div class="card-body" id="user-request-condition-cap-3-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
-                                        <!-- Content -->
-                                    </div>
-                                </div>
-                                <div class="card mb-4 mt-4 text-dark bg-light" id="LLM-response-condition-cap-3-section">
-                                    <h6 class="card-header"><i class="fas fa-robot"></i> 3. LLM Response (Demo Task Plan)</h6>
-                                    <div class="card-body" id="LLM-response-condition-cap-3-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
-                                        <!-- Content -->
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Prev and Next Request Buttons -->
-                                <div style="display: flex; justify-content: center; margin-top: 20px;">
-                                    <button id="cap-condition-prev-request-btn" class="btn prevButton_cap" style="flex: 0.1; margin-left: 15px; margin-right: 20px; padding: 2px; font-size: 15px; width: 30px; height: 30px;border: 1px solid #000; border-radius: 5px; ">Prev Request</button>
-                                    <button id="cap-condition-next-request-btn" class="btn nextButton_cap" style="flex: 0.1; margin-left: 15px; margin-right: 20px; padding: 2px; font-size: 15px; width: 30px; height: 30px;border: 1px solid #000; border-radius: 5px; ">Next Request</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        
-            <!-- cap Task Planning Container -->
-            <h5 class="mt-4 mb-2 text-left">
-                <b>4. Task Planning</b>
-            </h5>
-            <hr>
-            <div class="container" id="cap-task-planning-container">
-        
-                <div class="d-flex justify-content-center">
-                    <div class="d-flex justify-content-center mt-4">
-                        <img id="img-task" src="imgs/task_planning.png" alt="Task Planning Image" width="35%">
-                    </div>
-                </div>
-                
-                <div class="container" id="cap-new-plan-container" style="width: 90%; margin: 0 auto;">
-                    <div class="row">
-                    <!-- User Request and Response -->
-                    <div class="col-md-5">
-                        <div class="card mb-4 text-dark bg-light" id="user-request-task-cap-section">
+                        <!-- Cable Skill Lib User Request Container -->
+                        <div class="card mb-4 mt-4 text-dark bg-light" id="cable-skilllib-user-section">
                             <h6 class="card-header" style="text-align: left;">
                                 <i class="fas fa-user"></i> User Request
                             </h6>
-                            <div class="card-body" id="task-planning-user-request-cap-container" style="font-size: 15px; text-align: left; height: 250px; overflow-y: scroll; border: 0px solid #ccc;">
+                            <div class="card-body" id="cable-skilllib-user-container" style="font-size: 15px; text-align: left; height: 180px; overflow-y: scroll; border: 0px solid #ccc;">
+                                <!-- The Translate prompt will be inserted here by JavaScript -->
+                            </div>
+                        </div>
+    
+                        <!-- Cable PDDL Container -->
+                        <div class="card mb-4 mt-4 text-dark bg-light" id="cable-pddl-section">
+                            <h6 class="card-header" style="text-align: left;"><i class="fas fa-robot"></i> LLM Response (PDDL Domain)</h6>
+                            <div class="card-body" id="cable-pddl-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
+                                <!-- The Skill Library will be inserted here by JavaScript -->
+                            </div>
+                        </div>
+    
+                    </div>
+                </div>
+    
+    
+    
+                <!-- Cable Skill Reasoning Container -->
+                <h5 class="mt-4 mb-2 text-left">
+                    <b>2. Skill Reasoning</b>
+                </h5>
+                <hr>
+    
+                <div class="d-flex justify-content-center mt-4">
+                    <img id="img-skill" src="imgs/skill_reasoning.png" alt="Skill Reasoning Image" width="35%">
+                </div>
+    
+                <div class="container" id="cable-skill-container" style="width: 90%; margin: 0 auto;">
+                    <div class="request-response-pair-skill-cable" id="cable-skill-reasoning-1-container">
+                        <!-- <h5 class="mt-4 mb-2 text-center"> Step1. Extraction of Demo Skill Sequence</h5> -->
+    
+                        <!-- Task Description -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card mb-4 mt-2 text-dark bg-light" id="task-description-section">
+                                    <h6 class="card-header" style="text-align: left;">
+                                        <i class="fas fa-user"></i> 1. User Input (Demo Task Description)
+                                    </h6>
+                                    <div class="card-body" id="task-cable-container" style="font-size: 15px; text-align: left; height: 150px; overflow-y: scroll; border: 0px solid #ccc;">
+                                        <!-- The Task Description will be inserted here by JavaScript -->
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <!-- User Request -->
+                            <div class="col-md-6">
+                            <div class="card mb-4 mt-2 text-dark bg-light" id="user-request-section">
+                                <h6 class="card-header" style="text-align: left;">
+                                    <i class="fas fa-user"></i> 1. User Request
+                                </h6>
+                                <div class="card-body" id="user-request-cable-container" style="font-size: 15px; text-align: left; height: 150px; overflow-y: scroll; border: 0px solid #ccc;">
+                                    <!-- The User Request will be inserted here by JavaScript -->
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+    
+                        <!-- LLM Response -->
+                        <!-- Demo Skill Sequence -->
+                        <div class="card mb-4 text-dark bg-light" id="skill-sequence-section">
+                            <h6 class="card-header"><i class="fas fa-robot"></i> 1. LLM Response (Demo Skill Sequence)</h6>
+                            <div class="card-body" id="skill-sequence-cable-container" style="font-size: 15px; text-align: left; height: 220px; overflow-y: scroll; border: 1px solid #ccc;">
+                                <!-- The Demo Skill Sequence will be inserted here by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="request-response-pair-skill-cable" id="cable-skill-reasoning-2-container"> 
+                        <!-- <h5 class="mt-4 mb-2 text-center"> Step2: Update Skill Sequence with Parameters</h5> -->
+                        <div class="card mb-4 text-dark bg-light" id="user-request-condition-cable-4-section">
+                            <h6 class="card-header" style="text-align: left;">
+                                <i class="fas fa-user"></i> 2. User Request
+                            </h6>
+                            <div class="card-body" id="user-request-condition-cable-4-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
+                                <!-- The User Request will be inserted here by JavaScript -->
+                            </div>
+                        </div>
+    
+                        <!-- Demo Plan -->    
+                        <div class="card mb-4 text-dark bg-light" id="demo-plan-section">
+                            <h6 class="card-header"> <i class="fas fa-robot"></i> 2. LLM Response (Demo Skill Sequence)</h6>
+                            <div class="card-body" id="demo-plan-cable-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 1px solid #ccc;">
+                                <!-- The Demo Plan will be inserted here by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Prev and Next Request Buttons -->
+                    <div style="display: flex; justify-content: center; margin-top: 20px;">
+                        <button id="cable-skill-prev-request-btn" class="btn prevButton_cable_skill" style="flex: 0.1; margin-left: 15px; margin-right: 20px; padding: 2px; font-size: 15px; width: 30px; height: 30px;border: 1px solid #000; border-radius: 5px; ">Prev Request</button>
+                        <button id="cable-skill-next-request-btn" class="btn nextButton_cable_skill" style="flex: 0.1; margin-left: 20px; margin-right: 15px; padding: 2px; font-size: 15px; width: 30px; height: 30px;border: 1px solid #000; border-radius: 5px; ">Next Request</button>
+                    </div>
+                </div>
+                <br>
+    
+    
+    
+    
+                <!-- Cable Condition Reasoning Container -->
+                <h5 class="mt-4 mb-2 text-left">
+                    <b>3. Condition Reasoning</b>
+                </h5>
+                <hr>
+                <div class="container" id="cable-condition-reasoning-section">
+    
+                    <div class="d-flex justify-content-center">
+                        <div class="d-flex justify-content-center mt-4">
+                            <img id="img-condition" src="imgs/condition_reasoning.png" alt="Condition Reasoning Image" width="35%">
+                        </div>
+                    </div>
+    
+                    <div class="row" id="cable-condition-reasoning-container">
+                        <!-- First Container: pre/post-condition-cable-container -->
+                        <div class="container" id="prepost-condition-cable-container" style="width: 90%; margin: 0 auto;">
+                            <!-- Request/Response Containers -->
+                            <div class="request-response-container">
+                                <!-- First User Request and Response -->
+                                <div class="request-response-pair" id="request-response-1">
+                                    <div class="card mb-4 mt-4 text-dark bg-light" id="user-request-condition-cable-section">
+                                        <h6 class="card-header" style="text-align: left;">
+                                            <i class="fas fa-user"></i> 1. User Request
+                                        </h6>
+                                        <div class="card-body" id="user-request-condition-cable-1-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
+                                            <!-- Content -->
+                                        </div>
+                                    </div>
+                                    <div class="card mb-4 mt-4 text-dark bg-light" id="LLM-response-condition-cable-1-section">
+                                        <h6 class="card-header"><i class="fas fa-robot"></i> 1. LLM Response</h6>
+                                        <div class="card-body" id="LLM-response-condition-cable-1-container" style="font-size: 15px; text-align: left; height: 400px; overflow-y: scroll; border: 0px solid #ccc;">
+                                            <!-- Content -->
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <!-- Second User Request and Response -->
+                                <div class="request-response-pair" id="request-response-2" style="display: none;">
+                                    <div class="card mb-4 mt-4 text-dark bg-light" id="user-request-condition-cable-section">
+                                        <h6 class="card-header" style="text-align: left;">
+                                            <i class="fas fa-user"></i> 2. User Request
+                                        </h6>
+                                        <div class="card-body" id="user-request-condition-cable-2-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
+                                            <!-- Content -->
+                                        </div>
+                                    </div>
+                                    <div class="card mb-4 mt-4 text-dark bg-light" id="LLM-response-condition-cable-2-section">
+                                        <h6 class="card-header"><i class="fas fa-robot"></i> 2. LLM Response</h6>
+                                        <div class="card-body" id="LLM-response-condition-cable-2-container" style="font-size: 15px; text-align: left; height: 400px; overflow-y: scroll; border: 0px solid #ccc;">
+                                            <!-- Content -->
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <!-- Third User Request and Response -->
+                                <div class="request-response-pair" id="request-response-3" style="display: none;">
+                                    <div class="card mb-4 mt-4 text-dark bg-light" id="user-request-condition-cable-section">
+                                        <h6 class="card-header" style="text-align: left;">
+                                            <i class="fas fa-user"></i> 3. User Request（Skill F/T Signals）
+                                        </h6>
+                                        <div class="card-body" id="user-request-condition-cable-3-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
+                                            <!-- Content -->
+                                        </div>
+                                    </div>
+                                    <div class="card mb-4 mt-4 text-dark bg-light" id="LLM-response-condition-cable-3-section">
+                                        <h6 class="card-header"><i class="fas fa-robot"></i> 3. LLM Response (Demo Task Plan)</h6>
+                                        <div class="card-body" id="LLM-response-condition-cable-3-container" style="font-size: 15px; text-align: left; height: 400px; overflow-y: scroll; border: 0px solid #ccc;">
+                                            <!-- Content -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <!-- Prev and Next Request Buttons -->
+                            <div style="display: flex; justify-content: center; margin-top: 20px;">
+                                <button id="cable-condition-prev-request-btn" class="btn prevButton_cable" style="flex: 0.1; margin-left: 15px; margin-right: 20px; padding: 2px; font-size: 15px; width: 30px; height: 30px;border: 1px solid #000; border-radius: 5px; ">Prev Request</button>
+                                <button id="cable-condition-next-request-btn" class="btn nextButton_cable" style="flex: 0.1; margin-left: 15px; margin-right: 20px; padding: 2px; font-size: 15px; width: 30px; height: 30px;border: 1px solid #000; border-radius: 5px; ">Next Request</button>
+                            </div>
+                        </div>
+    
+                    </div>
+    
+                </div>
+    
+                <!-- Cable Task Planning Container -->
+                <h5 class="mt-4 mb-2 text-left">
+                    <b>4. Task Planning</b>
+                </h5>
+                <hr>
+                <div class="container" id="cable-task-planning-container">
+    
+                    <div class="d-flex justify-content-center">
+                        <div class="d-flex justify-content-center mt-4">
+                            <img id="img-task" src="imgs/task_planning.png" alt="Task Planning Image" width="35%">
+                        </div>
+                    </div>
+                    
+                    <div class="container" id="cable-new-plan-container" style="width: 90%; margin: 0 auto;">
+                        <div class="row">
+                        <!-- User Request and Response -->
+                        <div class="col-md-5">
+                            <div class="card mb-4 text-dark bg-light" id="user-request-task-cable-section">
+                                <h6 class="card-header" style="text-align: left;">
+                                    <i class="fas fa-user"></i> User Request
+                                </h6>
+                                <div class="card-body" id="task-planning-user-request-cable-container" style="font-size: 15px; text-align: left; height: 250px; overflow-y: scroll; border: 0px solid #ccc;">
+                                    <!-- Content -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-7">
+                            <!-- Demo Task Plan -->
+                            <div class="card mb-4 mt-2 text-dark bg-light" id="demo-task-plan-cable-section">
+                                <h6 class="card-header"><i class="fas fa-user"></i> User Input (Demo Task Plan)</h6>
+                                <div class="card-body" id="demo-task-plan-cable-container" style="font-size: 15px; text-align: left; height: 250px; overflow-y: scroll; border: 0px solid #ccc;">
+                                    <!-- The Task Plan Description will be inserted here by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+    
+                        </div>
+    
+    
+                        <div class="card mb-4 mt-2 text-dark bg-light" id="LLM-response-task-cable-1-section-new">
+                            <h6 class="card-header"><i class="fas fa-robot"></i> LLM Response (New Task Plan)</h6>
+                            <div class="card-body" id="task-planning-new-cable-container" style="font-size: 15px; text-align: left; height: 300px; overflow-y: scroll; border: 0px solid #ccc;">
                                 <!-- Content -->
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-md-7">
-                        <!-- Demo Task Plan -->
-                        <div class="card mb-4 mt-2 text-dark bg-light" id="demo-task-plan-cap-section">
-                            <h6 class="card-header"><i class="fas fa-user"></i> User Input (Demo Task Plan)</h6>
-                            <div class="card-body" id="demo-task-plan-cap-container" style="font-size: 15px; text-align: left; height: 250px; overflow-y: scroll; border: 0px solid #ccc;">
-                                <!-- The Task Plan Description will be inserted here by JavaScript -->
+    
+    
+    
+                </div>
+    
+    
+                <br><br>
+                
+    
+                <div class="container" id="eva-demo-reasoning-cable-container">
+                    <h3 class="mt-4 mb-2 text-center">
+                        <b>Evaluation on Demonstration Reasoning</b>
+                    </h3>
+        
+                    <div class="mt-4">
+                        <p>We present real-world experiments to evaluate the effectiveness of our demonstration reasoning pipeline and planning results for new tasks. This evaluation is conducted through ablation study: by disabling or replacing certain parts in our framework, we design the following control groups.</p>
+                        
+                        <div class="mt-4" style="padding-left: 30px;">
+                        <p><b>A. Transition Frames Without Object Status:</b> Key frames in our demonstration reasoning pipeline are replaced by frames at key timestamps but without status annotation.</p>
+                        
+                        <p><b>B. Uniform Sampled Frames Without Object Status:</b> Frames are sampled uniformly from video, again without status annotation.</p>
+                        
+                        <p><b>C. Conditions Without F/T Signals:</b> Force/torque signals are excluded from the demonstration reasoning pipeline, so the success conditions remain as initially generated by the LLM without any updates.</p>
+                        
+                        <p><b>D. Without Demonstrations:</b> No demonstration data is provided and the LLM generates the plan solely based on its prior knowledge.</p>
+                        </div>
+                    </div>
+        
+        
+                    <h5 class="mt-4 mb-2 text-left">
+                        <b>Skill Sequences</b>
+                    </h5>
+                    <hr>
+                    <div class="container d-flex flex-row justify-content-between">
+        
+                        <!-- Skill Sequence Full Demo -->
+                        <div class="card mb-4 mt-4 text-dark bg-light skill-section border-end" id="full-demo-section" style="flex: 1; margin-right: 10px;">
+                            <h6 class="card-header">Full Demo</h6>
+                            <div class="card-body">
+                                <!-- Content of Full Demo Section -->
+                                <h6 class="text-center">Keyframes and Reasoning</h6>
+                                <div class="col-md-12" id="skill-sequence-full-demo">
+                                    <div class="SkillSequenceTextContainer" id="full-demo-text-container">
+                                        <div class="SkillSequenceImageContainer" id="full-demo-image-container">
+                                            <img class="SkillSequenceFrame" id="full-demo-frame" src="examples/experiments/skill_sequence/full_demo/frame_0.png" alt="Frame 0" style="width: 100%; height: auto; max-width: 400px;">
+                                        </div>
+                                        <div class="SkillSequenceResetContainer" id="full-demo-reset-container">
+                                            <button class="btn prevButton" id="full-demo-prevButton">Previous</button>
+                                            <button class="btn resetButton" id="full-demo-resetButton">Reset</button>
+                                            <button class="btn nextButton" id="full-demo-nextButton">Next</button>
+                                        </div>
+                                        <br>
+                                        <h6 id="full-demo-skill">Skill: move_object clip8</h6>
+                                        <h6 id="full-demo-reasoning">Because one of the robots is moving the cable towards the position of clip 8.</h6>
+                                    </div>
+                                </div>
+                                <!-- <h6 class="mt-4 text-center">Demo Task Plan</h6> -->
+                                <div class="DemoPlanTextContainer" id="full-demo-plan-text-container" style="font-size: 15px; text-align: left; height: 250px; overflow-y: scroll; border: 0px solid #ccc;">
+                                    <pre style="background-color: #ffffff00; overflow: visible; white-space: pre-wrap; word-wrap: break-word;" style="background-color: #ffffff; overflow: visible; white-space: pre-wrap; word-wrap: break-word;"><code class="language-python" id="full-demo-plan" ></code></pre>
+                                </div>
                             </div>
+                        </div>
+                    
+                        <!-- Skill Sequence Without Object -->
+                        <div class="card mb-4 mt-4 text-dark bg-light skill-section border-end" id="without-object-section" style="flex: 1; margin-right: 10px;">
+                            <h6 class="card-header">Transition Frames Without Object Status</h6>
+                            <div class="card-body">
+                                <!-- Content of Without Object Section -->
+                                <h6 class="text-center">Keyframes and Reasoning</h6>
+                                <div class="col-md-12" id="skill-sequence-without-object">
+                                    <div class="SkillSequenceTextContainer" id="without-object-text-container">
+                                        <div class="SkillSequenceImageContainer" id="without-object-image-container">
+                                            <img class="SkillSequenceFrame" id="without-object-frame" src="examples/experiments/skill_sequence/without_object/frame_0.png" alt="Frame 0" style="width: 100%; height: auto; max-width: 400px;">
+                                        </div>
+                                        <div class="SkillSequenceResetContainer" id="without-object-reset-container">
+                                            <button class="btn prevButton" id="without-object-prevButton">Previous</button>
+                                            <button class="btn resetButton" id="without-object-resetButton">Reset</button>
+                                            <button class="btn nextButton" id="without-object-nextButton">Next</button>
+                                        </div>
+                                        <br>
+                                        <h6 id="without-object-skill">Skill: move_object clip8</h6>
+                                        <h6 id="without-object-reasoning">Because the robot on the right is moving the cable towards the position of clip8.</h6>
+                                    </div>
+                                </div>
+                                <!-- <h6 class="mt-4 text-center">Demo Task Plan</h6> -->
+                                <div class="DemoPlanTextContainer" id="without-object-plan-text-container" style="font-size: 15px; text-align: left; height: 250px; overflow-y: scroll; border: 0px solid #ccc;">
+                                    <pre style="background-color: #ffffff00; overflow: visible; white-space: pre-wrap; word-wrap: break-word;" style="background-color: #ffffff; overflow: visible; white-space: pre-wrap; word-wrap: break-word;"><code class="language-python" id="without-object-plan"></code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <!-- Skill Sequence Raw Video -->
+                        <div class="card mb-4 mt-4 text-dark bg-light skill-section" id="raw-video-section" style="flex: 1;">
+                            <h6 class="card-header">Uniform Sampling Without Object Status</h6>
+                            <div class="card-body">
+                                <!-- Content of Raw Video Section -->
+                                <h6 class="text-center">Keyframes and Reasoning</h6>
+                                <div class="col-md-12" id="skill-sequence-raw-video">
+                                    <div class="SkillSequenceTextContainer" id="raw-video-text-container">
+                                        <div class="SkillSequenceImageContainer" id="raw-video-image-container">
+                                            <img class="SkillSequenceFrame" id="raw-video-frame" src="examples/experiments/skill_sequence/raw_video/frame_0.png" alt="Frame 0" style="width: 100%; height: auto; max-width: 400px;">
+                                        </div>
+                                        <div class="SkillSequenceResetContainer" id="raw-video-reset-container">
+                                            <button class="btn prevButton" id="raw-video-prevButton">Previous</button>
+                                            <button class="btn resetButton" id="raw-video-resetButton">Reset</button>
+                                            <button class="btn nextButton" id="raw-video-nextButton">Next</button>
+                                        </div>
+                                        <br>
+                                        <h6 id="raw-video-skill">Skill: move_object cable</h6>
+                                        <h6 id="raw-video-reasoning">Because the cable is being moved towards the position of clip8.</h6>
+                                    </div>
+                                </div>
+                                <!-- <h6 class="mt-4 text-center">Demo Task Plan</h6> -->
+                                <div class="DemoPlanTextContainer" id="raw-video-plan-text-container" style="font-size: 15px; text-align: left; height: 250px; overflow-y: scroll; border: 0px solid #ffffff;">
+                                    <pre style="background-color:#ffffff00; overflow: visible; white-space: pre-wrap; word-wrap: break-word;"><code class="language-python" id="raw-video-plan"></code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    </div>
+                    
+        
+                    
+                    <div class="container" id="post-condition-cable-container">
+                        <h5 class="mt-4 mb-2 text-left">
+                            <b>Transition Conditions</b>
+                        </h5>
+                        <hr>
+                        
+                        <!-- 
+                        <div class="card mb-4 mt-4 text-dark bg-light">
+                            <h6 class="card-header">Initial Skill Library</h6>
+                            <div class="card-body" id="original-skilllib-cap" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
+                            </div>
+                        </div>
+                        -->
+    
+                        <div class="card mb-4 mt-4 text-dark bg-light">
+                            <h6 class="card-header">Updated Stretch Skill</h6>
+                            <div class="card-body">
+                                <div class="container d-flex flex-row justify-content-between">
+                                    <!-- Image section on the left -->
+                                    <div class="mb-4 mt-4 text-dark skill-section" id="image-section" style="flex: 1; margin-right: 10px;">
+                                        <img src="imgs/stretch_ft.jpg" alt="F/T Measurement" style="width: 90%; height: auto; display: block;">
+                                    </div>
+                                
+                                    <!-- Code section on the right -->
+                                    <div class="skill_update" style="flex: 1;">
+                                        <!-- With F/T Sensor Code Section (Initially Visible) -->
+                                        <div class="card mb-4 mt-4 text-dark bg-light skill-section border-end" id="stretch_w_ft_container">
+                                            <h6 class="card-header">With F/T Sensor</h6>
+                                            <div class="card-body" id="stretch_w_ft" style="font-size: 15px; text-align: left; border: 0px solid #ccc;"></div>
+                                        </div>
+                                
+                                        <!-- Without F/T Sensor Code Section (Initially Hidden) -->
+                                        <!-- <div class="card-header" id="stretch_wo_ft_container" style="display: none;">
+                                            <h6 class="card-header">Without F/T Sensor</h6>
+                                            <div class="card-body" id="stretch_wo_ft" style="font-size: 15px; text-align: left; border: 0px solid #ccc;"></div>
+                                        </div> -->
+                    
+                                        <div class="card mb-4 mt-4 text-dark bg-light skill-section border-end" id="stretch_wo_ft_container" style="display: none;">
+                                            <h6 class="card-header">Without F/T Sensor</h6>
+                                            <div class="card-body" id="stretch_wo_ft" style="font-size: 15px; text-align: left; border: 0px solid #ccc;">
+                                            </div>
+                                        </div>
+                                
+                                        <!-- Buttons to toggle views -->
+                                        <div class="d-flex justify-content-center mb-3">
+                                            <button id="beforeBtn_stretch_cable" class="btn prevButton_transition" onclick="showBefore_stretch_cable()">Before</button>
+                                            <button id="afterBtn_stretch_cable" class="btn nextButton_transition" onclick="showAfter_stretch_cable()">After</button>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="card mb-4 mt-4 text-dark bg-light">
+                            <h6 class="card-header ">Updated Insert Skill</h6>
+                            <div class="card-body">
+                                <div class="container d-flex flex-row justify-content-between" style="flex: 1 1 50%;">
+                                    <!-- Image section on the left with two images -->
+                                    <div class="mb-4 mt-4 text-dark skill-section" id="image-section" style="flex: 1; margin-right: 10px;">
+                                        <div class="row">
+                                            <img src="imgs/insert_c_clip_ft.jpg" alt="F/T Measurement C-Clip" style="width: 95%; height: auto;">
+                                            <img src="imgs/insert_u_clip_ft.jpg" alt="F/T Measurement U-Clip" style="width: 95%; height: auto;">
+                                        </div>
+                                    </div>
+                                
+                                    <!-- Code section on the right -->
+                                    <div class="skill_update" style="flex: 1;">
+                                        <!-- With F/T Sensor Code Section -->
+                                        <div class="card mb-4 mt-4 text-dark bg-light skill-section border-end" id="insert_w_ft_container" style="width: 580px; height: auto;">
+                                            <h6 class="card-header">With F/T Sensor</h6>
+                                            <div class="card-body" id="insert_w_ft" style="font-size: 15px; text-align: left; height: auto; overflow-y: auto; border: 0px solid #ccc;"></div>
+                                        </div>
+                                
+                                        <!-- Without F/T Sensor Code Section (Initially Hidden) -->
+                                        <div class="card mb-4 mt-4 text-dark bg-light skill-section border-end" id="insert_wo_ft_container" style="width: 580px;display: none;">
+                                            <h6 class="card-header">Without F/T Sensor</h6>
+                                            <div class="card-body" id="insert_wo_ft" style="font-size: 15px; text-align: left; height: auto; overflow-y: auto; border: 0px solid #ccc;"></div>
+                                        </div>
+                                
+                                        <!-- Buttons to toggle views -->
+                                        <div class="d-flex justify-content-center mb-3">
+                                            <button id="beforeBtn_insert_cable" class="btn prevButton_transition" onclick="showBefore_insert_cable()">Before</button>
+                                            <button id="afterBtn_insert_cable" class="btn nextButton_transition" onclick="showAfter_insert_cable()">After</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    
+                    <div class="card mb-4 mt-4 text-dark bg-light">
+                        <h6 class="card-header ">Success Rate</h6>
+                        <div class="card-body">
+                            <!-- <iframe src="examples/evaluation_skill_condition_cable.html" style="width:80%; height:250px; border:none; display: block; margin: 0 auto;"></iframe> -->
+                            <img src="imgs/cable_evaluation/condition_success_rate.png" alt="condition success" style="width: 40%; height: auto; display: block; margin: 0 auto;">
+                        </div>
+                    </div>        
+                </div>
+        
+                
+                <br><br>
+                <div class="container" id="eva-task-planning-cable-container">
+                    <h3 class="mt-4 mb-2 text-center">
+                        <b>Evaluation on Task Planning</b>
+                    </h3>
+        
+        
+                    <!-- <div class="card mb-4 mt-4 text-dark bg-light">
+                        <h6 class="card-header ">Plan in New Scenerios</h6>
+                        <div class="card-body text-center">
+                            <img src="imgs/new_plan_cable_config.jpg" alt="new plan" style="width: 75%; height: auto;">
+                        </div>
+                    </div>    -->
+                    
+                    <div class="card mb-4 mt-4 text-dark bg-light">
+                        <h6 class="card-header ">New Task Plan</h6>
+                        <div class="card-body">
+                            <!-- First row -->
+                            <div class="container d-flex flex-row justify-content-between">
+                                <!-- Full Demo -->
+                                <div class="card mb-4 mt-4 text-dark bg-light skill-section border-end" id="full-demo-section" style="flex: 1; margin-right: 10px;">
+                                    <h6 class="card-header">Full Demo</h6>
+                                    <!-- Video section -->
+                                    <div class="video-container">
+                                        <video autoplay muted controls style="width: 100%;">
+                                            <source src="imgs/full_annotation.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                    <!-- <div class="card-body DemoPlanTextContainer" id="new-task-plan-cable-1-container" style="font-size: 15px; text-align: left; height: 200px; overflow: auto; border: 0px solid #ccc;">
+                                        <pre style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;" style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;"><code class="language-python" id="new-task-plan-cable-1"></code></pre>
+                                    </div> -->
+                                </div>
+                        
+                                <!-- Uniform Sampled Frames Without Object -->
+                                <div class="card mb-4 mt-4 text-dark bg-light skill-section border-end" id="without-object-section" style="flex: 1; margin-right: 10px;">
+                                    <h6 class="card-header"> A. Without Status / B. Uniform Sampled</h6>
+                                    <!-- Video section -->
+                                    <div class="video-container">
+                                        <video autoplay muted controls style="width: 100%;">
+                                            <source src="imgs/without_object_annotation.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                    <!-- <div class="card-body DemoPlanTextContainer" id="new-task-plan-cable-2-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: auto; border: 0px solid #ccc;">
+                                        <pre style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;" style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;"><code class="language-python" id="new-task-plan-cable-2"></code></pre>
+                                    </div> -->
+                                </div>
+                            </div>
+                        
+                            <!-- Second row -->
+                            <div class="container d-flex flex-row justify-content-between">
+                                <!-- Without F/T Signal -->
+                                <div class="card mb-4 mt-4 text-dark bg-light skill-section border-end" id="without-object-section" style="flex: 1; margin-right: 10px;">
+                                    <h6 class="card-header"> C. Without F/T Signal</h6>
+                                    <!-- Video section -->
+                                    <div class="video-container">
+                                        <video autoplay muted controls style="width: 100%;">
+                                            <source src="imgs/no_ft_annotation.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                    <!-- <div class="card-body DemoPlanTextContainer" id="new-task-plan-cable-3-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
+                                        <pre style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;" style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;"><code class="language-python" id="new-task-plan-cable-3"></code></pre>
+                                    </div> -->
+                                </div>
+                        
+                                <!-- Without Any Demo -->
+                                <div class="card mb-4 mt-4 text-dark bg-light skill-section border-end" id="without-object-section" style="flex: 1; margin-right: 10px;">
+                                    <h6 class="card-header"> D. Without Any Demo</h6>
+                                    <!-- Video section -->
+                                    <div class="video-container">
+                                        <video autoplay muted controls style="width: 100%;">
+                                            <source src="imgs/no_demo_annotation.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                    <!-- <div class="card-body DemoPlanTextContainer" id="new-task-plan-cable-4-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
+                                        <pre style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;" style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;"><code class="language-python" id="new-task-plan-cable-4"></code></pre>
+                                    </div> -->
+                                </div>
+                            </div>         
                         </div>
                     </div>  
-                </div>
-        
-        
-                    <div class="card mb-4 mt-2 text-dark bg-light" id="LLM-response-task-cap-1-section-new">
-                        <h6 class="card-header"><i class="fas fa-robot"></i> LLM Response (New Task Plan)</h6>
-                        <div class="card-body" id="task-planning-new-cap-container" style="font-size: 15px; text-align: left; height: 300px; overflow-y: scroll; border: 0px solid #ccc;">
-                            <!-- Content -->
-                        </div>
-                    </div>
-                </div>
-        
-        
-        
-            </div>
-        
-        
-            <br><br>
             
         
-            <div class="container" id="eva-demo-reasoning-cap-container">
-                <h3 class="mt-4 mb-2 text-center">
-                    <b>Evaluation on Demonstration Reasoning</b>
-                </h3>
         
-                <div class="mt-4">
-                    <p>We present real-world experiments to evaluate the effectiveness of our demonstration reasoning pipeline and planning results for new tasks. This evaluation is conducted through ablation study: by disabling or replacing certain parts in our framework, we design the following control groups.</p>
-                    
-                    <div class="mt-4" style="padding-left: 30px;">
-                    <p><b>A. Transition Frames Without Object Status:</b> Key frames in our demonstration reasoning pipeline are replaced by frames at key timestamps but without status annotation.</p>
-                    
-                    <p><b>B. Uniform Sampled Frames Without Object Status:</b> Frames are sampled uniformly from video, again without status annotation.</p>
-                    
-                    <p><b>C. Conditions Without F/T Signals:</b> Force/torque signals are excluded from the demonstration reasoning pipeline, so the success conditions remain as initially generated by the LLM without any updates.</p>
-                    
-                    <p><b>D. Without Demonstrations:</b> No demonstration data is provided and the LLM generates the plan solely based on its prior knowledge.</p>
-                    </div>
+                    <div class="card mb-4 mt-4 text-dark bg-light">
+                        <h6 class="card-header ">Success Rate</h6>
+                        <div class="card-body">
+                            <!-- <iframe src="examples/evaluation_task_planning_cable.html" style="width:80%; height:295px; border:none; display: block; margin: 0 auto;"></iframe> -->
+                            <img src="imgs/cable_evaluation/overall_success_rate.png" alt="all success" style="width: 50%; height: auto; display: block; margin: 0 auto;">
+                        </div>
+                    </div> 
                 </div>
-        
-        
+    
+            </div>
+            </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+            <!-- Container Cap -->
+            <div class="container" id="cap-experiment-container" style="display: none;">
                 <h5 class="mt-4 mb-2 text-left">
-                    <b>Skill Sequences</b>
+                    <b>1. Pre-processing</b>
                 </h5>
                 <hr>
-                <div class="container d-flex flex-row justify-content-between">
-        
-                    <!-- Skill Sequence Full Demo -->
-                    <div class="card mb-4 mt-4 text-dark bg-light skill-section border-end" id="full-demo-section" style="flex: 1; margin-right: 10px;">
-                        <h6 class="card-header">Full Demo</h6>
-                        <div class="card-body">
-                            <!-- Content of Full Demo Section -->
-                            <h6 class="text-center">Keyframes and Reasoning</h6>
-                            <div class="col-md-12" id="skill-sequence-full-demo">
-                                <div class="SkillSequenceTextContainer" id="full-demo-text-container">
-                                    <div class="SkillSequenceImageContainer" id="full-demo-image-container">
-                                        <img class="SkillSequenceFrame" id="full-demo-cap-frame" src="examples/experiments/skill_sequence/full_demo_cap/frame_0.png" alt="Frame 0" style="width: 100%; height: auto; max-width: 400px;">
-                                    </div>
-                                    <div class="SkillSequenceResetContainer" id="full-demo-cap-reset-container">
-                                        <button class="btn prevButton" id="full-demo-cap-prevButton">Previous</button>
-                                        <button class="btn resetButton" id="full-demo-cap-resetButton">Reset</button>
-                                        <button class="btn nextButton" id="full-demo-cap-nextButton">Next</button>
-                                    </div>
-                                    <br>
-                                    <h6 id="full-demo-cap-skill"></h6>
-                                    <h6 id="full-demo-cap-reasoning"></h6>
-                                </div>
-                            </div>
-                            <!-- <h6 class="mt-4 text-center">Demo Task Plan</h6> -->
-                            <div class="DemoPlanTextContainer" id="full-demo-cap-plan-text-container" style="font-size: 15px; text-align: left; height: 250px; overflow-y: scroll; border: 0px solid #ccc;">
-                                <pre style="background-color: #ffffff00; overflow: visible; white-space: pre-wrap; word-wrap: break-word;"><code class="language-python" id="full-demo-cap-plan" ></code></pre>
+                <div class="row" id="cap-preprocessing-container">
+                    <!-- First Container: segmentation-cap-container -->
+                    <div class="col-md-6 border-end" id="segmentation-cap-container">
+                        <h5 class="mt-4 mb-2 text-center">
+                            Segmentation with Object Status
+                        </h5>
+                        <div class="mt-4 col-md-12">
+                            <div class="d-flex justify-content-center">
+                                <img id="img-segmentation" src="imgs/segmentation.png" alt="Segmentation Image" width="70%">
                             </div>
                         </div>
-                    </div>
-                
-                    <!-- Skill Sequence Without Object -->
-                    <div class="card mb-4 mt-4 text-dark bg-light skill-section border-end" id="without-object-section" style="flex: 1; margin-right: 10px;">
-                        <h6 class="card-header">Transition Frames Without Object Status</h6>
-                        <div class="card-body">
-                            <!-- Content of Without Object Section -->
-                            <h6 class="text-center">Keyframes and Reasoning</h6>
-                            <div class="col-md-12" id="skill-sequence-without-object">
-                                <div class="SkillSequenceTextContainer" id="without-object-cap-text-container">
-                                    <div class="SkillSequenceImageContainer" id="without-object-cap-image-container">
-                                        <img class="SkillSequenceFrame" id="without-object-cap-frame" src="examples/experiments/skill_sequence/without_object_cap/frame_0.png" alt="Frame 0" style="width: 100%; height: auto; max-width: 400px;">
-                                    </div>
-                                    <div class="SkillSequenceResetContainer" id="without-object-cap-reset-container">
-                                        <button class="btn prevButton" id="without-object-cap-prevButton">Previous</button>
-                                        <button class="btn resetButton" id="without-object-cap-resetButton">Reset</button>
-                                        <button class="btn nextButton" id="without-object-cap-nextButton">Next</button>
-                                    </div>
-                                    <br>
-                                    <h6 id="without-object-cap-skill"></h6>
-                                    <h6 id="without-object-cap-reasoning"></h6>
-                                </div>
+            
+                        <!-- Four videos of tactile signal pattern -->
+                        <div class="row mt-4">
+                            <div class="col-md-3">
+                                <h6 style="text-align: center;">Compression</h6>
+                                <video id="v3" width="100%" preload="metadata" playsinline muted loop autoplay disablePictureInPicture>
+                                    <source src="examples/method/compression_21_2024_05_21_26_force_tactile_post.mp4" type="video/mp4">
+                                </video>
+                                <h6 style="text-align: center;"> Object status: grasped</h6>
                             </div>
-                            <!-- <h6 class="mt-4 text-center">Demo Task Plan</h6> -->
-                            <div class="DemoPlanTextContainer" id="without-object-cap-plan-text-container" style="font-size: 15px; text-align: left; height: 250px; overflow-y: scroll; border: 0px solid #ccc;">
-                                <pre style="background-color: #ffffff00; overflow: visible; white-space: pre-wrap; word-wrap: break-word;"><code class="language-python" id="without-object-cap-plan"></code></pre>
+                            <div class="col-md-3">
+                                <h6 style="text-align: center;">Decompression</h6>
+                                <video id="v4" width="100%" preload="metadata" playsinline muted loop autoplay disablePictureInPicture>
+                                    <source src="examples/method/decompression_19_2024_05_21_12_force_tactile_post.mp4" type="video/mp4">
+                                </video>
+                                <h6 style="text-align: center;"> Object status: released</h6>
                             </div>
-                        </div>
-                    </div>
-                
-                    <!-- Skill Sequence Raw Video -->
-                    <div class="card mb-4 mt-4 text-dark bg-light skill-section" id="raw-video-section" style="flex: 1;">
-                        <h6 class="card-header">Uniform Sampling Without Object Status</h6>
-                        <div class="card-body">
-                            <!-- Content of Raw Video Section -->
-                            <h6 class="text-center">Keyframes and Reasoning</h6>
-                            <div class="col-md-12" id="skill-sequence-raw-video">
-                                <div class="SkillSequenceTextContainer" id="raw-video-cap-text-container">
-                                    <div class="SkillSequenceImageContainer" id="raw-video-cap-image-container">
-                                        <img class="SkillSequenceFrame" id="raw-video-cap-frame" src="examples/experiments/skill_sequence/raw_video_cap/frame_0.png" alt="Frame 0" style="width: 100%; height: auto; max-width: 400px;">
-                                    </div>
-                                    <div class="SkillSequenceResetContainer" id="raw-video-cap-reset-container">
-                                        <button class="btn prevButton" id="raw-video-cap-prevButton">Previous</button>
-                                        <button class="btn resetButton" id="raw-video-cap-resetButton">Reset</button>
-                                        <button class="btn nextButton" id="raw-video-cap-nextButton">Next</button>
-                                    </div>
-                                    <br>
-                                    <h6 id="raw-video-cap-skill"></h6>
-                                    <h6 id="raw-video-cap-reasoning"></h6>
-                                </div>
+                            <div class="col-md-3">
+                                <h6 style="text-align: center;">Linear Force</h6>
+                                <video id="v5" width="100%" preload="metadata" playsinline muted loop autoplay disablePictureInPicture>
+                                    <source src="examples/method/linear_force_0_2024_05_21_14_force_tactile_post.mp4" type="video/mp4">
+                                </video>
+                                <h6 style="text-align: center;"> Object status: under a linear force</h6>
                             </div>
-                            <!-- <h6 class="mt-4 text-center">Demo Task Plan</h6> -->
-                            <div class="DemoPlanTextContainer" id="raw-video-plan-text-container" style="font-size: 15px; text-align: left; height: 250px; overflow-y: scroll; border: 0px solid #ccc;">
-                                <pre style="background-color: #ffffff00; overflow: visible; white-space: pre-wrap; word-wrap: break-word;"><code class="language-python" id="raw-video-cap-plan"></code></pre>
+                            <div class="col-md-3">
+                                <h6 style="text-align: center;">Rotational Force</h6>
+                                <video id="v6" width="100%" preload="metadata" playsinline muted loop autoplay disablePictureInPicture>
+                                    <source src="examples/method/rotational_force_11_2024_08_06_1_force_tactile_post.mp4" type="video/mp4">
+                                </video>
+                                <h6 style="text-align: center;"> Object status: under torque</h6>
                             </div>
                         </div>
-                    </div>
-                
-                </div>
-                
-        
-                
-                <div class="container" id="post-condition-cap-container">
-                    <h5 class="mt-4 mb-2 text-left">
-                        <b>Transition Conditions</b>
-                    </h5>
-                    <hr>
-                    
-                    <!-- 
-                    <div class="card mb-4 mt-4 text-dark bg-light">
-                        <h6 class="card-header">Initial Skill Library</h6>
-                        <div class="card-body" id="original-skilllib-cap" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
-                        </div>
-                    </div>
-                    -->
-
-                    <div class="card mb-4 mt-4 text-dark bg-light">
-                        <h6 class="card-header">Updated Tighten Skill</h6>
-                        <div class="card-body">
-                            <div class="container d-flex flex-row justify-content-between">
-                                <!-- Image section on the left -->
-                                <div class="mb-4 mt-4 text-dark skill-section" id="image-section" style="flex: 1; margin-right: 10px;">
-                                    <img src="imgs/tighten_w_ft.jpg" alt="F/T Measurement" style="width: 90%; height: auto; display: block;">
-                                </div>
-                            
-                                <!-- Code section on the right -->
-                                <div class="skill_update" style="flex: 1;">
-                                    <!-- With F/T Sensor Code Section (Initially Visible) -->
-                                    <div class="card mb-4 mt-4 text-dark bg-light skill-section border-end" id="tighten_w_ft_container">
-                                        <h6 class="card-header">With F/T Sensor</h6>
-                                        <div class="card-body" id="tighten_w_ft" style="font-size: 15px; text-align: left; border: 0px solid #ccc;"></div>
-                                    </div>
-                
-                                    <div class="card mb-4 mt-4 text-dark bg-light skill-section border-end" id="tighten_wo_ft_container" style="display: none;">
-                                        <h6 class="card-header">Without F/T Sensor</h6>
-                                        <div class="card-body" id="tighten_wo_ft" style="font-size: 15px; text-align: left; border: 0px solid #ccc;">
+            
+                        <p>We fine-tune the video classifier <i>TimeSformer</i> with a dataset of labeled tactile videos. Applying this classifier to
+                            the complete demonstration then segments it into events
+                            when new interaction happens.</p>
+            
+                        <div class="card mb-4 mt-4 text-dark bg-light Keyframes-section" id="keyframes-cap-section">
+                            <h6 class="card-header">Key Camera Frames</h6>
+                            <div class="card-body">
+                                <div class="col-md-12" id="keyframes-cap">
+                                    <div class="SkillSequenceTextContainer" id="keyframes-cap-container">
+                                        <div class="SkillSequenceImageContainer" id="keyframes-cap-container">
+                                            <img class="SkillSequenceFrame" id="keyframes-cap-frame" src="examples/experiments/skill_sequence/without_object/" alt="Frame 0" style="width: 90%; height: auto;">
+                                        </div>
+                                        <div class="SkillSequenceResetContainer" id="keyframes-cap-container">
+                                            <button class="btn prevButton" id="keyframes-cap-prevButton">Previous</button>
+                                            <button class="btn resetButton" id="keyframes-cap-resetButton">Reset</button>
+                                            <button class="btn nextButton" id="keyframes-cap-nextButton">Next</button>
                                         </div>
                                     </div>
-                            
-                                    <!-- Buttons to toggle views -->
-                                    <div class="d-flex justify-content-center mb-3">
-                                        <button id="beforeBtn_tighten_cap" class="btn prevButton_transition" onclick="showBefore_tighten_cap()">Before</button>
-                                        <button id="afterBtn_tighten_cap" class="btn nextButton_transition" onclick="showAfter_tighten_cap()">After</button>
-                                    </div>
-                                    
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-        
-                <div class="card mb-4 mt-4 text-dark bg-light">
-                    <h6 class="card-header ">Success Rate</h6>
-                    <div class="card-body">
-                        <!-- <iframe src="examples/evaluation_skill_condition_cap.html" style="width:80%; height:250px; border:none; display: block; margin: 0 auto;"></iframe> -->
-                        <img src="imgs/cap_evaluation/condition_success_rate.png" alt="condition success" style="width: 40%; height: auto; display: block; margin: 0 auto;">
-                    </div>
-                </div>        
-            </div>
-        
             
-            <br><br>
-            <div class="container" id="eva-task-planning-cap-container">
-                <h3 class="mt-4 mb-2 text-center">
-                    <b>Evaluation on Task Planning</b>
-                </h3>
-        
-        
-                <!-- <div class="card mb-4 mt-4 text-dark bg-light">
-                    <h6 class="card-header ">Plan in New Scenerios</h6>
-                    <div class="card-body text-center">
-                        <img src="imgs/new_plan_cap_config.jpg" alt="new plan" style="width: 75%; height: auto;">
-                    </div>
-                </div>    -->
-                
-                <div class="card mb-4 mt-4 text-dark bg-light">
-                    <h6 class="card-header ">New Task Plan</h6>
-                    <div class="card-body">
-                        <!-- First row -->
-                        <div class="container d-flex flex-row justify-content-between">
-                            <!-- Full Demo -->
-                            <div class="card mb-4 mt-4 text-dark bg-light skill-section border-end" id="full-demo-section" style="flex: 1; margin-right: 10px;">
-                                <h6 class="card-header">Full Demo</h6>
-                                <!-- Video section -->
-                                <div class="video-container">
-                                    <video autoplay muted controls style="width: 100%;">
-                                        <source src="imgs/cap_evaluation/full_annotation.mp4" type="video/mp4">
-                                    </video>
-                                </div>
-                                <!-- <div class="card-body DemoPlanTextContainer" id="new-task-plan-cap-1-container" style="font-size: 15px; text-align: left; height: 200px; overflow: auto; border: 0px solid #ccc;">
-                                    <pre style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;" style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;"><code class="language-python" id="new-task-plan-cap-1"></code></pre>
-                                </div> -->
+                    <!-- Second Container: pddl-cap-container -->
+                    <div class="col-md-6" id="pddl-cap-container">
+                        <h5 class="mt-4 mb-2 text-center">
+                            Pre-processing Translation
+                        </h5>
+                        <div class="mt-4 col-md-12">
+                            <div class="d-flex justify-content-center">
+                                <img id="img-translation" src="imgs/translation.png" alt="Transition Image" width="60%">
                             </div>
+                        </div>
+            
+                        <!-- cap Skill Lib Container -->
+                        <div class="card mb-4 mt-4 text-dark bg-light" id="cap-skilllib-section">
+                            <h6 class="card-header" style="text-align: left;"><i class="fas fa-user"></i> User Input (Skill Library)</h6>
+                            <div class="card-body" id="cap-skilllib-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
+                                <!-- The Skill Library will be inserted here by JavaScript -->
+                            </div>
+                        </div>
+            
+                        <!-- cap Skill Lib User Request Container -->
+                        <div class="card mb-4 mt-4 text-dark bg-light" id="cap-skilllib-user-section">
+                            <h6 class="card-header" style="text-align: left;">
+                                <i class="fas fa-user"></i> User Request
+                            </h6>
+                            <div class="card-body" id="cap-skilllib-user-container" style="font-size: 15px; text-align: left; height: 180px; overflow-y: scroll; border: 0px solid #ccc;">
+                                <!-- The Translate prompt will be inserted here by JavaScript -->
+                            </div>
+                        </div>
+            
+                        <!-- cap PDDL Container -->
+                        <div class="card mb-4 mt-4 text-dark bg-light" id="cap-pddl-section">
+                            <h6 class="card-header" style="text-align: left;"><i class="fas fa-robot"></i> LLM Response (PDDL Domain)</h6>
+                            <div class="card-body" id="cap-pddl-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
+                                <!-- The Skill Library will be inserted here by JavaScript -->
+                            </div>
+                        </div>
+            
+                    </div>
+                </div>
+            
+            
+            
+                <!-- cap Skill Reasoning Container -->
+                <h5 class="mt-4 mb-2 text-left">
+                    <b>2. Skill Reasoning</b>
+                </h5>
+                <hr>
+            
+                <div class="d-flex justify-content-center mt-4">
+                    <img id="img-skill" src="imgs/skill_reasoning.png" alt="Skill Reasoning Image" width="35%">
+                </div>
+            
+                <div class="container" id="cap-skill-container" style="width: 90%; margin: 0 auto;">
+                    <div class="request-response-pair-skill-cap" id="cap-skill-reasoning-1-container">
+                        <!-- <h5 class="mt-4 mb-2 text-center"> Step1. Extraction of Demo Skill Sequence</h5> -->
+            
+                        <!-- Task Description -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card mb-4 mt-2 text-dark bg-light" id="task-description-section">
+                                    <h6 class="card-header" style="text-align: left;">
+                                        <i class="fas fa-user"></i> 1. User Input (Demo Task Description)
+                                    </h6>
+                                    <div class="card-body" id="task-cap-container" style="font-size: 15px; text-align: left; height: 150px; overflow-y: scroll; border: 0px solid #ccc;">
+                                        <!-- The Task Description will be inserted here by JavaScript -->
+                                    </div>
+                                </div>
+                            </div>
+            
+                            <!-- User Request -->
+                            <div class="col-md-6">
+                            <div class="card mb-4 mt-2 text-dark bg-light" id="user-request-section">
+                                <h6 class="card-header" style="text-align: left;">
+                                    <i class="fas fa-user"></i> 1. User Request
+                                </h6>
+                                <div class="card-body" id="user-request-cap-container" style="font-size: 15px; text-align: left; height: 150px; overflow-y: scroll; border: 0px solid #ccc;">
+                                    <!-- The User Request will be inserted here by JavaScript -->
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+            
+                        <!-- LLM Response -->
+                        <!-- Demo Skill Sequence -->
+                        <div class="card mb-4 text-dark bg-light" id="skill-sequence-section">
+                            <h6 class="card-header"><i class="fas fa-robot"></i> 1. LLM Response (Demo Skill Sequence)</h6>
+                            <div class="card-body" id="skill-sequence-cap-container" style="font-size: 15px; text-align: left; height: 220px; overflow-y: scroll; border: 1px solid #ccc;">
+                                <!-- The Demo Skill Sequence will be inserted here by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div class="request-response-pair-skill-cap" id="cap-skill-reasoning-2-container"> 
+                        <!-- <h5 class="mt-4 mb-2 text-center"> Step2: Update Skill Sequence with Parameters</h5> -->
+                        <div class="card mb-4 text-dark bg-light" id="user-request-condition-cap-4-section">
+                            <h6 class="card-header" style="text-align: left;">
+                                <i class="fas fa-user"></i> 2. User Request
+                            </h6>
+                            <div class="card-body" id="user-request-condition-cap-4-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
+                                <!-- The User Request will be inserted here by JavaScript -->
+                            </div>
+                        </div>
+            
+                        <!-- Demo Plan -->    
+                        <div class="card mb-4 text-dark bg-light" id="demo-plan-section">
+                            <h6 class="card-header"> <i class="fas fa-robot"></i> 2. LLM Response (Demo Skill Sequence)</h6>
+                            <div class="card-body" id="demo-plan-cap-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 1px solid #ccc;">
+                                <!-- The Demo Plan will be inserted here by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+            
+                    <!-- Prev and Next Request Buttons -->
+                    <div style="display: flex; justify-content: center; margin-top: 20px;">
+                        <button id="cap-skill-prev-request-btn" class="btn prevButton_cap_skill" style="flex: 0.1; margin-left: 15px; margin-right: 20px; padding: 2px; font-size: 15px; width: 30px; height: 30px;border: 1px solid #000; border-radius: 5px; ">Prev Request</button>
+                        <button id="cap-skill-next-request-btn" class="btn nextButton_cap_skill" style="flex: 0.1; margin-left: 20px; margin-right: 15px; padding: 2px; font-size: 15px; width: 30px; height: 30px;border: 1px solid #000; border-radius: 5px; ">Next Request</button>
+                    </div>
+                </div>
+                <br>
+            
+            
+            
+            
+                <!-- cap Condition Reasoning Container -->
+                <h5 class="mt-4 mb-2 text-left">
+                    <b>3. Condition Reasoning</b>
+                </h5>
+                <hr>
+                <div class="container" id="cap-condition-reasoning-section">
+            
+                    <div class="d-flex justify-content-center">
+                        <div class="d-flex justify-content-center mt-4">
+                            <img id="img-condition" src="imgs/condition_reasoning.png" alt="Condition Reasoning Image" width="35%">
+                        </div>
+                    </div>
+            
+                    <div class="row" id="cap-condition-reasoning-container">
+                        <!-- First Container: pre/post-condition-cap-container -->
+                        <div class="container" id="prepost-condition-cap-container" style="width: 90%; margin: 0 auto;">
+                            <!-- Request/Response Containers -->
+                            <div class="request-response-container">
+                                <!-- First User Request and Response -->
+                                <div class="request-response-pair-new-task-cap" id="request-response-1">
+                                    <div class="card mb-4 mt-4 text-dark bg-light" id="user-request-condition-cap-section">
+                                        <h6 class="card-header" style="text-align: left;">
+                                            <i class="fas fa-user"></i> 1. User Request
+                                        </h6>
+                                        <div class="card-body" id="user-request-condition-cap-1-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
+                                            <!-- Content -->
+                                        </div>
+                                    </div>
+                                    <div class="card mb-4 mt-4 text-dark bg-light" id="LLM-response-condition-cap-1-section">
+                                        <h6 class="card-header"><i class="fas fa-robot"></i> 1. LLM Response</h6>
+                                        <div class="card-body" id="LLM-response-condition-cap-1-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
+                                            <!-- Content -->
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <!-- Second User Request and Response -->
+                                <div class="request-response-pair-new-task-cap" id="request-response-2" style="display: none;">
+                                    <div class="card mb-4 mt-4 text-dark bg-light" id="user-request-condition-cap-section">
+                                        <h6 class="card-header" style="text-align: left;">
+                                            <i class="fas fa-user"></i> 2. User Request
+                                        </h6>
+                                        <div class="card-body" id="user-request-condition-cap-2-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
+                                            <!-- Content -->
+                                        </div>
+                                    </div>
+                                    <div class="card mb-4 mt-4 text-dark bg-light" id="LLM-response-condition-cap-2-section">
+                                        <h6 class="card-header"><i class="fas fa-robot"></i> 2. LLM Response</h6>
+                                        <div class="card-body" id="LLM-response-condition-cap-2-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
+                                            <!-- Content -->
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <!-- Third User Request and Response -->
+                                <div class="request-response-pair-new-task-cap" id="request-response-3" style="display: none;">
+                                    <div class="card mb-4 mt-4 text-dark bg-light" id="user-request-condition-cap-section">
+                                        <h6 class="card-header" style="text-align: left;">
+                                            <i class="fas fa-user"></i> 3. User Request（Skill F/T Signals）
+                                        </h6>
+                                        <div class="card-body" id="user-request-condition-cap-3-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
+                                            <!-- Content -->
+                                        </div>
+                                    </div>
+                                    <div class="card mb-4 mt-4 text-dark bg-light" id="LLM-response-condition-cap-3-section">
+                                        <h6 class="card-header"><i class="fas fa-robot"></i> 3. LLM Response (Demo Task Plan)</h6>
+                                        <div class="card-body" id="LLM-response-condition-cap-3-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
+                                            <!-- Content -->
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <!-- Prev and Next Request Buttons -->
+                                    <div style="display: flex; justify-content: center; margin-top: 20px;">
+                                        <button id="cap-condition-prev-request-btn" class="btn prevButton_cap" style="flex: 0.1; margin-left: 15px; margin-right: 20px; padding: 2px; font-size: 15px; width: 30px; height: 30px;border: 1px solid #000; border-radius: 5px; ">Prev Request</button>
+                                        <button id="cap-condition-next-request-btn" class="btn nextButton_cap" style="flex: 0.1; margin-left: 15px; margin-right: 20px; padding: 2px; font-size: 15px; width: 30px; height: 30px;border: 1px solid #000; border-radius: 5px; ">Next Request</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            
+                <!-- cap Task Planning Container -->
+                <h5 class="mt-4 mb-2 text-left">
+                    <b>4. Task Planning</b>
+                </h5>
+                <hr>
+                <div class="container" id="cap-task-planning-container">
+            
+                    <div class="d-flex justify-content-center">
+                        <div class="d-flex justify-content-center mt-4">
+                            <img id="img-task" src="imgs/task_planning.png" alt="Task Planning Image" width="35%">
+                        </div>
+                    </div>
                     
-                            <!-- Uniform Sampled Frames Without Object -->
-                            <div class="card mb-4 mt-4 text-dark bg-light skill-section border-end" id="without-object-section" style="flex: 1; margin-right: 10px;">
-                                <h6 class="card-header"> C. Without F/T Signal</h6>
-                                <!-- Video section -->
-                                <div class="video-container">
-                                    <video autoplay muted controls style="width: 100%;">
-                                        <source src="imgs/cap_evaluation/no_ft_annotation.mp4" type="video/mp4">
-                                    </video>
+                    <div class="container" id="cap-new-plan-container" style="width: 90%; margin: 0 auto;">
+                        <div class="row">
+                        <!-- User Request and Response -->
+                        <div class="col-md-5">
+                            <div class="card mb-4 text-dark bg-light" id="user-request-task-cap-section">
+                                <h6 class="card-header" style="text-align: left;">
+                                    <i class="fas fa-user"></i> User Request
+                                </h6>
+                                <div class="card-body" id="task-planning-user-request-cap-container" style="font-size: 15px; text-align: left; height: 250px; overflow-y: scroll; border: 0px solid #ccc;">
+                                    <!-- Content -->
                                 </div>
-                                <!-- <div class="card-body DemoPlanTextContainer" id="new-task-plan-cap-3-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
-                                    <pre style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;" style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;"><code class="language-python" id="new-task-plan-cap-3"></code></pre>
-                                </div> -->
                             </div>
-                        </div>       
+                        </div>
+    
+                        <div class="col-md-7">
+                            <!-- Demo Task Plan -->
+                            <div class="card mb-4 mt-2 text-dark bg-light" id="demo-task-plan-cap-section">
+                                <h6 class="card-header"><i class="fas fa-user"></i> User Input (Demo Task Plan)</h6>
+                                <div class="card-body" id="demo-task-plan-cap-container" style="font-size: 15px; text-align: left; height: 250px; overflow-y: scroll; border: 0px solid #ccc;">
+                                    <!-- The Task Plan Description will be inserted here by JavaScript -->
+                                </div>
+                            </div>
+                        </div>  
                     </div>
-                </div>  
-        
-        
-        
-                <div class="card mb-4 mt-4 text-dark bg-light">
-                    <h6 class="card-header ">Success Rate</h6>
-                    <div class="card-body">
-                        <!-- <iframe src="examples/evaluation_task_planning_cap.html" style="width:80%; height:295px; border:none; display: block; margin: 0 auto;"></iframe> -->
-                        <img src="imgs/cap_evaluation/overall_success_rate.png" alt="all success" style="width: 50%; height: auto; display: block; margin: 0 auto;">
+            
+            
+                        <div class="card mb-4 mt-2 text-dark bg-light" id="LLM-response-task-cap-1-section-new">
+                            <h6 class="card-header"><i class="fas fa-robot"></i> LLM Response (New Task Plan)</h6>
+                            <div class="card-body" id="task-planning-new-cap-container" style="font-size: 15px; text-align: left; height: 300px; overflow-y: scroll; border: 0px solid #ccc;">
+                                <!-- Content -->
+                            </div>
+                        </div>
                     </div>
-                </div> 
+            
+            
+            
+                </div>
+            
+            
+                <br><br>
+                
+            
+                <div class="container" id="eva-demo-reasoning-cap-container">
+                    <h3 class="mt-4 mb-2 text-center">
+                        <b>Evaluation on Demonstration Reasoning</b>
+                    </h3>
+            
+                    <div class="mt-4">
+                        <p>We present real-world experiments to evaluate the effectiveness of our demonstration reasoning pipeline and planning results for new tasks. This evaluation is conducted through ablation study: by disabling or replacing certain parts in our framework, we design the following control groups.</p>
+                        
+                        <div class="mt-4" style="padding-left: 30px;">
+                        <p><b>A. Transition Frames Without Object Status:</b> Key frames in our demonstration reasoning pipeline are replaced by frames at key timestamps but without status annotation.</p>
+                        
+                        <p><b>B. Uniform Sampled Frames Without Object Status:</b> Frames are sampled uniformly from video, again without status annotation.</p>
+                        
+                        <p><b>C. Conditions Without F/T Signals:</b> Force/torque signals are excluded from the demonstration reasoning pipeline, so the success conditions remain as initially generated by the LLM without any updates.</p>
+                        
+                        <p><b>D. Without Demonstrations:</b> No demonstration data is provided and the LLM generates the plan solely based on its prior knowledge.</p>
+                        </div>
+                    </div>
+            
+            
+                    <h5 class="mt-4 mb-2 text-left">
+                        <b>Skill Sequences</b>
+                    </h5>
+                    <hr>
+                    <div class="container d-flex flex-row justify-content-between">
+            
+                        <!-- Skill Sequence Full Demo -->
+                        <div class="card mb-4 mt-4 text-dark bg-light skill-section border-end" id="full-demo-section" style="flex: 1; margin-right: 10px;">
+                            <h6 class="card-header">Full Demo</h6>
+                            <div class="card-body">
+                                <!-- Content of Full Demo Section -->
+                                <h6 class="text-center">Keyframes and Reasoning</h6>
+                                <div class="col-md-12" id="skill-sequence-full-demo">
+                                    <div class="SkillSequenceTextContainer" id="full-demo-text-container">
+                                        <div class="SkillSequenceImageContainer" id="full-demo-image-container">
+                                            <img class="SkillSequenceFrame" id="full-demo-cap-frame" src="examples/experiments/skill_sequence/full_demo_cap/frame_0.png" alt="Frame 0" style="width: 100%; height: auto; max-width: 400px;">
+                                        </div>
+                                        <div class="SkillSequenceResetContainer" id="full-demo-cap-reset-container">
+                                            <button class="btn prevButton" id="full-demo-cap-prevButton">Previous</button>
+                                            <button class="btn resetButton" id="full-demo-cap-resetButton">Reset</button>
+                                            <button class="btn nextButton" id="full-demo-cap-nextButton">Next</button>
+                                        </div>
+                                        <br>
+                                        <h6 id="full-demo-cap-skill"></h6>
+                                        <h6 id="full-demo-cap-reasoning"></h6>
+                                    </div>
+                                </div>
+                                <!-- <h6 class="mt-4 text-center">Demo Task Plan</h6> -->
+                                <div class="DemoPlanTextContainer" id="full-demo-cap-plan-text-container" style="font-size: 15px; text-align: left; height: 250px; overflow-y: scroll; border: 0px solid #ccc;">
+                                    <pre style="background-color: #ffffff00; overflow: visible; white-space: pre-wrap; word-wrap: break-word;"><code class="language-python" id="full-demo-cap-plan" ></code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <!-- Skill Sequence Without Object -->
+                        <div class="card mb-4 mt-4 text-dark bg-light skill-section border-end" id="without-object-section" style="flex: 1; margin-right: 10px;">
+                            <h6 class="card-header">Transition Frames Without Object Status</h6>
+                            <div class="card-body">
+                                <!-- Content of Without Object Section -->
+                                <h6 class="text-center">Keyframes and Reasoning</h6>
+                                <div class="col-md-12" id="skill-sequence-without-object">
+                                    <div class="SkillSequenceTextContainer" id="without-object-cap-text-container">
+                                        <div class="SkillSequenceImageContainer" id="without-object-cap-image-container">
+                                            <img class="SkillSequenceFrame" id="without-object-cap-frame" src="examples/experiments/skill_sequence/without_object_cap/frame_0.png" alt="Frame 0" style="width: 100%; height: auto; max-width: 400px;">
+                                        </div>
+                                        <div class="SkillSequenceResetContainer" id="without-object-cap-reset-container">
+                                            <button class="btn prevButton" id="without-object-cap-prevButton">Previous</button>
+                                            <button class="btn resetButton" id="without-object-cap-resetButton">Reset</button>
+                                            <button class="btn nextButton" id="without-object-cap-nextButton">Next</button>
+                                        </div>
+                                        <br>
+                                        <h6 id="without-object-cap-skill"></h6>
+                                        <h6 id="without-object-cap-reasoning"></h6>
+                                    </div>
+                                </div>
+                                <!-- <h6 class="mt-4 text-center">Demo Task Plan</h6> -->
+                                <div class="DemoPlanTextContainer" id="without-object-cap-plan-text-container" style="font-size: 15px; text-align: left; height: 250px; overflow-y: scroll; border: 0px solid #ccc;">
+                                    <pre style="background-color: #ffffff00; overflow: visible; white-space: pre-wrap; word-wrap: break-word;"><code class="language-python" id="without-object-cap-plan"></code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <!-- Skill Sequence Raw Video -->
+                        <div class="card mb-4 mt-4 text-dark bg-light skill-section" id="raw-video-section" style="flex: 1;">
+                            <h6 class="card-header">Uniform Sampling Without Object Status</h6>
+                            <div class="card-body">
+                                <!-- Content of Raw Video Section -->
+                                <h6 class="text-center">Keyframes and Reasoning</h6>
+                                <div class="col-md-12" id="skill-sequence-raw-video">
+                                    <div class="SkillSequenceTextContainer" id="raw-video-cap-text-container">
+                                        <div class="SkillSequenceImageContainer" id="raw-video-cap-image-container">
+                                            <img class="SkillSequenceFrame" id="raw-video-cap-frame" src="examples/experiments/skill_sequence/raw_video_cap/frame_0.png" alt="Frame 0" style="width: 100%; height: auto; max-width: 400px;">
+                                        </div>
+                                        <div class="SkillSequenceResetContainer" id="raw-video-cap-reset-container">
+                                            <button class="btn prevButton" id="raw-video-cap-prevButton">Previous</button>
+                                            <button class="btn resetButton" id="raw-video-cap-resetButton">Reset</button>
+                                            <button class="btn nextButton" id="raw-video-cap-nextButton">Next</button>
+                                        </div>
+                                        <br>
+                                        <h6 id="raw-video-cap-skill"></h6>
+                                        <h6 id="raw-video-cap-reasoning"></h6>
+                                    </div>
+                                </div>
+                                <!-- <h6 class="mt-4 text-center">Demo Task Plan</h6> -->
+                                <div class="DemoPlanTextContainer" id="raw-video-plan-text-container" style="font-size: 15px; text-align: left; height: 250px; overflow-y: scroll; border: 0px solid #ccc;">
+                                    <pre style="background-color: #ffffff00; overflow: visible; white-space: pre-wrap; word-wrap: break-word;"><code class="language-python" id="raw-video-cap-plan"></code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    </div>
+                    
+            
+                    
+                    <div class="container" id="post-condition-cap-container">
+                        <h5 class="mt-4 mb-2 text-left">
+                            <b>Transition Conditions</b>
+                        </h5>
+                        <hr>
+                        
+                        <!-- 
+                        <div class="card mb-4 mt-4 text-dark bg-light">
+                            <h6 class="card-header">Initial Skill Library</h6>
+                            <div class="card-body" id="original-skilllib-cap" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
+                            </div>
+                        </div>
+                        -->
+    
+                        <div class="card mb-4 mt-4 text-dark bg-light">
+                            <h6 class="card-header">Updated Tighten Skill</h6>
+                            <div class="card-body">
+                                <div class="container d-flex flex-row justify-content-between">
+                                    <!-- Image section on the left -->
+                                    <div class="mb-4 mt-4 text-dark skill-section" id="image-section" style="flex: 1; margin-right: 10px;">
+                                        <img src="imgs/tighten_w_ft.jpg" alt="F/T Measurement" style="width: 90%; height: auto; display: block;">
+                                    </div>
+                                
+                                    <!-- Code section on the right -->
+                                    <div class="skill_update" style="flex: 1;">
+                                        <!-- With F/T Sensor Code Section (Initially Visible) -->
+                                        <div class="card mb-4 mt-4 text-dark bg-light skill-section border-end" id="tighten_w_ft_container">
+                                            <h6 class="card-header">With F/T Sensor</h6>
+                                            <div class="card-body" id="tighten_w_ft" style="font-size: 15px; text-align: left; border: 0px solid #ccc;"></div>
+                                        </div>
+                    
+                                        <div class="card mb-4 mt-4 text-dark bg-light skill-section border-end" id="tighten_wo_ft_container" style="display: none;">
+                                            <h6 class="card-header">Without F/T Sensor</h6>
+                                            <div class="card-body" id="tighten_wo_ft" style="font-size: 15px; text-align: left; border: 0px solid #ccc;">
+                                            </div>
+                                        </div>
+                                
+                                        <!-- Buttons to toggle views -->
+                                        <div class="d-flex justify-content-center mb-3">
+                                            <button id="beforeBtn_tighten_cap" class="btn prevButton_transition" onclick="showBefore_tighten_cap()">Before</button>
+                                            <button id="afterBtn_tighten_cap" class="btn nextButton_transition" onclick="showAfter_tighten_cap()">After</button>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div class="card mb-4 mt-4 text-dark bg-light">
+                        <h6 class="card-header ">Success Rate</h6>
+                        <div class="card-body">
+                            <!-- <iframe src="examples/evaluation_skill_condition_cap.html" style="width:80%; height:250px; border:none; display: block; margin: 0 auto;"></iframe> -->
+                            <img src="imgs/cap_evaluation/condition_success_rate.png" alt="condition success" style="width: 40%; height: auto; display: block; margin: 0 auto;">
+                        </div>
+                    </div>        
+                </div>
+            
+                
+                <br><br>
+                <div class="container" id="eva-task-planning-cap-container">
+                    <h3 class="mt-4 mb-2 text-center">
+                        <b>Evaluation on Task Planning</b>
+                    </h3>
+            
+            
+                    <!-- <div class="card mb-4 mt-4 text-dark bg-light">
+                        <h6 class="card-header ">Plan in New Scenerios</h6>
+                        <div class="card-body text-center">
+                            <img src="imgs/new_plan_cap_config.jpg" alt="new plan" style="width: 75%; height: auto;">
+                        </div>
+                    </div>    -->
+                    
+                    <div class="card mb-4 mt-4 text-dark bg-light">
+                        <h6 class="card-header ">New Task Plan</h6>
+                        <div class="card-body">
+                            <!-- First row -->
+                            <div class="container d-flex flex-row justify-content-between">
+                                <!-- Full Demo -->
+                                <div class="card mb-4 mt-4 text-dark bg-light skill-section border-end" id="full-demo-section" style="flex: 1; margin-right: 10px;">
+                                    <h6 class="card-header">Full Demo</h6>
+                                    <!-- Video section -->
+                                    <div class="video-container">
+                                        <video autoplay muted controls style="width: 100%;">
+                                            <source src="imgs/cap_evaluation/full_annotation.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                    <!-- <div class="card-body DemoPlanTextContainer" id="new-task-plan-cap-1-container" style="font-size: 15px; text-align: left; height: 200px; overflow: auto; border: 0px solid #ccc;">
+                                        <pre style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;" style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;"><code class="language-python" id="new-task-plan-cap-1"></code></pre>
+                                    </div> -->
+                                </div>
+                        
+                                <!-- Uniform Sampled Frames Without Object -->
+                                <div class="card mb-4 mt-4 text-dark bg-light skill-section border-end" id="without-object-section" style="flex: 1; margin-right: 10px;">
+                                    <h6 class="card-header"> C. Without F/T Signal</h6>
+                                    <!-- Video section -->
+                                    <div class="video-container">
+                                        <video autoplay muted controls style="width: 100%;">
+                                            <source src="imgs/cap_evaluation/no_ft_annotation.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                    <!-- <div class="card-body DemoPlanTextContainer" id="new-task-plan-cap-3-container" style="font-size: 15px; text-align: left; height: 200px; overflow-y: scroll; border: 0px solid #ccc;">
+                                        <pre style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;" style="background-color: #f8f9fa; overflow: visible; white-space: pre-wrap; word-wrap: break-word;"><code class="language-python" id="new-task-plan-cap-3"></code></pre>
+                                    </div> -->
+                                </div>
+                            </div>       
+                        </div>
+                    </div>  
+            
+            
+            
+                    <div class="card mb-4 mt-4 text-dark bg-light">
+                        <h6 class="card-header ">Success Rate</h6>
+                        <div class="card-body">
+                            <!-- <iframe src="examples/evaluation_task_planning_cap.html" style="width:80%; height:295px; border:none; display: block; margin: 0 auto;"></iframe> -->
+                            <img src="imgs/cap_evaluation/overall_success_rate.png" alt="all success" style="width: 50%; height: auto; display: block; margin: 0 auto;">
+                        </div>
+                    </div> 
+                </div>
+            
             </div>
-        
         </div>
-        </div>
-
-        
 
     </div>
 
 
-
-    </div>
 
 
         

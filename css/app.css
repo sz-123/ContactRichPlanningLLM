@@ -161,12 +161,20 @@
       margin: 0 auto;
   }
 
+  /* Flex container */
+  .flex-container {
+    display: flex; /* This makes the content inside flexibly align side by side */
+    flex-direction: row; /* Ensure the items are aligned in a row */
+    justify-content: flex-start; /* Align the items to the left */
+  }
 
+
+  /* Sidebar styling */
   .vertical-nav {
     position: fixed;
     top: 100px;
     left: 0;
-    width: 350px;
+    width: 250px;
     background-color: transparent; /* 设置为透明背景 */
     padding: 10px;
     box-shadow: none; /* 移除阴影 */
@@ -194,19 +202,27 @@
 
 /* 一级菜单：Cable，字体最大 */
 .vertical-nav .nav > .nav-item > .nav-link {
-    font-size: 20px;  /* 顶级菜单字体大小 */
+    font-size: 18px;  /* 顶级菜单字体大小 */
     font-weight: bold;
 }
 
 /* 二级菜单：Experiments等，字体较大 */
 .vertical-nav .nav > .nav-item > .nav .nav-link {
     font-size: 18px;  /* 第二级菜单字体大小 */
-    padding-left: 15px;  /* 缩进 */
+    padding-left: 0px;  /* 缩进 */
     font-weight: bold;
 }
 
 /* 三级菜单：Pre-processing等，字体较小 */
 .vertical-nav .nav > .nav-item > .nav > .nav-item > .nav-link {
     font-size: 16px;  /* 第三级菜单字体大小 */
-    padding-left: 30px;  /* 更大的缩进 */
+    padding-left: 0px;  /* 更大的缩进 */
+}
+
+/* Main content styling */
+#main {
+  flex: 1; /* Take up the remaining space next to the sidebar */
+  padding: 20px;
+  background-color: white; /* Set background for the main content */
+  margin-left: 270px; /* Optional: Add spacing between sidebar and main content */
 }
