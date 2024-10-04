@@ -166,8 +166,8 @@
     display: flex; /* This makes the content inside flexibly align side by side */
     flex-direction: row; /* Ensure the items are aligned in a row */
     justify-content: flex-start; /* Align the items to the left */
-    height: 100vh;
-    width: 100vw;
+    /* height: 100vh;
+    width: 100vw; */
   }
 
 
