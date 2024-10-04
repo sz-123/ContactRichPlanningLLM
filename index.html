@@ -151,9 +151,9 @@
                     <image src="imgs/overview_simplified.jpg" width="90%">
                 </p>
     
-                <p style="text-align:center;">
-                    <iframe width="1000" height="650" src="https://www.youtube.com/embed/FFRWuQ1hNHY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </p>
+                <div class="video-container">
+                    <iframe width="90%" height="90%" src="https://www.youtube.com/embed/FFRWuQ1hNHY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
             </div>  
     
             <h3 class="mt-4 mb-2 text-center">
@@ -166,11 +166,11 @@
             </h5>
     
             <!-- Container Toggle Button Cable/Cap -->
-            <div class="button-container text-center">
+            <div class="button-container clear-fix">
                 <!-- Cable Mounting Button -->
                 <div class="btn toggle-btn" id="show-cable-btn">
                     <div class="btn-content">
-                        <img src="imgs/button/skill_reasoning_cable.jpg" alt="Toggle Cable" style="width: 500px; height: 300px;">
+                        <img src="imgs/button/skill_reasoning_cable.jpg" alt="Toggle Cable">
                         <h5 class="mt-2">
                             <i class="fas fa-hand-pointer"></i> Cable Mounting
                         </h5>
@@ -180,7 +180,7 @@
                 <!-- Cap Tightening Button -->
                 <div class="btn toggle-btn" id="show-cap-btn">
                     <div class="btn-content">
-                        <img src="imgs/button/skill_reasoning_cap.png" alt="Toggle Cap" style="width: 500px; height: 300px;">
+                        <img src="imgs/button/skill_reasoning_cap.png" alt="Toggle Cap">
                         <h5 class="mt-2">
                             <i class="fas fa-hand-pointer"></i> Cap Tightening
                         </h5>
@@ -381,8 +381,8 @@
     
                     <!-- Prev and Next Request Buttons -->
                     <div style="display: flex; justify-content: center; margin-top: 20px;">
-                        <button id="cable-skill-prev-request-btn" class="btn prevButton_cable_skill" style="flex: 0.1; margin-left: 15px; margin-right: 20px; padding: 2px; font-size: 15px; width: 30px; height: 30px;border: 1px solid #000; border-radius: 5px; ">Prev Request</button>
-                        <button id="cable-skill-next-request-btn" class="btn nextButton_cable_skill" style="flex: 0.1; margin-left: 20px; margin-right: 15px; padding: 2px; font-size: 15px; width: 30px; height: 30px;border: 1px solid #000; border-radius: 5px; ">Next Request</button>
+                        <button id="cable-skill-prev-request-btn" class="btn prevButton_cable_skill" style="flex: 0.2; margin-left: 15px; margin-right: 20px; padding: 2px; font-size: 12px; height:30px; border: 1px solid #000; border-radius: 5px; ">Prev Request</button>
+                        <button id="cable-skill-next-request-btn" class="btn nextButton_cable_skill" style="flex: 0.2; margin-left: 20px; margin-right: 15px; padding: 2px; font-size: 12px; height:30px; border: 1px solid #000; border-radius: 5px; ">Next Request</button>
                     </div>
                 </div>
                 <br>
@@ -465,8 +465,8 @@
     
                             <!-- Prev and Next Request Buttons -->
                             <div style="display: flex; justify-content: center; margin-top: 20px;">
-                                <button id="cable-condition-prev-request-btn" class="btn prevButton_cable" style="flex: 0.1; margin-left: 15px; margin-right: 20px; padding: 2px; font-size: 15px; width: 30px; height: 30px;border: 1px solid #000; border-radius: 5px; ">Prev Request</button>
-                                <button id="cable-condition-next-request-btn" class="btn nextButton_cable" style="flex: 0.1; margin-left: 15px; margin-right: 20px; padding: 2px; font-size: 15px; width: 30px; height: 30px;border: 1px solid #000; border-radius: 5px; ">Next Request</button>
+                                <button id="cable-condition-prev-request-btn" class="btn prevButton_cable" style="flex: 0.2; margin-left: 15px; margin-right: 20px; padding: 2px; font-size: 12px; height:30px; border: 1px solid #000; border-radius: 5px; ">Prev Request</button>
+                                <button id="cable-condition-next-request-btn" class="btn nextButton_cable" style="flex: 0.2; margin-left: 15px; margin-right: 20px; padding: 2px; font-size: 12px; height:30px; border: 1px solid #000; border-radius: 5px; ">Next Request</button>
                             </div>
                         </div>
     
@@ -1043,8 +1043,8 @@
             
                     <!-- Prev and Next Request Buttons -->
                     <div style="display: flex; justify-content: center; margin-top: 20px;">
-                        <button id="cap-skill-prev-request-btn" class="btn prevButton_cap_skill" style="flex: 0.1; margin-left: 15px; margin-right: 20px; padding: 2px; font-size: 15px; width: 30px; height: 30px;border: 1px solid #000; border-radius: 5px; ">Prev Request</button>
-                        <button id="cap-skill-next-request-btn" class="btn nextButton_cap_skill" style="flex: 0.1; margin-left: 20px; margin-right: 15px; padding: 2px; font-size: 15px; width: 30px; height: 30px;border: 1px solid #000; border-radius: 5px; ">Next Request</button>
+                        <button id="cap-skill-prev-request-btn" class="btn prevButton_cap_skill" style="flex: 0.2; margin-left: 15px; margin-right: 20px; padding: 2px; font-size: 12px; height:30px; border: 1px solid #000; border-radius: 5px; ">Prev Request</button>
+                        <button id="cap-skill-next-request-btn" class="btn nextButton_cap_skill" style="flex: 0.2; margin-left: 15px; margin-right: 20px; padding: 2px; font-size: 12px; height:30px; border: 1px solid #000; border-radius: 5px; ">Next Request</button>
                     </div>
                 </div>
                 <br>
@@ -1126,8 +1126,8 @@
     
                                 <!-- Prev and Next Request Buttons -->
                                     <div style="display: flex; justify-content: center; margin-top: 20px;">
-                                        <button id="cap-condition-prev-request-btn" class="btn prevButton_cap" style="flex: 0.1; margin-left: 15px; margin-right: 20px; padding: 2px; font-size: 15px; width: 30px; height: 30px;border: 1px solid #000; border-radius: 5px; ">Prev Request</button>
-                                        <button id="cap-condition-next-request-btn" class="btn nextButton_cap" style="flex: 0.1; margin-left: 15px; margin-right: 20px; padding: 2px; font-size: 15px; width: 30px; height: 30px;border: 1px solid #000; border-radius: 5px; ">Next Request</button>
+                                        <button id="cap-condition-prev-request-btn" class="btn prevButton_cap" style="flex: 0.2; margin-left: 15px; margin-right: 20px; padding: 2px; font-size: 12px; height:30px; border: 1px solid #000; border-radius: 5px; ">Prev Request</button>
+                                        <button id="cap-condition-next-request-btn" class="btn nextButton_cap" style="flex: 0.2; margin-left: 15px; margin-right: 20px; padding: 2px; font-size: 12px; height:30px; border: 1px solid #000; border-radius: 5px; ">Next Request</button>
                                     </div>
                                 </div>
                             </div>
