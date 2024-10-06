@@ -1,7 +1,6 @@
 // Define the first task description as a JavaScript string
 var user_request_condition_cap_3_1 = `
-Now you are going to reason an appropriate threshold for the conditions based on the force/torque data collected from demonstration.
-In the plot below, the blue curve segment represents the resistance force of skill tighten from one demonstration of tightening the cap.
+In the plot below, the blue curve segment represents the resistance torque of skill tighten from one demonstration of tightening the cap.
 `;
 
 // Insert the first task description into the user-request-cap-container element
@@ -64,7 +63,7 @@ ft_data = ForceTorqueData(data_vector)
 `;
 
 var user_request_condition_cap_3_2_footer = `
-Based on the plot, use the above interfaces to determine the threshold for the success condition is_tightened in your previous answer.
+Based on the plot, update the success condition is_tightened in your previous answer.
 `;
 
 // Insert the second task description as plain text

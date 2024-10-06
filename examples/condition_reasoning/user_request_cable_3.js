@@ -1,5 +1,4 @@
 var user_request_condition_cable_3_1 = `
-Now you are going to reason an appropriate threshold for the conditions based on the force/torque data collected from demonstration.
 In the plot below, the blue curve segment represents the resistance force of skill stretch from one demonstration of mounting a cable onto several clips.
 `;
 
@@ -62,7 +61,7 @@ ft_data = ForceTorqueData(data_vector)
 `;
 
 var user_request_condition_cable_3_2_footer = `
-Based on the plot, use the above interfaces to determine the threshold for the success condition is_stretched in your previous answer.
+Based on the plot, update the success condition is_stretched in your previous answer.
 `;
 
 // Insert the second task description as plain text
